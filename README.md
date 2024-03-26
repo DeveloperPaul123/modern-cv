@@ -8,7 +8,7 @@ A port of the [Awesome-CV](https://github.com/posquit0/Awesome-CV) Latex resume 
 
 ## Requirements
 
-You will need the `Robot` and `Source Sans Pro` fonts installed on your system or available somewhere. You can download them from the following links:
+You will need the `Roboto` and `Source Sans Pro` fonts installed on your system or available somewhere. If you are using the `typst` web app, no further action is necessary. You can download them from the following links:
 
 - [Roboto](https://fonts.google.com/specimen/Roboto)
 - [Source Sans Pro](https://github.com/adobe-fonts/source-sans-pro)
