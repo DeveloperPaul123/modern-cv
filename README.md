@@ -13,7 +13,7 @@ You will need the `Roboto` and `Source Sans Pro` fonts installed on your system 
 - [Roboto](https://fonts.google.com/specimen/Roboto)
 - [Source Sans Pro](https://github.com/adobe-fonts/source-sans-pro)
 
-This template also uses FontAwesome icons via the `[fontawesome](https://typst.app/universe/package/fontawesome)` package.
+This template also uses FontAwesome icons via the [`fontawesome`](https://typst.app/universe/package/fontawesome) package.
 
 See `typst fonts --help` for more information on configuring fonts for `typst` that are not installed on your system.
 
