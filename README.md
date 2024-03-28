@@ -13,7 +13,11 @@ You will need the `Roboto` and `Source Sans Pro` fonts installed on your system 
 - [Roboto](https://fonts.google.com/specimen/Roboto)
 - [Source Sans Pro](https://github.com/adobe-fonts/source-sans-pro)
 
-This template also uses FontAwesome icons via the [fontawesome](https://typst.app/universe/package/fontawesome) package.
+This template also uses FontAwesome icons via the [fontawesome](https://typst.app/universe/package/fontawesome) package. You will need to install the fontawesome fonts on your system or configure the `typst` web app to use them. You can download fontawesome [here](https://fontawesome.com/download).
+
+To use the fontawesome icons in the web app, add a `fonts` folder to your project and upload the `otf` files from the fontawesome download to this folder like so:
+
+![alt text](assets/images/typst_web_editor.png)
 
 See `typst fonts --help` for more information on configuring fonts for `typst` that are not installed on your system.
 
@@ -69,4 +73,4 @@ For more information on how to use and compile `typst` files, see the [official 
 
 | | |
 | --- | --- |
-| ![Resume](resume.png) | ![Coverletter](coverletter.png) |
+| ![Resume](assets/images/resume.png) | ![Coverletter](assets/images/coverletter.png) |
