@@ -13,7 +13,7 @@ You will need the `Roboto` and `Source Sans Pro` fonts installed on your system 
 - [Roboto](https://fonts.google.com/specimen/Roboto)
 - [Source Sans Pro](https://github.com/adobe-fonts/source-sans-pro)
 
-This template also uses FontAwesome icons via the [`fontawesome`](https://typst.app/universe/package/fontawesome) package.
+This template also uses FontAwesome icons via the [fontawesome](https://typst.app/universe/package/fontawesome) package.
 
 See `typst fonts --help` for more information on configuring fonts for `typst` that are not installed on your system.
 
@@ -56,6 +56,14 @@ Below is a basic example for a simple resume:
   - #lorem(25)  
 ]
 ```
+
+After saving to a `*.typ` file, compile your resume using the following command:
+
+```bash
+typst compile resume.typ
+```
+
+For more information on how to use and compile `typst` files, see the [official documentation](https://typst.app/docs).
 
 ### Output
 
