@@ -47,14 +47,14 @@ Below is a basic example for a simple resume:
 
 = Education
 
-#resume_entry(
+#resume-entry(
   title: "Example University",
   location: "B.S. in Computer Science",
   date: "August 2014 - May 2019",
   description: "Example"
 )
 
-#resume_item[
+#resume-item[
   - #lorem(20)
   - #lorem(15)
   - #lorem(25)  
