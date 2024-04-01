@@ -17,5 +17,5 @@ jobs:
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
-          name: modern-cv-documentation
-          path: modern-cv-documentation.pdf
+          name: modern-cv-docs
+          path: modern-cv-docs.pdf
