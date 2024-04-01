@@ -1,4 +1,4 @@
-#import "@preview/modern-cv:0.1.0":*
+#import "@preview/modern-cv:0.2.0":*
 
 #show: coverletter.with(
   author: (

@@ -1,6 +1,6 @@
 [package]
 name = "modern-cv"
-version = "0.1.0"
+version = "0.2.0"
 compiler = "0.11.0"
 entrypoint = "lib.typ"
 authors = ["Paul Tsouchlos <https://github.com/DeveloperPaul123>"]
@@ -16,4 +16,4 @@ repository = "https://github.com/DeveloperPaul123/modern-cv"
 [template]
 path = "template"
 entrypoint = "resume.typ"
-thumbnail = "resume.png"
+thumbnail = "assets/images/resume.png"

@@ -1,10 +1,10 @@
 #import "@preview/fontawesome:0.1.0": *
 
 // const color
-#let color-darknight = rgb("131A28")
-#let color-darkgray = rgb("414141")
-#let color-gray = rgb("5d5d5d")
-#let default-accent-color = rgb("333ECC")
+#let color-darknight = rgb("#131A28")
+#let color-darkgray = rgb("#333333")
+#let color-gray = rgb("#5d5d5d")
+#let default-accent-color = rgb("#262F99")
 
 // const icons
 #let linkedin-icon = box(fa-icon("linkedin", fa-set: "Brands", fill: color-darknight))
@@ -64,14 +64,14 @@
 /// - body (content): The body of the right header
 /// - accent_color (color): The accent color to color the text with. This defaults to the default-accent-color
 #let secondary-right-header(body, accent_color: default-accent-color) = {
-  set text(accent_color, size: 11pt, style: "italic", weight: "light")
+  set text(size: 11pt, weight: "medium")
   body
 }
 
 /// Right section of a tertiaty headers. 
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
-  set text(weight: "light", style: "italic", size: 9pt)
+  set text(weight: "light", size: 9pt)
   body
 }
 
@@ -110,12 +110,14 @@
 /// - author (content): Structure that takes in all the author's information
 /// - date (string): The date the resume was created
 /// - accent_color (color): The accent color of the resume
+/// - colored_headers (boolean): Whether the headers should be colored or not
 /// - body (content): The body of the resume
 /// -> none
 #let resume(
   author: (:), 
   date: datetime.today().display("[month repr:long] [day], [year]"), 
   accent_color: default-accent-color, 
+  colored_headers : true,
   body) = {
   set document(
     author: author.firstname + " " + author.lastname, 
@@ -167,8 +169,9 @@
       weight: "regular"
     )
     
-    #align(left)[   
-      #text[#strong[#text(accent_color)[#it.body.text.slice(0, 3)]]]#strong[#text[#it.body.text.slice(3)]]
+    #align(left)[
+      #let color = if colored_headers { accent_color } else { color-darkgray }
+      #text[#strong[#text(color)[#it.body.text]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]
@@ -213,8 +216,7 @@
   let address = {
     set text(
       size: 9pt,
-      weight: "bold",
-      style: "italic",
+      weight: "bold"
     )
     align(center)[
       #author.address
@@ -259,7 +261,7 @@
 /// This formats the item for the resume entries. Typically your body would be a bullet list of items. Could be your responsibilities at a company or your academic achievements in an educational background section.
 /// - body (content): The body of the resume entry
 #let resume-item(body) = {
-  set text(size: 10pt, style: "normal", weight: "light")
+  set text(size: 10pt, style: "normal", weight: "light", fill: color-darknight)
   set par(leading: 0.65em)
   body
 }
@@ -390,7 +392,7 @@
     )
     
     #align(left)[   
-      #text[#strong[#text(accent_color)[#it.body.text.slice(0, 3)]]]#strong[#text[#it.body.text.slice(3)]]
+      #text[#strong[#text(accent_color)[#it.body.text]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]
@@ -425,8 +427,7 @@
   let address = {
     set text(
       size: 9pt,
-      weight: "regular",
-      style: "italic",
+      weight: "bold",
       fill: color-gray
     )
     align(right)[
