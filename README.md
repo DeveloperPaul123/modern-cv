@@ -73,4 +73,4 @@ For more information on how to use and compile `typst` files, see the [official 
 
 | | |
 | --- | --- |
-| ![Resume](assets/images/resume.png) | ![Coverletter](assets/images/coverletter.png) |
+| ![Resume](assets/images/resume.png) | ![Cover Letter](assets/images/coverletter.png) |
