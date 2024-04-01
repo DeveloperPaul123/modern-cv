@@ -1,0 +1,19 @@
+name: Build documentation
+on: [push, workflow_dispatch]
+jobs:
+  build_pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+      - name: Typst
+        uses: yusancky/setup-typst@v2
+        id: setup-typst
+        with:
+          version: 'v0.11.0'
+      - run: typst compile modern-cv-docs.typ
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v3
+        with:
+          name: modern-cv-documentation
+          path: modern-cv-documentation.pdf
