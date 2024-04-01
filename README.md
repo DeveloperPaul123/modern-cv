@@ -3,6 +3,7 @@
 [![say thanks](https://img.shields.io/badge/Say%20Thanks-👍-1EAEDB.svg)](https://github.com/DeveloperPaul123/modern-cv/stargazers)
 [![Discord](https://img.shields.io/discord/652515194572111872?logo=Discord)](https://discord.gg/CX2ybByRnt)
 ![Release](https://img.shields.io/github/v/release/DeveloperPaul123/modern-cv)
+[![Build documentation](https://github.com/DeveloperPaul123/modern-cv/actions/workflows/build-documentation.yml/badge.svg)](https://github.com/DeveloperPaul123/modern-cv/actions/workflows/build-documentation.yml)
 
 A port of the [Awesome-CV](https://github.com/posquit0/Awesome-CV) Latex resume template in [typst](https://github.com/typst/typst).
 
@@ -68,6 +69,8 @@ typst compile resume.typ
 ```
 
 For more information on how to use and compile `typst` files, see the [official documentation](https://typst.app/docs).
+
+Documentation for this template is published with each commit. See the attached PDF on each Github Action run [here](https://github.com/DeveloperPaul123/modern-cv/actions).
 
 ### Output
 
