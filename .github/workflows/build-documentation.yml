@@ -7,7 +7,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v3
       - name: Install fonts
-        run: sudo apt-get install fonts-font-awesome fonts-roboto textlive-fonts-recommended textlive-fonts-extra
+        run: sudo apt-get install fonts-font-awesome fonts-roboto texlive-fonts-recommended texlive-fonts-extra
       - name: Typst
         uses: yusancky/setup-typst@v2
         id: setup-typst
