@@ -1,4 +1,4 @@
-#import "@preview/modern-cv:0.1.0": *
+#import "@preview/modern-cv:0.2.0": *
 
 #show: resume.with(
   author: (
@@ -11,34 +11,21 @@
       address: "111 Example St. Example City, EX 11111",
       positions: (
         "Software Engineer",
-        "Software Architect"
+        "Software Architect",
+        "Developer"
       )
   ),
-  date: datetime.today().display()
+  date: datetime.today().display(),
+  colored_headers: true
 )
-
-= Education
-
-#resume-entry(
-  title: "Example University",
-  location: "B.S. in Computer Science",
-  date: "August 2014 - May 2019",
-  description: "Example"
-)
-
-#resume-item[
-  - #lorem(20)
-  - #lorem(15)
-  - #lorem(25)  
-]
 
 = Experience
 
 #resume-entry(
-  title: "Example, Inc.",
+  title: "Senior Software Engineer",
   location: "Example City, EX",
   date: "2019 - Present",
-  description: "Senior Software Engineer"
+  description: "Example, Inc."
 )
 
 #resume-item[
@@ -48,10 +35,10 @@
 ]
 
 #resume-entry(
-  title: "Previous Company, Inc.",
+  title: "Software Engineer",
   location: "Example City, EX",
   date: "2011 - 2019",
-  description: "Software Engineer"
+  description: "Previous Company, Inc."
 )
 
 #resume-item[
@@ -75,7 +62,7 @@
 ]
 
 #resume-entry(
-  title: "  Event Bus C++ Library",
+  title: "Event Bus C++ Library",
   location: github-link("DeveloperPaul123/eventbus"),
   date: "Sep. 2019 - Present",
   description: "Designer/Developer"
@@ -88,6 +75,21 @@
 
 = Skills
 
-#resume-skill-item("Programming Languages", (strong("C++"), "Python", "Java", "C#", "JavaScript", "TypeScript"))
+#resume-skill-item("Languages", (strong("C++"), strong("Python"), "Java", "C#", "JavaScript", "TypeScript"))
 #resume-skill-item("Spoken Languages", (strong("English"), "Spanish"))
-#resume-skill-item("Programs", (strong("Excel"),"Word"))
+#resume-skill-item("Programs", (strong("Excel"),"Word", "Powerpoint", "Visual Studio"))
+
+= Education
+
+#resume-entry(
+  title: "Example University",
+  location: "Example City, EX",
+  date: "August 2014 - May 2019",
+  description: "B.S. in Computer Science"
+)
+
+#resume-item[
+  - #lorem(20)
+  - #lorem(15)
+  - #lorem(25)  
+]
