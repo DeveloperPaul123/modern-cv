@@ -72,8 +72,9 @@ For more information on how to use and compile `typst` files, see the [official 
 
 Documentation for this template is published with each commit. See the attached PDF on each Github Action run [here](https://github.com/DeveloperPaul123/modern-cv/actions).
 
-### Output
+### Output Examples
 
-| | |
+| Resumes | Cover letters |
 | --- | --- |
 | ![Resume](assets/images/resume.png) | ![Cover Letter](assets/images/coverletter.png) |
+| | ![Cover Letter 2](assets/images/coverletter2.png)|
