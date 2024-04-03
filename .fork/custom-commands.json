@@ -1,0 +1,16 @@
+[
+  {
+    "version" : 1
+  },
+  {
+    "action" : {
+      "script" : "${repo:path}/scripts/format_typst.ps1",
+      "showOutput" : true,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "Format",
+    "os" : "windows",
+    "target" : "revision"
+  }
+]
