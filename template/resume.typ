@@ -2,21 +2,21 @@
 
 #show: resume.with(
   author: (
-      firstname: "John", 
-      lastname: "Smith",
-      email: "js@example.com", 
-      phone: "(+1) 111-111-1111",
-      github: "DeveloperPaul123",
-      linkedin: "Example",
-      address: "111 Example St. Example City, EX 11111",
-      positions: (
-        "Software Engineer",
-        "Software Architect",
-        "Developer"
-      )
+    firstname: "John",
+    lastname: "Smith",
+    email: "js@example.com",
+    phone: "(+1) 111-111-1111",
+    github: "DeveloperPaul123",
+    linkedin: "Example",
+    address: "111 Example St. Example City, EX 11111",
+    positions: (
+      "Software Engineer",
+      "Software Architect",
+      "Developer",
+    ),
   ),
   date: datetime.today().display(),
-  colored_headers: true
+  colored_headers: true,
 )
 
 = Experience
@@ -25,26 +25,26 @@
   title: "Senior Software Engineer",
   location: "Example City, EX",
   date: "2019 - Present",
-  description: "Example, Inc."
+  description: "Example, Inc.",
 )
 
 #resume-item[
   - #lorem(20)
   - #lorem(15)
-  - #lorem(25)  
+  - #lorem(25)
 ]
 
 #resume-entry(
   title: "Software Engineer",
   location: "Example City, EX",
   date: "2011 - 2019",
-  description: "Previous Company, Inc."
+  description: "Previous Company, Inc.",
 )
 
 #resume-item[
   - #lorem(20)
   - #lorem(15)
-  - #lorem(25)  
+  - #lorem(25)
 ]
 
 = Projects
@@ -53,7 +53,7 @@
   title: "Thread Pool C++ Library",
   location: [#github-link("DeveloperPaul123/thread-pool")],
   date: "May 2021 - Present",
-  description: "Designer/Developer"
+  description: "Designer/Developer",
 )
 
 #resume-item[
@@ -65,7 +65,7 @@
   title: "Event Bus C++ Library",
   location: github-link("DeveloperPaul123/eventbus"),
   date: "Sep. 2019 - Present",
-  description: "Designer/Developer"
+  description: "Designer/Developer",
 )
 
 #resume-item[
@@ -75,9 +75,15 @@
 
 = Skills
 
-#resume-skill-item("Languages", (strong("C++"), strong("Python"), "Java", "C#", "JavaScript", "TypeScript"))
+#resume-skill-item(
+  "Languages",
+  (strong("C++"), strong("Python"), "Java", "C#", "JavaScript", "TypeScript"),
+)
 #resume-skill-item("Spoken Languages", (strong("English"), "Spanish"))
-#resume-skill-item("Programs", (strong("Excel"),"Word", "Powerpoint", "Visual Studio"))
+#resume-skill-item(
+  "Programs",
+  (strong("Excel"), "Word", "Powerpoint", "Visual Studio"),
+)
 
 = Education
 
@@ -85,11 +91,11 @@
   title: "Example University",
   location: "Example City, EX",
   date: "August 2014 - May 2019",
-  description: "B.S. in Computer Science"
+  description: "B.S. in Computer Science",
 )
 
 #resume-item[
   - #lorem(20)
   - #lorem(15)
-  - #lorem(25)  
+  - #lorem(25)
 ]
