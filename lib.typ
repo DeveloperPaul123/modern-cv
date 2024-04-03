@@ -232,21 +232,21 @@
       #set text(size: 9pt, weight: "regular", style: "normal")
       #block[
         #align(horizon)[
-          #if #author.phone != none [
+          #if author.phone != none [
             #phone-icon
             #box[#text(author.phone)]          
             #separator
           ]
-          #if #author.email != none [
+          #if author.email != none [
             #email-icon
             #box[#link("mailto:" + author.email)[#author.email]]
           ]
-          #if #author.github != none [
+          #if author.github != none [
             #separator
             #github-icon
             #box[#link("https://github.com/" + author.github)[#author.github]]
           ]
-          #if #author.linkedin != none [
+          #if author.linkedin != none [
             #separator
             #linkedin-icon
             #box[
