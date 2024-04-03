@@ -7,8 +7,12 @@
 #let default-accent-color = rgb("#262F99")
 
 // const icons
-#let linkedin-icon = box(fa-icon("linkedin", fa-set: "Brands", fill: color-darknight))
-#let github-icon = box(fa-icon("github", fa-set: "Brands", fill: color-darknight))
+#let linkedin-icon = box(
+  fa-icon("linkedin", fa-set: "Brands", fill: color-darknight),
+)
+#let github-icon = box(
+  fa-icon("github", fa-set: "Brands", fill: color-darknight),
+)
 // for some reason this icon doesn't work with fa-icon, so we use the local version
 #let phone-icon = box(image("assets/icons/square-phone-solid.svg"))
 #let email-icon = box(fa-icon("envelope", fill: color-darknight))
@@ -56,7 +60,10 @@
   set box(height: 11pt)
   
   align(right + horizon)[
-    #fa-icon("github", fa-set: "Brands", fill: color-darkgray) #link("https://github.com/" + github_path, github_path)
+    #fa-icon("github", fa-set: "Brands", fill: color-darkgray) #link(
+      "https://github.com/" + github_path,
+      github_path,
+    )
   ]
 }
 
@@ -64,14 +71,20 @@
 /// - body (content): The body of the right header
 /// - accent_color (color): The accent color to color the text with. This defaults to the default-accent-color
 #let secondary-right-header(body, accent_color: default-accent-color) = {
-  set text(size: 11pt, weight: "medium")
+  set text(
+    size: 11pt,
+    weight: "medium",
+  )
   body
 }
 
 /// Right section of a tertiaty headers. 
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
-  set text(weight: "light", size: 9pt)
+  set text(
+    weight: "light",
+    size: 9pt,
+  )
   body
 }
 
@@ -79,7 +92,10 @@
 /// - primary (content): The primary section of the header
 /// - secondary (content): The secondary section of the header
 #let justified-header(primary, secondary) = {
-  set block(above: 0.7em, below: 0.7em)
+  set block(
+    above: 0.7em,
+    below: 0.7em,
+  )
   pad[
     #__justify_align[
       == #primary
@@ -93,11 +109,11 @@
 /// - primary (content): The primary section of the header
 /// - secondary (content): The secondary section of the header
 #let secondary-justified-header(primary, secondary) = {
-    __justify_align[
-      === #primary
-    ][
-      #tertiary-right-header[#secondary]
-    ]
+  __justify_align[
+    === #primary
+  ][
+    #tertiary-right-header[#secondary]
+  ]
 }
 /// --- End of Helpers
 
@@ -114,13 +130,14 @@
 /// - body (content): The body of the resume
 /// -> none
 #let resume(
-  author: (:), 
-  date: datetime.today().display("[month repr:long] [day], [year]"), 
-  accent_color: default-accent-color, 
-  colored_headers : true,
-  body) = {
+  author: (:),
+  date: datetime.today().display("[month repr:long] [day], [year]"),
+  accent_color: default-accent-color,
+  colored_headers: true,
+  body,
+) = {
   set document(
-    author: author.firstname + " " + author.lastname, 
+    author: author.firstname + " " + author.lastname,
     title: "resume",
   )
   
@@ -129,14 +146,17 @@
     lang: "en",
     size: 11pt,
     fill: color-darkgray,
-    fallback: true
+    fallback: true,
   )
-
+  
   set page(
     paper: "a4",
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
     footer: [
-      #set text(fill: gray, size: 8pt)
+      #set text(
+        fill: gray,
+        size: 8pt,
+      )
       #__justify_align_3[
         #smallcaps[#date]
       ][
@@ -154,35 +174,53 @@
   )
   
   // set paragraph spacing
-  show par: set block(above: 0.75em, below: 0.75em)
+  show par: set block(
+    above: 0.75em,
+    below: 0.75em,
+  )
   set par(justify: true)
-
+  
   set heading(
     numbering: none,
     outlined: false,
   )
   
-  show heading.where(level:1): it => [
-    #set block(above: 1em, below: 1em)
+  show heading.where(level: 1): it => [
+    #set block(
+      above: 1em,
+      below: 1em,
+    )
     #set text(
       size: 16pt,
-      weight: "regular"
+      weight: "regular",
     )
     
     #align(left)[
-      #let color = if colored_headers { accent_color } else { color-darkgray }
+      #let color = if colored_headers {
+        accent_color
+      } else {
+        color-darkgray
+      }
       #text[#strong[#text(color)[#it.body.text]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]
-
+  
   show heading.where(level: 2): it => {
-    set text(color-darkgray, size: 12pt, style: "normal", weight: "bold")
+    set text(
+      color-darkgray,
+      size: 12pt,
+      style: "normal",
+      weight: "bold",
+    )
     it.body
   }
-
+  
   show heading.where(level: 3): it => {
-    set text(size: 10pt, weight: "regular")
+    set text(
+      size: 10pt,
+      weight: "regular",
+    )
     smallcaps[#it.body]
   }
   
@@ -190,46 +228,54 @@
     align(center)[
       #pad(bottom: 5pt)[
         #block[
-          #set text(size: 32pt, style: "normal", font: ("Roboto"))
+          #set text(
+            size: 32pt,
+            style: "normal",
+            font: ("Roboto"),
+          )
           #text(accent_color, weight: "thin")[#author.firstname]
           #text(weight: "bold")[#author.lastname]
         ]
       ]
     ]
   }
-
+  
   let positions = {
     set text(
       accent_color,
       size: 9pt,
-      weight: "regular"
+      weight: "regular",
     )
     align(center)[
       #smallcaps[
         #author.positions.join(
-          text[#"  "#sym.dot.c#"  "]
+          text[#"  "#sym.dot.c#"  "],
         )
       ]
     ]
   }
-
+  
   let address = {
     set text(
       size: 9pt,
-      weight: "bold"
+      weight: "bold",
     )
     align(center)[
       #author.address
     ]
   }
-
+  
   let contacts = {
     set box(height: 9pt)
     
     let separator = box(width: 5pt)
-
+    
     align(center)[
-      #set text(size: 9pt, weight: "regular", style: "normal")
+      #set text(
+        size: 9pt,
+        weight: "regular",
+        style: "normal",
+      )
       #block[
         #align(horizon)[
           #phone-icon
@@ -247,9 +293,9 @@
           ]
         ]
       ]
-    ] 
+    ]
   }
-
+  
   name
   positions
   address
@@ -261,7 +307,12 @@
 /// This formats the item for the resume entries. Typically your body would be a bullet list of items. Could be your responsibilities at a company or your academic achievements in an educational background section.
 /// - body (content): The body of the resume entry
 #let resume-item(body) = {
-  set text(size: 10pt, style: "normal", weight: "light", fill: color-darknight)
+  set text(
+    size: 10pt,
+    style: "normal",
+    weight: "light",
+    fill: color-darknight,
+  )
   set par(leading: 0.65em)
   body
 }
@@ -272,10 +323,10 @@
 /// - date (string): The date of the resume entry, this can be a range (e.g. "Jan 2020 - Dec 2020")
 /// - description (content): The body of the resume entry
 #let resume-entry(
-  title: none, 
-  location: "", 
+  title: none,
+  location: "",
   date: "",
-  description: ""
+  description: "",
 ) = {
   pad[
     #justified-header(title, location)
@@ -287,7 +338,11 @@
 /// *Example:*
 /// #example(`resume.resume-gpa("3.5", "4.0")`)
 #let resume-gpa(numerator, denominator) = {
-  set text(size: 12pt, style: "italic", weight: "light")
+  set text(
+    size: 12pt,
+    style: "italic",
+    weight: "light",
+  )
   text[Cumulative GPA: #box[#strong[#numerator] / #denominator]]
 }
 
@@ -316,7 +371,11 @@
         == #category
       ],
       align(left)[
-        #set text(size: 11pt, style: "normal", weight: "light")
+        #set text(
+          size: 11pt,
+          style: "normal",
+          weight: "light",
+        )
         #items.join(", ")
       ],
     )
@@ -335,14 +394,14 @@
 /// - accent_color (color): The accent color of the cover letter
 /// - body (content): The body of the cover letter
 #let coverletter(
-  author: (:), 
+  author: (:),
   profile_picture: image,
   date: datetime.today().display("[month repr:long] [day], [year]"),
   accent_color: default-accent-color,
-  body
+  body,
 ) = {
   set document(
-    author: author.firstname + " " + author.lastname, 
+    author: author.firstname + " " + author.lastname,
     title: "resume",
   )
   
@@ -351,14 +410,17 @@
     lang: "en",
     size: 11pt,
     fill: color-darkgray,
-    fallback: true
+    fallback: true,
   )
-
+  
   set page(
     paper: "a4",
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
     footer: [
-      #set text(fill: gray, size: 8pt)
+      #set text(
+        fill: gray,
+        size: 8pt,
+      )
       #__justify_align_3[
         #smallcaps[#date]
       ][
@@ -376,22 +438,28 @@
   )
   
   // set paragraph spacing
-  show par: set block(above: 0.75em, below: 0.75em)
+  show par: set block(
+    above: 0.75em,
+    below: 0.75em,
+  )
   set par(justify: true)
-
+  
   set heading(
     numbering: none,
     outlined: false,
   )
   
   show heading: it => [
-    #set block(above: 1em, below: 1em)
+    #set block(
+      above: 1em,
+      below: 1em,
+    )
     #set text(
       size: 16pt,
-      weight: "regular"
+      weight: "regular",
     )
     
-    #align(left)[   
+    #align(left)[
       #text[#strong[#text(accent_color)[#it.body.text]]]
       #box(width: 1fr, line(length: 100%))
     ]
@@ -401,85 +469,102 @@
     align(right)[
       #pad(bottom: 5pt)[
         #block[
-          #set text(size: 32pt, style: "normal", font: ("Roboto"))
+          #set text(
+            size: 32pt,
+            style: "normal",
+            font: ("Roboto"),
+          )
           #text(accent_color, weight: "thin")[#author.firstname]
           #text(weight: "bold")[#author.lastname]
         ]
       ]
     ]
   }
-
+  
   let positions = {
     set text(
       accent_color,
       size: 9pt,
-      weight: "regular"
+      weight: "regular",
     )
     align(right)[
       #smallcaps[
         #author.positions.join(
-          text[#"  "#sym.dot.c#"  "]
+          text[#"  "#sym.dot.c#"  "],
         )
       ]
     ]
   }
-
+  
   let address = {
     set text(
       size: 9pt,
       weight: "bold",
-      fill: color-gray
+      fill: color-gray,
     )
     align(right)[
       #author.address
     ]
   }
-
+  
   let contacts = {
     set box(height: 9pt)
     
     let separator = [#box(sym.bar.v)]
     
     align(right)[
-      #set text(size: 8pt, weight: "light", style: "normal")
+      #set text(
+        size: 8pt,
+        weight: "light",
+        style: "normal",
+      )
       #block[
         #align(horizon)[
-          #stack(dir: ltr, spacing: 0.5em,
-              phone-icon,
-              box[#text(author.phone)],
-              separator,
-              email-icon,
-              box[#link("mailto:" + author.email)[#author.email]],
-              separator,
-              github-icon,
-              box[#link("https://github.com/" + author.github)[#author.github]],
-              separator,
-              linkedin-icon,
-              box[
-                #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
-              ]
+          #stack(
+            dir: ltr,
+            spacing: 0.5em,
+            phone-icon,
+            box[#text(author.phone)],
+            separator,
+            email-icon,
+            box[#link("mailto:" + author.email)[#author.email]],
+            separator,
+            github-icon,
+            box[#link("https://github.com/" + author.github)[#author.github]],
+            separator,
+            linkedin-icon,
+            box[
+              #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
+            ],
           )
         ]
       ]
-    ] 
+    ]
   }
-
+  
   let letter-heading = {
-    grid(columns: (1fr, 2fr), 
+    grid(
+      columns: (1fr, 2fr),
       rows: (100pt),
-      align(left+horizon)[
-        #block(clip: true, stroke: 0pt, radius: 2cm, 
-        width: 4cm, height: 4cm, profile_picture)
+      align(left + horizon)[
+        #block(
+          clip: true,
+          stroke: 0pt,
+          radius: 2cm,
+          width: 4cm,
+          height: 4cm,
+          profile_picture,
+        )
       ],
       [
         #name
         #positions
         #address
         #contacts
-      ]
+      ],
     )
   }
-
+  
   let letter_conclusion = {
     align(bottom)[
       #pad(bottom: 2em)[
@@ -489,7 +574,7 @@
       ]
     ]
   }
-
+  
   // actual content
   letter-heading
   body
@@ -500,7 +585,10 @@
 /// Cover letter heading that takes in the information for the hiring company and formats it properly.
 /// - entity_info (content): The information of the hiring entity including the company name, the target (who's attention to), street address, and city
 /// - date (date): The date the letter was written (defaults to the current date)
-#let hiring-entity-info(entity_info: (:), date: datetime.today().display("[month repr:long] [day], [year]")) = {
+#let hiring-entity-info(
+  entity_info: (:),
+  date: datetime.today().display("[month repr:long] [day], [year]"),
+) = {
   set par(leading: 1em)
   pad(top: 1.5em, bottom: 1.5em)[
     #__justify_align[
@@ -508,7 +596,7 @@
     ][
       #text(weight: "light", style: "italic", size: 9pt)[#date]
     ]
-
+    
     #pad(top: 0.65em, bottom: 0.65em)[
       #text(weight: "regular", fill: color-gray, size: 9pt)[
         #smallcaps[#entity_info.name] \
