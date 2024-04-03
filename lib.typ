@@ -232,18 +232,26 @@
       #set text(size: 9pt, weight: "regular", style: "normal")
       #block[
         #align(horizon)[
-          #phone-icon
-          #box[#text(author.phone)]
-          #separator
-          #email-icon
-          #box[#link("mailto:" + author.email)[#author.email]]
-          #separator
-          #github-icon
-          #box[#link("https://github.com/" + author.github)[#author.github]]
-          #separator
-          #linkedin-icon
-          #box[
-            #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
+          #if #author.phone != none [
+            #phone-icon
+            #box[#text(author.phone)]          
+            #separator
+          ]
+          #if #author.email != none [
+            #email-icon
+            #box[#link("mailto:" + author.email)[#author.email]]
+          ]
+          #if #author.github != none [
+            #separator
+            #github-icon
+            #box[#link("https://github.com/" + author.github)[#author.github]]
+          ]
+          #if #author.linkedin != none [
+            #separator
+            #linkedin-icon
+            #box[
+              #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
+            ]
           ]
         ]
       ]
