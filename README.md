@@ -77,4 +77,13 @@ Documentation for this template is published with each commit. See the attached 
 | Resumes | Cover letters |
 | --- | --- |
 | ![Resume](assets/images/resume.png) | ![Cover Letter](assets/images/coverletter.png) |
-| | ![Cover Letter 2](assets/images/coverletter2.png)|
+| ![Resume 2](assets/images/resume2.png) | ![Cover Letter 2](assets/images/coverletter2.png)|
+
+## License
+
+The project is licensed under the MIT license. See [LICENSE](LICENSE) for more details.
+
+## Author
+
+| [<img src="https://avatars0.githubusercontent.com/u/6591180?s=460&v=4" width="100"><br><sub>@DeveloperPaul123</sub>](https://github.com/DeveloperPaul123) |
+|:----:|
