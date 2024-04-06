@@ -283,7 +283,7 @@
         #align(horizon)[
           #if author.phone != none [
             #phone-icon
-            #box[#text(author.phone)]          
+            #box[#text(author.phone)]
             #separator
           ]
           #if author.email != none [
