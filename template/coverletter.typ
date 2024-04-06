@@ -14,18 +14,18 @@
       "Full Stack Developer",
     ),
   ),
-  profile_picture: image("./profile.png"),
+  profile-picture: image("./profile.png"),
 )
 
-#hiring-entity-info(entity_info: (
+#hiring-entity-info(entity-info: (
   target: "Company Recruitement Team",
   name: "Google, Inc.",
-  street_address: "1600 AMPHITHEATRE PARKWAY",
+  street-address: "1600 AMPHITHEATRE PARKWAY",
   city: "MOUNTAIN VIEW, CA 94043",
 ))
 
 #letter-heading(
-  job_position: "Software Engineer",
+  job-position: "Software Engineer",
   addressee: "Sir or Madame",
 )
 
