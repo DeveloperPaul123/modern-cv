@@ -16,7 +16,7 @@
     ),
   ),
   date: datetime.today().display(),
-  colored-headers: true
+  colored-headers: true,
 )
 
 = Experience
