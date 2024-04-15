@@ -1,4 +1,5 @@
 #import "@preview/fontawesome:0.1.0": *
+#import "@preview/linguify:0.4.0": *
 
 // const color
 #let color-darknight = rgb("#131A28")
@@ -126,6 +127,7 @@
 /// - date (string): The date the resume was created
 /// - accent-color (color): The accent color of the resume
 /// - colored-headers (boolean): Whether the headers should be colored or not
+/// - language (string): The language of the resume, defaults to "en". See lang.toml for available languages
 /// - body (content): The body of the resume
 /// -> none
 #let resume(
@@ -133,11 +135,14 @@
   date: datetime.today().display("[month repr:long] [day], [year]"),
   accent-color: default-accent-color,
   colored-headers: true,
+  language: "en",
   body,
 ) = {
   if type(accent-color) == "string" {
     accent-color = rgb(accent-color)
   }
+  
+  let lang_data = toml("lang.toml")
   
   set document(
     author: author.firstname + " " + author.lastname,
@@ -146,7 +151,7 @@
   
   set text(
     font: ("Source Sans Pro"),
-    lang: "en",
+    lang: language,
     size: 11pt,
     fill: color-darkgray,
     fallback: true,
@@ -167,7 +172,7 @@
           #author.firstname
           #author.lastname
           #sym.dot.c
-          #"Résumé"
+          #linguify("resume", from: lang_data)
         ]
       ][
         #counter(page).display()
@@ -410,20 +415,24 @@
   profile-picture: image,
   date: datetime.today().display("[month repr:long] [day], [year]"),
   accent-color: default-accent-color,
+  language: "en",
   body,
 ) = {
   if type(accent-color) == "string" {
     accent-color = rgb(accent-color)
   }
   
+  // language data
+  let lang_data = toml("lang.toml")
+  
   set document(
     author: author.firstname + " " + author.lastname,
-    title: "resume",
+    title: "cover-letter",
   )
   
   set text(
     font: ("Source Sans Pro"),
-    lang: "en",
+    lang: language,
     size: 11pt,
     fill: color-darkgray,
     fallback: true,
@@ -444,7 +453,7 @@
           #author.firstname
           #author.lastname
           #sym.dot.c
-          #"Cover Letter"
+          #linguify("cover-letter", from: lang_data)
         ]
       ][
         #counter(page).display()
@@ -594,7 +603,10 @@
       #pad(bottom: 2em)[
         #text(weight: "light")[Sincerely,] \
         #text(weight: "bold")[#author.firstname #author.lastname] \ \
-        #text(weight: "light", style: "italic")[Attached: Curriculum Vitae]
+        #text(weight: "light", style: "italic")[ #linguify(
+            "attached",
+            from: lang_data,
+          )#sym.colon #linguify("curriculum-vitae", from: lang_data)]
       ]
     ]
   }
@@ -635,13 +647,15 @@
 /// - job-position (string): The job position you are applying for
 /// - addressee (string): The person you are addressing the letter to
 #let letter-heading(job-position: "", addressee: "") = {
+  let lang_data = toml("lang.toml")
+  
   // TODO: Make this adaptable to content
   underline(evade: false, stroke: 0.5pt, offset: 0.3em)[
     #text(weight: "bold", size: 12pt)[Job Application for #job-position]
   ]
   pad(top: 1em, bottom: 1em)[
     #text(weight: "light", fill: color-gray)[
-      Dear #addressee,
+      #linguify("dear", from: lang_data) #addressee,
     ]
   ]
 }
