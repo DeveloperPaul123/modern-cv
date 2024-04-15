@@ -79,6 +79,22 @@ Documentation for this template is published with each commit. See the attached 
 | ![Resume](assets/images/resume.png) | ![Cover Letter](assets/images/coverletter.png) |
 | ![Resume 2](assets/images/resume2.png) | ![Cover Letter 2](assets/images/coverletter2.png)|
 
+## Building and Testing Locally
+
+To build and test the project locally, you will need to install the `typst` CLI. You can find instructions on how to do this [here](https://typst.app/docs/getting-started).
+
+With typst installed you can make changes to `lib.typ` and then `install_package_locally.ps1` to install the package locally. Change the import statements in the template files to point to the local package:
+
+```typst
+#import "@local/modern-cv:0.3.0": *
+````
+
+Note that the script parses the `typst.toml` to determine the version number and the folder the local files are installed to.
+
+### Formatting
+
+This project uses [typstyle](https://github.com/Enter-tainer/typstyle) to format the code. The script `format_typst.ps1` will format all the `*.typ` files in the project. Be sure to install `typstyle` before running the script.
+
 ## License
 
 The project is licensed under the MIT license. See [LICENSE](LICENSE) for more details.
