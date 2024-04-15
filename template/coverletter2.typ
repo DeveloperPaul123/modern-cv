@@ -15,6 +15,7 @@
     ),
   ),
   profile-picture: none,
+  language: "en"
 )
 
 #hiring-entity-info(entity-info: (

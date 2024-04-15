@@ -16,6 +16,7 @@
     ),
   ),
   date: datetime.today().display(),
+  language: "en",
   colored-headers: true,
 )
 
