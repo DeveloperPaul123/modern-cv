@@ -150,7 +150,7 @@
   )
   
   set text(
-    font: ("Source Sans Pro"),
+    font: ("Source Sans Pro", "Source Sans 3"),
     lang: language,
     size: 11pt,
     fill: color-darkgray,
