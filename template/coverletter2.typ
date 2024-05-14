@@ -1,4 +1,4 @@
-#import "@preview/modern-cv:0.3.0": *
+#import "@preview/modern-cv:0.3.1": *
 
 #show: coverletter.with(
   author: (
@@ -15,7 +15,7 @@
     ),
   ),
   profile-picture: none,
-  language: "en",
+  language: "sp",
 )
 
 #hiring-entity-info(entity-info: (
