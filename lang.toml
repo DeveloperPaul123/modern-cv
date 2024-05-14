@@ -7,6 +7,7 @@ dear = "Dear"
 cover-letter = "Cover Letter"
 attached = "Attached"
 curriculum-vitae = "Curriculum Vitae"
+sincerely = "Sincerely"
 
 [lang.de]
 resume = "Lebenslauf"
@@ -14,6 +15,7 @@ dear = "Sehr geehrte"
 cover-letter = "Anschreiben"
 attached = "Angehängt"
 curriculum-vitae = "Lebenslauf"
+sincerely = "Aufrichtig"
 
 [lang.gr]
 resume = "Βιογραφικό"
@@ -21,6 +23,7 @@ dear = "Αγαπητέ"
 cover-letter = "Συνοδευτική Επιστολή"
 attached = "Συνημμένο"
 curriculum-vitae = "Βιογραφικό"
+sincerely = "Με εκτίμηση"
 
 [lang.pt]
 resume = "Currículo"
@@ -28,6 +31,7 @@ dear = "Caro(a)"
 cover-letter = "Carta de Apresentação"
 attached = "Em anexo"
 curriculum-vitae = "Currículo"
+sincerely = "Atenciosamente"
 
 [lang.sp]
 resume = "Currículum"
@@ -35,3 +39,4 @@ dear = "Estimado"
 cover-letter = "Carta de Presentación"
 attached = "Adjunto"
 curriculum-vitae = "Currículum"
+sincerely = "Sinceramente"

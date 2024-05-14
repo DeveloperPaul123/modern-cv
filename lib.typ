@@ -601,7 +601,7 @@
   let letter-conclusion = {
     align(bottom)[
       #pad(bottom: 2em)[
-        #text(weight: "light")[Sincerely,] \
+        #text(weight: "light")[#linguify("sincerely", from: lang_data)#sym.comma] \
         #text(weight: "bold")[#author.firstname #author.lastname] \ \
         #text(weight: "light", style: "italic")[ #linguify(
             "attached",
