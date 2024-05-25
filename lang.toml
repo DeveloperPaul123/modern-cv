@@ -40,3 +40,12 @@ cover-letter = "Carta de Presentación"
 attached = "Adjunto"
 curriculum-vitae = "Currículum"
 sincerely = "Sinceramente"
+
+[lang.fr]
+resume = "Curriculum Vitae"
+dear = "Cher/Chère"
+cover-letter = "Lettre de motivation"
+attached = "Ci-joint"
+curriculum-vitae = "Curriculum Vitae"
+sincerely = "Sincèrement"
+
