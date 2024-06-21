@@ -49,3 +49,10 @@ attached = "Ci-joint"
 curriculum-vitae = "Curriculum Vitae"
 sincerely = "Sincèrement"
 
+[lang.ru]
+resume = "Резюме"
+dear = "Уважаемый"
+cover-letter = "Сопроводительное письмо"
+attached = "Прилагается"
+curriculum-vitae = "Биографическая справка"
+sincerely = "Искренне"
