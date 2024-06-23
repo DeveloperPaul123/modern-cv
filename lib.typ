@@ -646,7 +646,8 @@
 /// Letter heading for a given job position and addressee.
 /// - job-position (string): The job position you are applying for
 /// - addressee (string): The person you are addressing the letter to
-#let letter-heading(job-position: "", addressee: "") = {
+/// - dear (string): optional field for redefining the "dear" variable
+#let letter-heading(job-position: "", addressee: "", dear: "") = {
   let lang_data = toml("lang.toml")
   
   // TODO: Make this adaptable to content
@@ -655,7 +656,12 @@
   ]
   pad(top: 1em, bottom: 1em)[
     #text(weight: "light", fill: color-gray)[
-      #linguify("dear", from: lang_data) #addressee,
+      #if dear == "" [
+        #linguify("dear", from: lang_data)
+      ] else [
+        #dear
+      ]
+      #addressee,
     ]
   ]
 }
