@@ -269,7 +269,9 @@
       weight: "bold",
     )
     align(center)[
-      #author.address
+      #if ("address" in author) [
+        #author.address
+      ]
     ]
   }
   
@@ -286,21 +288,21 @@
       )
       #block[
         #align(horizon)[
-          #if author.phone != none [
+          #if ("phone" in author) [
             #phone-icon
             #box[#text(author.phone)]
             #separator
           ]
-          #if author.email != none [
+          #if ("email" in author) [
             #email-icon
             #box[#link("mailto:" + author.email)[#author.email]]
           ]
-          #if author.github != none [
+          #if ("github" in author) [
             #separator
             #github-icon
             #box[#link("https://github.com/" + author.github)[#author.github]]
           ]
-          #if author.linkedin != none [
+          #if ("linkedin" in author) [
             #separator
             #linkedin-icon
             #box[
@@ -528,7 +530,9 @@
       fill: color-gray,
     )
     align(right)[
-      #author.address
+      #if ("address" in author) [
+        #author.address
+      ]
     ]
   }
   
@@ -548,21 +552,21 @@
           #stack(
             dir: ltr,
             spacing: 0.5em,
-            if author.phone != none [
+            if ("phone" in author) [
               #phone-icon
               #box[#text(author.phone)]
               #separator
             ],
-            if author.email != none [
+            if ("email" in author) [
               #email-icon
               #box[#link("mailto:" + author.email)[#author.email]]
             ],
-            if author.github != none [
+            if ("github" in author) [
               #separator
               #github-icon
               #box[#link("https://github.com/" + author.github)[#author.github]]
             ],
-            if author.linkedin != none [
+            if ("linkedin" in author) [
               #separator
               #linkedin-icon
               #box[
