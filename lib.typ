@@ -169,8 +169,11 @@
         #smallcaps[#date]
       ][
         #smallcaps[
-          #author.firstname
-          #author.lastname
+          #if language == "zh" or language == "ja" [
+            #author.firstname#author.lastname
+          ] else [
+            #author.firstname#sym.space#author.lastname
+          ]
           #sym.dot.c
           #linguify("resume", from: lang_data)
         ]
@@ -241,8 +244,12 @@
             style: "normal",
             font: ("Roboto"),
           )
-          #text(fill: accent-color, weight: "thin")[#author.firstname]
-          #text(weight: "bold")[#author.lastname]
+          #if language == "zh" or language == "ja" [
+            #text(accent-color, weight: "thin")[#author.firstname]#text(weight: "bold")[#author.lastname]
+          ] else [
+            #text(accent-color, weight: "thin")[#author.firstname]
+            #text(weight: "bold")[#author.lastname]
+          ]
         ]
       ]
     ]
@@ -450,8 +457,11 @@
         #smallcaps[#date]
       ][
         #smallcaps[
-          #author.firstname
-          #author.lastname
+          #if language == "zh" or language == "ja" [
+            #author.firstname#author.lastname
+          ] else [
+            #author.firstname#sym.space#author.lastname
+          ]
           #sym.dot.c
           #linguify("cover-letter", from: lang_data)
         ]
@@ -499,8 +509,13 @@
             style: "normal",
             font: ("Roboto"),
           )
-          #text(accent-color, weight: "thin")[#author.firstname]
-          #text(weight: "bold")[#author.lastname]
+          #if language == "zh" or language == "ja" [
+            #text(accent-color, weight: "thin")[#author.firstname]#text(weight: "bold")[#author.lastname]
+          ] else [
+            #text(accent-color, weight: "thin")[#author.firstname]
+            #text(weight: "bold")[#author.lastname]
+          ]
+          
         ]
       ]
     ]
