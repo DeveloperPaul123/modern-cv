@@ -1,4 +1,4 @@
-#import "@preview/fontawesome:0.1.0": *
+#import "@preview/fontawesome:0.2.1": *
 #import "@preview/linguify:0.4.0": *
 
 // const color
@@ -9,13 +9,12 @@
 
 // const icons
 #let linkedin-icon = box(
-  fa-icon("linkedin", fa-set: "Brands", fill: color-darknight),
+  fa-icon("linkedin", fill: color-darknight),
 )
 #let github-icon = box(
-  fa-icon("github", fa-set: "Brands", fill: color-darknight),
+  fa-icon("github", fill: color-darknight),
 )
-// for some reason this icon doesn't work with fa-icon, so we use the local version
-#let phone-icon = box(image("assets/icons/square-phone-solid.svg"))
+#let phone-icon = box(fa-icon("square-phone-solid", fill: color-darknight))
 #let email-icon = box(fa-icon("envelope", fill: color-darknight))
 
 /// Helpers
@@ -61,7 +60,7 @@
   set box(height: 11pt)
   
   align(right + horizon)[
-    #fa-icon("github", fa-set: "Brands", fill: color-darkgray) #link(
+    #fa-icon("github", fill: color-darkgray) #link(
       "https://github.com/" + github-path,
       github-path,
     )
