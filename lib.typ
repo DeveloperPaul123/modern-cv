@@ -14,7 +14,7 @@
 #let github-icon = box(
   fa-icon("github", fill: color-darknight),
 )
-#let phone-icon = box(fa-icon("square-phone-solid", fill: color-darknight))
+#let phone-icon = box(fa-icon("square-phone", fill: color-darknight))
 #let email-icon = box(fa-icon("envelope", fill: color-darknight))
 
 /// Helpers
