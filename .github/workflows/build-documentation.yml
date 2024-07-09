@@ -1,5 +1,5 @@
 name: Build documentation
-on: [push, workflow_dispatch, pull_request]
+on: [push, workflow_dispatch]
 jobs:
   build_pdf:
     runs-on: ubuntu-latest
