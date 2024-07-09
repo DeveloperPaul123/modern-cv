@@ -244,7 +244,10 @@
             font: ("Roboto"),
           )
           #if language == "zh" or language == "ja" [
-            #text(accent-color, weight: "thin")[#author.firstname]#text(weight: "bold")[#author.lastname]
+            #text(
+              accent-color,
+              weight: "thin",
+            )[#author.firstname]#text(weight: "bold")[#author.lastname]
           ] else [
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
@@ -511,7 +514,10 @@
             font: ("Roboto"),
           )
           #if language == "zh" or language == "ja" [
-            #text(accent-color, weight: "thin")[#author.firstname]#text(weight: "bold")[#author.lastname]
+            #text(
+              accent-color,
+              weight: "thin",
+            )[#author.firstname]#text(weight: "bold")[#author.lastname]
           ] else [
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
@@ -619,7 +625,10 @@
   let letter-conclusion = {
     align(bottom)[
       #pad(bottom: 2em)[
-        #text(weight: "light")[#linguify("sincerely", from: lang_data)#sym.comma] \
+        #text(weight: "light")[#linguify(
+            "sincerely",
+            from: lang_data,
+          )#sym.comma] \
         #text(weight: "bold")[#author.firstname #author.lastname] \ \
         #text(weight: "light", style: "italic")[ #linguify(
             "attached",
