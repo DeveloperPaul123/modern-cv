@@ -287,8 +287,7 @@
   let address = {
     set text(
       size: 9pt,
-      weight: "regular",
-      style: "italic"
+      weight: "regular"
     )
     align(center)[
       #if ("address" in author) [
