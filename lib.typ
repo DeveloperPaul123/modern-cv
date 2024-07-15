@@ -204,9 +204,7 @@
   )
   
   show heading.where(level: 1): it => [
-    
-    #v(0.6em)
-    
+
     #set block(
       above: 1em,
       below: 1em,
