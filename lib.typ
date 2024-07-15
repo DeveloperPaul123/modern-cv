@@ -6,6 +6,7 @@
 #let color-darkgray = rgb("#333333")
 #let color-gray = rgb("#5d5d5d")
 #let default-accent-color = rgb("#262F99")
+#let default-location-color = rgb("#000")
 
 // const icons
 #let linkedin-icon = box(
@@ -14,8 +15,15 @@
 #let github-icon = box(
   fa-icon("github", fill: color-darknight),
 )
+#let twitter-icon = box(
+  fa-icon("twitter", fill: color-darknight),
+)
+#let google-scholar-icon = box(
+  fa-icon("google-scholar", fill: color-darknight),
+)
 #let phone-icon = box(fa-icon("square-phone", fill: color-darknight))
 #let email-icon = box(fa-icon("envelope", fill: color-darknight))
+#let birth-icon = box(fa-icon("cake", fill: color-darknight))
 
 /// Helpers
 
@@ -196,6 +204,9 @@
   )
   
   show heading.where(level: 1): it => [
+    
+    #v(0.6em)
+    
     #set block(
       above: 1em,
       below: 1em,
@@ -214,6 +225,7 @@
       #text[#strong[#text(color)[#it.body.text]]]
       #box(width: 1fr, line(length: 100%))
     ]
+    
   ]
   
   show heading.where(level: 2): it => {
@@ -275,7 +287,8 @@
   let address = {
     set text(
       size: 9pt,
-      weight: "bold",
+      weight: "regular",
+      style: "italic"
     )
     align(center)[
       #if ("address" in author) [
@@ -297,6 +310,11 @@
       )
       #block[
         #align(horizon)[
+          #if ("birth" in author) [
+            #birth-icon
+            #box[#text(author.birth)]
+            #separator
+          ]
           #if ("phone" in author) [
             #phone-icon
             #box[#text(author.phone)]
@@ -315,8 +333,19 @@
             #separator
             #linkedin-icon
             #box[
-              #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
+              #link("https://www.linkedin.com/in/" + author.linkedin)[#author.linkedin]
             ]
+          ]
+          #if ("twitter" in author) [
+            #separator
+            #twitter-icon
+            #box[#link("https://twitter.com/" + author.twitter)[\@#author.twitter]]
+          ]
+          #if ("scholar" in author) [
+            #let fullname = str(author.firstname + " " + author.lastname)
+            #separator
+            #google-scholar-icon
+            #box[#link("https://scholar.google.com/citations?user=" + author.scholar)[#fullname]]
           ]
         ]
       ]
@@ -355,9 +384,19 @@
   date: "",
   description: "",
   accent-color: default-accent-color,
+  location-color: default-location-color,
+  title-link: none
 ) = {
+
+  let title-content
+  if type(title-link) == "string" {
+    title-content = link(title-link)[#text(fill: rgb("#000"))[#title]]
+  } else {
+    title-content = title
+  }
+  
   pad[
-    #justified-header(title, location)
+    #justified-header(title-content, text(fill: location-color)[#location])
     #secondary-justified-header(description, date)
   ]
 }
