@@ -7,6 +7,9 @@
     email: "js@example.com",
     phone: "(+1) 111-111-1111",
     github: "DeveloperPaul123",
+    twitter: "typstapp",
+    scholar: "",
+    birth: "January 1, 1990",
     linkedin: "Example",
     address: "111 Example St. Example City, EX 11111",
     positions: (
@@ -27,6 +30,7 @@
   location: "Example City, EX",
   date: "2019 - Present",
   description: "Example, Inc.",
+  title-link: "https://github.com/DeveloperPaul123"
 )
 
 #resume-item[
