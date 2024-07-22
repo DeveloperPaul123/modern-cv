@@ -387,7 +387,7 @@
 
   let title-content
   if type(title-link) == "string" {
-    title-content = link(title-link)[#text(fill: rgb("#000"))[#title]]
+    title-content = link(title-link)[#title]
   } else {
     title-content = title
   }
