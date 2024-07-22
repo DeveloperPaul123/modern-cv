@@ -1,5 +1,5 @@
 #import "lib.typ"
-#import "@preview/tidy:0.2.0"
+#import "@preview/tidy:0.3.0"
 
 #let docs = tidy.parse-module(
   read("lib.typ"),

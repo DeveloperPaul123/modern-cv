@@ -6,7 +6,7 @@
 #let color-darkgray = rgb("#333333")
 #let color-gray = rgb("#5d5d5d")
 #let default-accent-color = rgb("#262F99")
-#let default-location-color = rgb("#000")
+#let default-location-color = rgb("#333333")
 
 // const icons
 #let linkedin-icon = box(
@@ -204,7 +204,7 @@
   )
   
   show heading.where(level: 1): it => [
-
+    
     #set block(
       above: 1em,
       below: 1em,
@@ -285,7 +285,7 @@
   let address = {
     set text(
       size: 9pt,
-      weight: "regular"
+      weight: "regular",
     )
     align(center)[
       #if ("address" in author) [
@@ -375,25 +375,27 @@
 /// - location (string): The location of the resume entry
 /// - date (string): The date of the resume entry, this can be a range (e.g. "Jan 2020 - Dec 2020")
 /// - description (content): The body of the resume entry
+/// - title-link (string): The link to use for the title (can be none)
+/// - accent-color (color): Override the accent color of the resume-entry
+/// - location-color (color): Override the default color of the "location" for a resume entry.
 #let resume-entry(
   title: none,
   location: "",
   date: "",
   description: "",
+  title-link: none,
   accent-color: default-accent-color,
   location-color: default-location-color,
-  title-link: none
 ) = {
-
   let title-content
   if type(title-link) == "string" {
-    title-content = link(title-link)[#text(fill: rgb("#000"))[#title]]
+    title-content = link(title-link)[#title]
   } else {
     title-content = title
   }
   
   pad[
-    #justified-header(title-content, text(fill: location-color)[#location])
+    #justified-header(title-content, location)
     #secondary-justified-header(description, date)
   ]
 }
