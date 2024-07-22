@@ -204,7 +204,7 @@
   )
   
   show heading.where(level: 1): it => [
-
+    
     #set block(
       above: 1em,
       below: 1em,
@@ -285,7 +285,7 @@
   let address = {
     set text(
       size: 9pt,
-      weight: "regular"
+      weight: "regular",
     )
     align(center)[
       #if ("address" in author) [
@@ -382,9 +382,8 @@
   description: "",
   accent-color: default-accent-color,
   location-color: default-location-color,
-  title-link: none
+  title-link: none,
 ) = {
-
   let title-content
   if type(title-link) == "string" {
     title-content = link(title-link)[#title]

@@ -30,7 +30,7 @@
   location: "Example City, EX",
   date: "2019 - Present",
   description: "Example, Inc.",
-  title-link: "https://github.com/DeveloperPaul123"
+  title-link: "https://github.com/DeveloperPaul123",
 )
 
 #resume-item[
