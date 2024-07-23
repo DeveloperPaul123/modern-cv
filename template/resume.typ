@@ -1,4 +1,4 @@
-#import "@preview/modern-cv:0.4.0": *
+#import "@preview/modern-cv:0.5.0": *
 
 #show: resume.with(
   author: (
@@ -30,7 +30,7 @@
   location: "Example City, EX",
   date: "2019 - Present",
   description: "Example, Inc.",
-  title-link: "https://github.com/DeveloperPaul123"
+  title-link: "https://github.com/DeveloperPaul123",
 )
 
 #resume-item[
