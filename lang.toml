@@ -56,3 +56,11 @@ cover-letter = "Сопроводительное письмо"
 attached = "Прилагается"
 curriculum-vitae = "Биографическая справка"
 sincerely = "Искренне"
+
+[lang.zh]
+resume = "简历"
+dear = "亲爱的"
+cover-letter = "求职信"
+attached = "附件"
+curriculum-vitae = "简历"
+sincerely = "真诚的"
