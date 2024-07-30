@@ -21,6 +21,9 @@
 #let google-scholar-icon = box(
   fa-icon("google-scholar", fill: color-darknight),
 )
+#let orcid-icon = box(
+  fa-icon("orcid", fill: color-darknight),
+)
 #let phone-icon = box(fa-icon("square-phone", fill: color-darknight))
 #let email-icon = box(fa-icon("envelope", fill: color-darknight))
 #let birth-icon = box(fa-icon("cake", fill: color-darknight))
@@ -343,6 +346,11 @@
             #separator
             #google-scholar-icon
             #box[#link("https://scholar.google.com/citations?user=" + author.scholar)[#fullname]]
+          ]
+          #if ("orcid" in author) [
+            #separator
+            #orcid-icon
+            #box[#link("https://orcid.org/" + author.orcid)[#author.orcid]]
           ]
         ]
       ]

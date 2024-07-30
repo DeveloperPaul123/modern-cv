@@ -9,6 +9,7 @@
     github: "DeveloperPaul123",
     twitter: "typstapp",
     scholar: "",
+    orcid: "0000-0000-0000-000X",
     birth: "January 1, 1990",
     linkedin: "Example",
     address: "111 Example St. Example City, EX 11111",
