@@ -5,6 +5,7 @@
     firstname: "John",
     lastname: "Smith",
     email: "js@example.com",
+    homepage: "https://example.com",
     phone: "(+1) 111-111-1111",
     github: "DeveloperPaul123",
     twitter: "typstapp",
