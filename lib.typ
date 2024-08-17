@@ -410,7 +410,9 @@
   
   pad[
     #justified-header(title-content, location)
-    #secondary-justified-header(description, date)
+    #if description != "" or date != "" [
+      #secondary-justified-header(description, date)
+    ]
   ]
 }
 
