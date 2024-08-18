@@ -54,6 +54,17 @@
   - #lorem(25)
 ]
 
+#resume-entry(
+  title: "Intern",
+  location: "Example City, EX",
+)
+
+#resume-item[
+  - #lorem(20)
+  - #lorem(15)
+  - #lorem(25)
+]
+
 = Projects
 
 #resume-entry(
