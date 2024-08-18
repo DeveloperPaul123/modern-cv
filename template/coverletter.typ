@@ -17,6 +17,7 @@
   ),
   profile-picture: image("./profile.png"),
   language: "en",
+  font: "Times New Roman"
 )
 
 #hiring-entity-info(entity-info: (

@@ -147,6 +147,7 @@
   accent-color: default-accent-color,
   colored-headers: true,
   language: "en",
+  font: ("Source Sans Pro", "Source Sans 3"),
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -161,7 +162,7 @@
   )
   
   set text(
-    font: ("Source Sans Pro", "Source Sans 3"),
+    font: font,
     lang: language,
     size: 11pt,
     fill: color-darkgray,
@@ -481,6 +482,7 @@
   date: datetime.today().display("[month repr:long] [day], [year]"),
   accent-color: default-accent-color,
   language: "en",
+  font: ("Source Sans Pro", "Source Sans 3"),
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -496,7 +498,7 @@
   )
   
   set text(
-    font: ("Source Sans Pro", "Source Sans 3"),
+    font: font,
     lang: language,
     size: 11pt,
     fill: color-darkgray,
