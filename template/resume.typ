@@ -23,6 +23,7 @@
   date: datetime.today().display(),
   language: "en",
   colored-headers: true,
+  show-footer: false,
 )
 
 = Experience

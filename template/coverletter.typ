@@ -17,7 +17,8 @@
   ),
   profile-picture: image("./profile.png"),
   language: "en",
-  font: "Times New Roman"
+  font: "Times New Roman",
+  // show-footer: false, // Uncomment to hide footer
 )
 
 #hiring-entity-info(entity-info: (

@@ -63,6 +63,50 @@
   ]
 }
 
+#let __coverletter_footer(author, language, date, lang_data) = {
+  set text(
+    fill: gray,
+    size: 8pt,
+  )
+  __justify_align_3[
+    #smallcaps[#date]
+  ][
+    #smallcaps[
+      #if language == "zh" or language == "ja" [
+        #author.firstname#author.lastname
+      ] else [
+        #author.firstname#sym.space#author.lastname
+      ]
+      #sym.dot.c
+      #linguify("cover-letter", from: lang_data)
+    ]
+  ][
+    #counter(page).display()
+  ]
+}
+
+#let __resume_footer(author, language, lang_data, date) = {
+  set text(
+    fill: gray,
+    size: 8pt,
+  )
+  __justify_align_3[
+    #smallcaps[#date]
+  ][
+    #smallcaps[
+      #if language == "zh" or language == "ja" [
+        #author.firstname#author.lastname
+      ] else [
+        #author.firstname#sym.space#author.lastname
+      ]
+      #sym.dot.c
+      #linguify("resume", from: lang_data)
+    ]
+  ][
+    #counter(page).display()
+  ]
+}
+
 /// Show a link with an icon, specifically for Github projects
 /// *Example*
 /// #example(`resume.github-link("DeveloperPaul123/awesome-resume")`)
@@ -146,6 +190,7 @@
   date: datetime.today().display("[month repr:long] [day], [year]"),
   accent-color: default-accent-color,
   colored-headers: true,
+  show-footer: true,
   language: "en",
   font: ("Source Sans Pro", "Source Sans 3"),
   body,
@@ -172,27 +217,7 @@
   set page(
     paper: "a4",
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
-    footer: [
-      #set text(
-        fill: gray,
-        size: 8pt,
-      )
-      #__justify_align_3[
-        #smallcaps[#date]
-      ][
-        #smallcaps[
-          #if language == "zh" or language == "ja" [
-            #author.firstname#author.lastname
-          ] else [
-            #author.firstname#sym.space#author.lastname
-          ]
-          #sym.dot.c
-          #linguify("resume", from: lang_data)
-        ]
-      ][
-        #counter(page).display()
-      ]
-    ],
+    footer: if show-footer [#__resume_footer(author, language, lang_data, date)] else [],
     footer-descent: 0pt,
   )
   
@@ -483,6 +508,7 @@
   accent-color: default-accent-color,
   language: "en",
   font: ("Source Sans Pro", "Source Sans 3"),
+  show-footer: true,
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -508,27 +534,7 @@
   set page(
     paper: "a4",
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
-    footer: [
-      #set text(
-        fill: gray,
-        size: 8pt,
-      )
-      #__justify_align_3[
-        #smallcaps[#date]
-      ][
-        #smallcaps[
-          #if language == "zh" or language == "ja" [
-            #author.firstname#author.lastname
-          ] else [
-            #author.firstname#sym.space#author.lastname
-          ]
-          #sym.dot.c
-          #linguify("cover-letter", from: lang_data)
-        ]
-      ][
-        #counter(page).display()
-      ]
-    ],
+    footer: if show-footer [#__coverletter_footer(author, language, date, lang_data)] else [],
     footer-descent: 0pt,
   )
   
