@@ -365,7 +365,7 @@
             #separator
             #linkedin-icon
             #box[
-              #link("https://www.linkedin.com/in/" + author.linkedin)[#author.linkedin]
+              #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
             ]
           ]
           #if ("twitter" in author) [
@@ -655,6 +655,11 @@
                 #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
               ]
             ],
+            if ("orcid" in author) [
+              #separator
+              #orcid-icon
+              #box[#link("https://orcid.org/" + author.orcid)[#author.orcid]]
+           ],            
           )
         ]
       ]
