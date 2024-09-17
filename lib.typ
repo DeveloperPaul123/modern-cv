@@ -28,6 +28,7 @@
 #let email-icon = box(fa-icon("envelope", fill: color-darknight))
 #let birth-icon = box(fa-icon("cake", fill: color-darknight))
 #let homepage-icon = box(fa-icon("home", fill: color-darknight))
+#let website-icon = box(fa-icon("globe", fill: color-darknight))
 
 /// Helpers
 
@@ -114,7 +115,7 @@
 /// -> none
 #let github-link(github-path) = {
   set box(height: 11pt)
-  
+
   align(right + horizon)[
     #fa-icon("github", fill: color-darkgray) #link(
       "https://github.com/" + github-path,
@@ -133,7 +134,7 @@
   body
 }
 
-/// Right section of a tertiaty headers. 
+/// Right section of a tertiaty headers.
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
   set text(
@@ -176,7 +177,7 @@
 
 /// Resume template that is inspired by the Awesome CV Latex template by posquit0. This template can loosely be considered a port of the original Latex template.
 ///
-/// The original template: https://github.com/posquit0/Awesome-CV 
+/// The original template: https://github.com/posquit0/Awesome-CV
 ///
 /// - author (content): Structure that takes in all the author's information
 /// - date (string): The date the resume was created
@@ -198,14 +199,14 @@
   if type(accent-color) == "string" {
     accent-color = rgb(accent-color)
   }
-  
+
   let lang_data = toml("lang.toml")
-  
+
   set document(
     author: author.firstname + " " + author.lastname,
     title: "resume",
   )
-  
+
   set text(
     font: font,
     lang: language,
@@ -213,28 +214,33 @@
     fill: color-darkgray,
     fallback: true,
   )
-  
+
   set page(
     paper: "a4",
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
-    footer: if show-footer [#__resume_footer(author, language, lang_data, date)] else [],
+    footer: if show-footer [#__resume_footer(
+        author,
+        language,
+        lang_data,
+        date,
+      )] else [],
     footer-descent: 0pt,
   )
-  
+
   // set paragraph spacing
   show par: set block(
     above: 0.75em,
     below: 0.75em,
   )
   set par(justify: true)
-  
+
   set heading(
     numbering: none,
     outlined: false,
   )
-  
+
   show heading.where(level: 1): it => [
-    
+
     #set block(
       above: 1em,
       below: 1em,
@@ -243,7 +249,7 @@
       size: 16pt,
       weight: "regular",
     )
-    
+
     #align(left)[
       #let color = if colored-headers {
         accent-color
@@ -253,9 +259,9 @@
       #text[#strong[#text(color)[#it.body.text]]]
       #box(width: 1fr, line(length: 100%))
     ]
-    
+
   ]
-  
+
   show heading.where(level: 2): it => {
     set text(
       color-darkgray,
@@ -265,7 +271,7 @@
     )
     it.body
   }
-  
+
   show heading.where(level: 3): it => {
     set text(
       size: 10pt,
@@ -273,7 +279,7 @@
     )
     smallcaps[#it.body]
   }
-  
+
   let name = {
     align(center)[
       #pad(bottom: 5pt)[
@@ -296,7 +302,7 @@
       ]
     ]
   }
-  
+
   let positions = {
     set text(
       accent-color,
@@ -311,7 +317,7 @@
       ]
     ]
   }
-  
+
   let address = {
     set text(
       size: 9pt,
@@ -323,12 +329,12 @@
       ]
     ]
   }
-  
+
   let contacts = {
     set box(height: 9pt)
-    
+
     let separator = box(width: 5pt)
-    
+
     align(center)[
       #set text(
         size: 9pt,
@@ -384,11 +390,16 @@
             #orcid-icon
             #box[#link("https://orcid.org/" + author.orcid)[#author.orcid]]
           ]
+          #if ("website" in author) [
+            #separator
+            #website-icon
+            #box[#link(author.website)[#author.website]]
+          ]
         ]
       ]
     ]
   }
-  
+
   name
   positions
   address
@@ -396,7 +407,7 @@
   body
 }
 
-/// The base item for resume entries. 
+/// The base item for resume entries.
 /// This formats the item for the resume entries. Typically your body would be a bullet list of items. Could be your responsibilities at a company or your academic achievements in an educational background section.
 /// - body (content): The body of the resume entry
 #let resume-item(body) = {
@@ -433,7 +444,7 @@
   } else {
     title-content = title
   }
-  
+
   pad[
     #justified-header(title-content, location)
     #if description != "" or date != "" [
@@ -469,7 +480,7 @@
 #let resume-skill-item(category, items) = {
   set block(below: 0.65em)
   set pad(top: 2pt)
-  
+
   pad[
     #grid(
       columns: (20fr, 80fr),
@@ -494,7 +505,7 @@
 
 /// ---- Coverletter ----
 
-/// Cover letter template that is inspired by the Awesome CV Latex template by posquit0. This template can loosely be considered a port of the original Latex template. 
+/// Cover letter template that is inspired by the Awesome CV Latex template by posquit0. This template can loosely be considered a port of the original Latex template.
 /// This coverletter template is designed to be used with the resume template.
 /// - author (content): Structure that takes in all the author's information
 /// - profile-picture (image): The profile picture of the author. This will be cropped to a circle and should be square in nature.
@@ -514,15 +525,15 @@
   if type(accent-color) == "string" {
     accent-color = rgb(accent-color)
   }
-  
+
   // language data
   let lang_data = toml("lang.toml")
-  
+
   set document(
     author: author.firstname + " " + author.lastname,
     title: "cover-letter",
   )
-  
+
   set text(
     font: font,
     lang: language,
@@ -530,26 +541,31 @@
     fill: color-darkgray,
     fallback: true,
   )
-  
+
   set page(
     paper: "a4",
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
-    footer: if show-footer [#__coverletter_footer(author, language, date, lang_data)] else [],
+    footer: if show-footer [#__coverletter_footer(
+        author,
+        language,
+        date,
+        lang_data,
+      )] else [],
     footer-descent: 0pt,
   )
-  
+
   // set paragraph spacing
   show par: set block(
     above: 0.75em,
     below: 0.75em,
   )
   set par(justify: true)
-  
+
   set heading(
     numbering: none,
     outlined: false,
   )
-  
+
   show heading: it => [
     #set block(
       above: 1em,
@@ -559,13 +575,13 @@
       size: 16pt,
       weight: "regular",
     )
-    
+
     #align(left)[
       #text[#strong[#text(accent-color)[#it.body.text]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]
-  
+
   let name = {
     align(right)[
       #pad(bottom: 5pt)[
@@ -584,12 +600,12 @@
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
           ]
-          
+
         ]
       ]
     ]
   }
-  
+
   let positions = {
     set text(
       accent-color,
@@ -604,7 +620,7 @@
       ]
     ]
   }
-  
+
   let address = {
     set text(
       size: 9pt,
@@ -617,12 +633,12 @@
       ]
     ]
   }
-  
+
   let contacts = {
     set box(height: 9pt)
-    
+
     let separator = [#box(sym.bar.v)]
-    
+
     align(right)[
       #set text(
         size: 8pt,
@@ -659,13 +675,18 @@
               #separator
               #orcid-icon
               #box[#link("https://orcid.org/" + author.orcid)[#author.orcid]]
-           ],            
+            ],
+            if ("website" in author) [
+              #separator
+              #website-icon
+              #box[#link(author.website)[#author.website]]
+            ],
           )
         ]
       ]
     ]
   }
-  
+
   let letter-heading = {
     grid(
       columns: (1fr, 2fr),
@@ -688,7 +709,7 @@
       ],
     )
   }
-  
+
   let letter-conclusion = {
     align(bottom)[
       #pad(bottom: 2em)[
@@ -704,7 +725,7 @@
       ]
     ]
   }
-  
+
   // actual content
   letter-heading
   body
@@ -726,7 +747,7 @@
     ][
       #text(weight: "light", style: "italic", size: 9pt)[#date]
     ]
-    
+
     #pad(top: 0.65em, bottom: 0.65em)[
       #text(weight: "regular", fill: color-gray, size: 9pt)[
         #smallcaps[#entity-info.name] \
@@ -743,7 +764,7 @@
 /// - dear (string): optional field for redefining the "dear" variable
 #let letter-heading(job-position: "", addressee: "", dear: "") = {
   let lang_data = toml("lang.toml")
-  
+
   // TODO: Make this adaptable to content
   underline(evade: false, stroke: 0.5pt, offset: 0.3em)[
     #text(weight: "bold", size: 12pt)[Job Application for #job-position]
