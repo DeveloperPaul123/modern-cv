@@ -1,6 +1,6 @@
 [package]
 name = "modern-cv"
-version = "0.6.0"
+version = "0.7.0"
 compiler = "0.11.0"
 entrypoint = "lib.typ"
 authors = ["Paul Tsouchlos <https://github.com/DeveloperPaul123>"]

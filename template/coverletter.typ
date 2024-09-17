@@ -1,4 +1,4 @@
-#import "@preview/modern-cv:0.5.0": *
+#import "@preview/modern-cv:0.7.0": *
 
 #show: coverletter.with(
   author: (
@@ -10,6 +10,7 @@
     github: "DeveloperPaul123",
     linkedin: "John Smith",
     address: "111 Example St. Apt. 111, Example City, EX 11111",
+    website: "https://www.github.com/DeveloperPaul123",
     positions: (
       "Software Engineer",
       "Full Stack Developer",
