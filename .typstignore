@@ -1,0 +1,7 @@
+.github
+.fork
+scripts
+template/*.pdf
+.gitignore
+.issuetracker
+modern-cv-docs.*
