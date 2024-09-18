@@ -38,5 +38,8 @@ uninstall: (remove "@local")
 # uninstalls the library from the "@preview" prefix (for pre-release testing)
 uninstall-preview: (remove "@preview")
 
+format:
+    ./scripts/format
+
 # run ci suite
 ci: test doc
