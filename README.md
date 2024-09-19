@@ -3,7 +3,7 @@
 [![say thanks](https://img.shields.io/badge/Say%20Thanks-👍-1EAEDB.svg)](https://github.com/DeveloperPaul123/modern-cv/stargazers)
 [![Discord](https://img.shields.io/discord/652515194572111872?logo=Discord)](https://discord.gg/CX2ybByRnt)
 ![Release](https://img.shields.io/github/v/release/DeveloperPaul123/modern-cv)
-[![Tests](https://github.com/DeveloperPaul123/modern-cv/actions/workflows/tests.yml/badge.svg)](https://github.com/DeveloperPaul123/modern-cv/actions/workflows/tests.yml)
+[![Tests](https://github.com/DeveloperPaul123/modern-cv/actions/workflows/tests.yml/badge.svg)](https://github.com/DeveloperPaul123/modern-cv/actions/workflows/tests.yml)  
 
 A port of the [Awesome-CV](https://github.com/posquit0/Awesome-CV) Latex resume template in [typst](https://github.com/typst/typst).
 
@@ -13,7 +13,7 @@ A port of the [Awesome-CV](https://github.com/posquit0/Awesome-CV) Latex resume 
 
 The following tools are used for the development of this template:
 
-- [typst](https://github.com/typst/typst), obviously
+- [typst](https://github.com/typst/typst)
 - [typst-test](https://github.com/tingerrr/typst-test) for running tests
 - [just](https://github.com/casey/just) for simplifying command running
 - [oxipng](https://github.com/shssoichiro/oxipng) for compressing thumbnails used in the README
