@@ -17,6 +17,3 @@ repository = "https://github.com/DeveloperPaul123/modern-cv"
 path = "template"
 entrypoint = "resume.typ"
 thumbnail = "assets/images/resume.png"
-
-[tool.typst-test]
-vcs = "git"
