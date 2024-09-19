@@ -242,8 +242,8 @@
   show heading.where(level: 1): it => [
 
     #set block(
-      above: 1em,
-      below: 1em,
+      above: 0.5em,
+      below: 0.5em,
     )
     #set text(
       size: 16pt,
@@ -263,6 +263,10 @@
   ]
 
   show heading.where(level: 2): it => {
+    set block(
+      above: 0.5em,
+      below: 0.5em,
+    )
     set text(
       color-darkgray,
       size: 12pt,
@@ -417,7 +421,13 @@
     weight: "light",
     fill: color-darknight,
   )
-  set par(leading: 0.65em)
+  set block (
+    above: 0.75em,
+    below: 1.25em,
+  )
+  set par(
+    leading: 0.65em,
+  )
   body
 }
 
