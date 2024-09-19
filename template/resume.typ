@@ -50,9 +50,7 @@
 )
 
 #resume-item[
-  - #lorem(20)
-  - #lorem(15)
-  - #lorem(25)
+  #lorem(33)
 ]
 
 #resume-entry(
