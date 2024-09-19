@@ -21,6 +21,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install fonts
+        run: |
+          sudo apt update
+          sudo apt-get install fonts-font-awesome fonts-roboto texlive-fonts-recommended texlive-fonts-extra
+
       - name: Probe runner package cache
         uses: awalsh128/cache-apt-pkgs-action@v1
         with:
@@ -66,3 +71,9 @@ jobs:
       - name: Build docs
         if: ${{ matrix.doc }}
         run: just doc
+     
+      - name: Upload docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: manual
+          path: docs/manual.pdf
