@@ -56,7 +56,7 @@ jobs:
             ./scripts/install-fontawesome
 
       - name: Install locally
-        run: just install-preview
+        run: just install
 
       - name: Run test suite
         run: just test
