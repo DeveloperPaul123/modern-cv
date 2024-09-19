@@ -1,4 +1,4 @@
-#import "@preview/fontawesome:0.2.1": *
+#import "@preview/fontawesome:0.4.0": *
 #import "@preview/linguify:0.4.0": *
 
 // const color

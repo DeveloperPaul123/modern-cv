@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -eu
+
+find . -iname "*.typ" | xargs typstyle -i
