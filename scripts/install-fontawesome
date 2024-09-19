@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -eu
+
+wget -O ~/Downloads/fontawesome.zip https://use.fontawesome.com/releases/v6.6.0/fontawesome-free-6.6.0-desktop.zip
+mkdir -p ~/Downloads/fontawesome-fonts
+unzip ~/Downloads/fontawesome.zip -d ~/Downloads/fontawesome-fonts
+mkdir -p ~/.fonts
+find ~/Downloads/fontawesome-fonts -type f -name "*.otf" -exec cp {} ~/.fonts \;
+rm ~/Downloads/fontawesome.zip
+rm -rf ~/Downloads/fontawesome-fonts
+fc-cache -f -v
