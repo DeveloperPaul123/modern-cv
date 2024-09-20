@@ -50,7 +50,8 @@
 )
 
 #resume-item[
-  #lorem(33)
+  // content doesn't have to be bullet points
+  #lorem(72)
 ]
 
 #resume-entry(
