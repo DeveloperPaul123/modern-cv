@@ -52,8 +52,9 @@ jobs:
       - name: Install fonts
         run: |
             sudo apt update
-            sudo apt-get install fonts-font-awesome fonts-roboto
+            sudo apt-get install fonts-roboto
             ./scripts/install-fontawesome
+            ./scripts/install-source-sans
 
       - name: Install locally
         run: just install

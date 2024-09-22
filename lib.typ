@@ -240,11 +240,6 @@
   )
 
   show heading.where(level: 1): it => [
-
-    #set block(
-      above: 1em,
-      below: 1em,
-    )
     #set text(
       size: 16pt,
       weight: "regular",
@@ -417,8 +412,14 @@
     weight: "light",
     fill: color-darknight,
   )
+  set block(
+    above: 0.75em,
+    below: 1.25em,
+  )
   set par(leading: 0.65em)
-  body
+  block(above: 0.5em, below: 0.5em)[
+    #body
+  ]
 }
 
 /// The base item for resume entries. This formats the item for the resume entries. Typically your body would be a bullet list of items. Could be your responsibilities at a company or your academic achievements in an educational background section.
@@ -444,13 +445,15 @@
   } else {
     title-content = title
   }
-
-  pad[
-    #justified-header(title-content, location)
-    #if description != "" or date != "" [
-      #secondary-justified-header(description, date)
+  block(above: 1em, below: 0.65em)[
+    #pad[
+      #justified-header(title-content, location)
+      #if description != "" or date != "" [
+        #secondary-justified-header(description, date)
+      ]
     ]
   ]
+
 }
 
 /// Show cumulative GPA.
