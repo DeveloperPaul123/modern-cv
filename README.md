@@ -92,7 +92,7 @@ Documentation for this template is published with each commit. See the attached 
 
 ## Building and Testing Locally
 
-To build and test the project locally, you will need to install the `typst` CLI. You can find instructions on how to do this [here](https://typst.app/docs/getting-started).
+To build and test the project locally, you will need to install the `typst` CLI. You can find instructions on how to do this [here](https://github.com/typst/typst#installation).
 
 With typst installed you can make changes to `lib.typ` and then `just install` or `just install-preview` to install the package locally. Change the import statements in the template files to point to the local package (if needed):
 
