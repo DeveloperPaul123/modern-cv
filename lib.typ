@@ -104,7 +104,9 @@
       #linguify("resume", from: lang_data)
     ]
   ][
-    #counter(page).display()
+    #context {
+      counter(page).display()
+    }
   ]
 }
 
@@ -228,11 +230,7 @@
   )
 
   // set paragraph spacing
-  show par: set block(
-    above: 0.75em,
-    below: 0.75em,
-  )
-  set par(justify: true)
+  set par(spacing: 0.75em, justify: true)
 
   set heading(
     numbering: none,
