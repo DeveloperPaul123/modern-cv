@@ -19,7 +19,9 @@
   profile-picture: image("./profile.png"),
   language: "en",
   font: "Times New Roman",
-  // show-footer: false, // Uncomment to hide footer
+  // Remove the following line to show the footer
+  // Or set the value to `true`
+  show-footer: false,
 )
 
 #hiring-entity-info(entity-info: (
