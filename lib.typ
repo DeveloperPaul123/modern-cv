@@ -519,10 +519,14 @@
 
 /// Cover letter template that is inspired by the Awesome CV Latex template by posquit0. This template can loosely be considered a port of the original Latex template.
 /// This coverletter template is designed to be used with the resume template.
-/// - author (content): Structure that takes in all the author's information
+/// - author (content): Structure that takes in all the author's information. The following fields are required: firstname, lastname, positions. The following fields are used if available: email, phone, github, linkedin, orcid, address, website.
 /// - profile-picture (image): The profile picture of the author. This will be cropped to a circle and should be square in nature.
-/// - date (date): The date the cover letter was created
+/// - date (datetime): The date the cover letter was created. This will default to the current date.
 /// - accent-color (color): The accent color of the cover letter
+/// - language (string): The language of the cover letter, defaults to "en". See lang.toml for available languages
+/// - font (array): The font families of the cover letter
+/// - show-footer (boolean): Whether to show the footer or not
+/// - closing (content): The closing of the cover letter. This defaults to "Attached Curriculum Vitae". You can set this to `none` to show the default closing or remove it completely.
 /// - body (content): The body of the cover letter
 #let coverletter(
   author: (:),
