@@ -22,6 +22,8 @@
   // Remove the following line to show the footer
   // Or set the value to `true`
   show-footer: false,
+  // set this to `none` to show the default or remove it completely
+  closing: [],
 )
 
 #hiring-entity-info(entity-info: (

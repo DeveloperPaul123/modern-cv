@@ -508,6 +508,15 @@
 
 /// ---- Coverletter ----
 
+#let default-closing(lang_data) = {
+  align(bottom)[
+    #text(weight: "light", style: "italic")[ #linguify(
+        "attached",
+        from: lang_data,
+      )#sym.colon #linguify("curriculum-vitae", from: lang_data)]
+  ]
+}
+
 /// Cover letter template that is inspired by the Awesome CV Latex template by posquit0. This template can loosely be considered a port of the original Latex template.
 /// This coverletter template is designed to be used with the resume template.
 /// - author (content): Structure that takes in all the author's information
@@ -523,6 +532,7 @@
   language: "en",
   font: ("Source Sans Pro", "Source Sans 3"),
   show-footer: true,
+  closing: none,
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -531,6 +541,10 @@
   
   // language data
   let lang_data = toml("lang.toml")
+  
+  if closing == none {
+    closing = default-closing(lang_data)
+  }
   
   set document(
     author: author.firstname + " " + author.lastname,
@@ -558,7 +572,10 @@
   )
   
   // set paragraph spacing
-  set par(spacing: 0.75em, justify: true)
+  set par(
+    spacing: 0.75em,
+    justify: true,
+  )
   
   set heading(
     numbering: none,
@@ -709,7 +726,7 @@
     )
   }
   
-  let letter-conclusion = {
+  let signature = {
     align(bottom)[
       #pad(bottom: 2em)[
         #text(weight: "light")[#linguify(
@@ -717,10 +734,6 @@
             from: lang_data,
           )#sym.comma] \
         #text(weight: "bold")[#author.firstname #author.lastname] \ \
-        #text(weight: "light", style: "italic")[ #linguify(
-            "attached",
-            from: lang_data,
-          )#sym.colon #linguify("curriculum-vitae", from: lang_data)]
       ]
     ]
   }
@@ -729,7 +742,8 @@
   letter-heading
   body
   linebreak()
-  letter-conclusion
+  signature
+  closing
 }
 
 /// Cover letter heading that takes in the information for the hiring company and formats it properly.
