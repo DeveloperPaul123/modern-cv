@@ -82,7 +82,9 @@
       #linguify("cover-letter", from: lang_data)
     ]
   ][
-    #counter(page).display()
+    #context {
+      counter(page).display()
+    }
   ]
 }
 
@@ -104,7 +106,9 @@
       #linguify("resume", from: lang_data)
     ]
   ][
-    #counter(page).display()
+    #context {
+      counter(page).display()
+    }
   ]
 }
 
@@ -115,7 +119,7 @@
 /// -> none
 #let github-link(github-path) = {
   set box(height: 11pt)
-
+  
   align(right + horizon)[
     #fa-icon("github", fill: color-darkgray) #link(
       "https://github.com/" + github-path,
@@ -199,14 +203,14 @@
   if type(accent-color) == "string" {
     accent-color = rgb(accent-color)
   }
-
+  
   let lang_data = toml("lang.toml")
-
+  
   set document(
     author: author.firstname + " " + author.lastname,
     title: "resume",
   )
-
+  
   set text(
     font: font,
     lang: language,
@@ -214,7 +218,7 @@
     fill: color-darkgray,
     fallback: true,
   )
-
+  
   set page(
     paper: "a4",
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
@@ -226,37 +230,34 @@
       )] else [],
     footer-descent: 0pt,
   )
-
+  
   // set paragraph spacing
-  show par: set block(
-    above: 0.75em,
-    below: 0.75em,
+  set par(
+    spacing: 0.75em,
+    justify: true,
   )
-  set par(justify: true)
-
+  
   set heading(
     numbering: none,
     outlined: false,
   )
-
+  
   show heading.where(level: 1): it => [
     #set text(
       size: 16pt,
       weight: "regular",
     )
-
-    #align(left)[
-      #let color = if colored-headers {
-        accent-color
-      } else {
-        color-darkgray
-      }
-      #text[#strong[#text(color)[#it.body.text]]]
-      #box(width: 1fr, line(length: 100%))
-    ]
-
+    #set align(left)
+    #set block(above: 1em)
+    #let color = if colored-headers {
+      accent-color
+    } else {
+      color-darkgray
+    }
+    #text[#strong[#text(color)[#it.body.text]]]
+    #box(width: 1fr, line(length: 100%))
   ]
-
+  
   show heading.where(level: 2): it => {
     set text(
       color-darkgray,
@@ -266,7 +267,7 @@
     )
     it.body
   }
-
+  
   show heading.where(level: 3): it => {
     set text(
       size: 10pt,
@@ -274,7 +275,7 @@
     )
     smallcaps[#it.body]
   }
-
+  
   let name = {
     align(center)[
       #pad(bottom: 5pt)[
@@ -297,7 +298,7 @@
       ]
     ]
   }
-
+  
   let positions = {
     set text(
       accent-color,
@@ -312,7 +313,7 @@
       ]
     ]
   }
-
+  
   let address = {
     set text(
       size: 9pt,
@@ -324,12 +325,12 @@
       ]
     ]
   }
-
+  
   let contacts = {
     set box(height: 9pt)
-
+    
     let separator = box(width: 5pt)
-
+    
     align(center)[
       #set text(
         size: 9pt,
@@ -394,7 +395,7 @@
       ]
     ]
   }
-
+  
   name
   positions
   address
@@ -417,7 +418,7 @@
     below: 1.25em,
   )
   set par(leading: 0.65em)
-  block(above: 0.5em, below: 0.5em)[
+  block(above: 0.5em)[
     #body
   ]
 }
@@ -453,7 +454,6 @@
       ]
     ]
   ]
-
 }
 
 /// Show cumulative GPA.
@@ -483,7 +483,7 @@
 #let resume-skill-item(category, items) = {
   set block(below: 0.65em)
   set pad(top: 2pt)
-
+  
   pad[
     #grid(
       columns: (20fr, 80fr),
@@ -528,15 +528,15 @@
   if type(accent-color) == "string" {
     accent-color = rgb(accent-color)
   }
-
+  
   // language data
   let lang_data = toml("lang.toml")
-
+  
   set document(
     author: author.firstname + " " + author.lastname,
     title: "cover-letter",
   )
-
+  
   set text(
     font: font,
     lang: language,
@@ -544,7 +544,7 @@
     fill: color-darkgray,
     fallback: true,
   )
-
+  
   set page(
     paper: "a4",
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
@@ -556,19 +556,15 @@
       )] else [],
     footer-descent: 0pt,
   )
-
+  
   // set paragraph spacing
-  show par: set block(
-    above: 0.75em,
-    below: 0.75em,
-  )
-  set par(justify: true)
-
+  set par(spacing: 0.75em, justify: true)
+  
   set heading(
     numbering: none,
     outlined: false,
   )
-
+  
   show heading: it => [
     #set block(
       above: 1em,
@@ -578,13 +574,13 @@
       size: 16pt,
       weight: "regular",
     )
-
+    
     #align(left)[
       #text[#strong[#text(accent-color)[#it.body.text]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]
-
+  
   let name = {
     align(right)[
       #pad(bottom: 5pt)[
@@ -603,12 +599,12 @@
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
           ]
-
+          
         ]
       ]
     ]
   }
-
+  
   let positions = {
     set text(
       accent-color,
@@ -623,7 +619,7 @@
       ]
     ]
   }
-
+  
   let address = {
     set text(
       size: 9pt,
@@ -636,12 +632,12 @@
       ]
     ]
   }
-
+  
   let contacts = {
     set box(height: 9pt)
-
+    
     let separator = [#box(sym.bar.v)]
-
+    
     align(right)[
       #set text(
         size: 8pt,
@@ -689,7 +685,7 @@
       ]
     ]
   }
-
+  
   let letter-heading = {
     grid(
       columns: (1fr, 2fr),
@@ -712,7 +708,7 @@
       ],
     )
   }
-
+  
   let letter-conclusion = {
     align(bottom)[
       #pad(bottom: 2em)[
@@ -728,7 +724,7 @@
       ]
     ]
   }
-
+  
   // actual content
   letter-heading
   body
@@ -750,7 +746,7 @@
     ][
       #text(weight: "light", style: "italic", size: 9pt)[#date]
     ]
-
+    
     #pad(top: 0.65em, bottom: 0.65em)[
       #text(weight: "regular", fill: color-gray, size: 9pt)[
         #smallcaps[#entity-info.name] \
@@ -767,7 +763,7 @@
 /// - dear (string): optional field for redefining the "dear" variable
 #let letter-heading(job-position: "", addressee: "", dear: "") = {
   let lang_data = toml("lang.toml")
-
+  
   // TODO: Make this adaptable to content
   underline(evade: false, stroke: 0.5pt, offset: 0.3em)[
     #text(weight: "bold", size: 12pt)[Job Application for #job-position]
