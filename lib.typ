@@ -1,5 +1,5 @@
-#import "@preview/fontawesome:0.4.0": *
-#import "@preview/linguify:0.4.0": *
+#import "@preview/fontawesome:0.5.0": *
+#import "@preview/linguify:0.4.1": *
 
 // const color
 #let color-darknight = rgb("#131A28")
@@ -508,12 +508,25 @@
 
 /// ---- Coverletter ----
 
+#let default-closing(lang_data) = {
+  align(bottom)[
+    #text(weight: "light", style: "italic")[ #linguify(
+        "attached",
+        from: lang_data,
+      )#sym.colon #linguify("curriculum-vitae", from: lang_data)]
+  ]
+}
+
 /// Cover letter template that is inspired by the Awesome CV Latex template by posquit0. This template can loosely be considered a port of the original Latex template.
 /// This coverletter template is designed to be used with the resume template.
-/// - author (content): Structure that takes in all the author's information
+/// - author (content): Structure that takes in all the author's information. The following fields are required: firstname, lastname, positions. The following fields are used if available: email, phone, github, linkedin, orcid, address, website.
 /// - profile-picture (image): The profile picture of the author. This will be cropped to a circle and should be square in nature.
-/// - date (date): The date the cover letter was created
+/// - date (datetime): The date the cover letter was created. This will default to the current date.
 /// - accent-color (color): The accent color of the cover letter
+/// - language (string): The language of the cover letter, defaults to "en". See lang.toml for available languages
+/// - font (array): The font families of the cover letter
+/// - show-footer (boolean): Whether to show the footer or not
+/// - closing (content): The closing of the cover letter. This defaults to "Attached Curriculum Vitae". You can set this to `none` to show the default closing or remove it completely.
 /// - body (content): The body of the cover letter
 #let coverletter(
   author: (:),
@@ -523,6 +536,7 @@
   language: "en",
   font: ("Source Sans Pro", "Source Sans 3"),
   show-footer: true,
+  closing: none,
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -531,6 +545,10 @@
   
   // language data
   let lang_data = toml("lang.toml")
+  
+  if closing == none {
+    closing = default-closing(lang_data)
+  }
   
   set document(
     author: author.firstname + " " + author.lastname,
@@ -558,7 +576,10 @@
   )
   
   // set paragraph spacing
-  set par(spacing: 0.75em, justify: true)
+  set par(
+    spacing: 0.75em,
+    justify: true,
+  )
   
   set heading(
     numbering: none,
@@ -709,7 +730,7 @@
     )
   }
   
-  let letter-conclusion = {
+  let signature = {
     align(bottom)[
       #pad(bottom: 2em)[
         #text(weight: "light")[#linguify(
@@ -717,10 +738,6 @@
             from: lang_data,
           )#sym.comma] \
         #text(weight: "bold")[#author.firstname #author.lastname] \ \
-        #text(weight: "light", style: "italic")[ #linguify(
-            "attached",
-            from: lang_data,
-          )#sym.colon #linguify("curriculum-vitae", from: lang_data)]
       ]
     ]
   }
@@ -729,7 +746,8 @@
   letter-heading
   body
   linebreak()
-  letter-conclusion
+  signature
+  closing
 }
 
 /// Cover letter heading that takes in the information for the hiring company and formats it properly.
