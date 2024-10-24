@@ -208,7 +208,7 @@
   
   set document(
     author: author.firstname + " " + author.lastname,
-    title: "resume",
+    title: linguify("resume", from: lang_data),
   )
   
   set text(
@@ -552,7 +552,7 @@
   
   set document(
     author: author.firstname + " " + author.lastname,
-    title: "cover-letter",
+    title: linguify("cover-letter", from: lang_data),
   )
   
   set text(
