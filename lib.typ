@@ -205,12 +205,15 @@
   }
   
   let lang_data = toml("lang.toml")
-  
-  set document(
-    author: author.firstname + " " + author.lastname,
-    title: "resume",
-  )
-  
+
+  show: body => context {
+    set document(
+      author: author.firstname + " " + author.lastname,
+      title: lflib._linguify("resume", lang: language, from: lang_data).ok,
+    )
+    body
+  }
+
   set text(
     font: font,
     lang: language,
@@ -549,12 +552,15 @@
   if closing == none {
     closing = default-closing(lang_data)
   }
-  
-  set document(
-    author: author.firstname + " " + author.lastname,
-    title: "cover-letter",
-  )
-  
+
+  show: body => context {
+    set document(
+      author: author.firstname + " " + author.lastname,
+      title: lflib._linguify("cover-letter", lang: language, from: lang_data).ok,
+    )
+    body
+  }
+
   set text(
     font: font,
     lang: language,
