@@ -6,3 +6,4 @@ template/*.pdf
 .issuetracker
 tests/*
 docs/*
+Justfile
