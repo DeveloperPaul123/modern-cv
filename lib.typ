@@ -663,53 +663,56 @@
   let contacts = {
     set box(height: 9pt)
     
-    let separator = [#box(sym.bar.v)]
-    
+    let separator = [  #box(sym.bar.v)  ]
+    let author_list = ()
+
+    if ("phone" in author) {
+      author_list.push[
+        #phone-icon
+        #box[#text(author.phone)]
+      ]
+    }
+    if ("email" in author) {
+      author_list.push[
+        #email-icon
+        #box[#link("mailto:" + author.email)[#author.email]]
+      ]
+    }
+    if ("github" in author) {
+      author_list.push[
+        #github-icon
+        #box[#link("https://github.com/" + author.github)[#author.github]]
+      ]
+    }
+    if ("linkedin" in author) {
+      author_list.push[
+        #linkedin-icon
+        #box[
+          #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
+        ]
+      ]
+    }
+    if ("orcid" in author) {
+      author_list.push[
+        #orcid-icon
+        #box[#link("https://orcid.org/" + author.orcid)[#author.orcid]]
+      ]
+    }
+    if ("website" in author) {
+      author_list.push[
+        #website-icon
+        #box[#link(author.website)[#author.website]]
+      ]
+    }
+
+
     align(right)[
       #set text(
         size: 8pt,
         weight: "light",
         style: "normal",
       )
-      #block[
-        #align(horizon)[
-          #stack(
-            dir: ltr,
-            spacing: 0.5em,
-            if ("phone" in author) [
-              #phone-icon
-              #box[#text(author.phone)]
-              #separator
-            ],
-            if ("email" in author) [
-              #email-icon
-              #box[#link("mailto:" + author.email)[#author.email]]
-            ],
-            if ("github" in author) [
-              #separator
-              #github-icon
-              #box[#link("https://github.com/" + author.github)[#author.github]]
-            ],
-            if ("linkedin" in author) [
-              #separator
-              #linkedin-icon
-              #box[
-                #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
-              ]
-            ],
-            if ("orcid" in author) [
-              #separator
-              #orcid-icon
-              #box[#link("https://orcid.org/" + author.orcid)[#author.orcid]]
-            ],
-            if ("website" in author) [
-              #separator
-              #website-icon
-              #box[#link(author.website)[#author.website]]
-            ],
-          )
-        ]
-      ]
+      #author_list.join(separator)
     ]
   }
   
