@@ -184,6 +184,7 @@
 /// The original template: https://github.com/posquit0/Awesome-CV
 ///
 /// - author (content): Structure that takes in all the author's information
+/// - profile-picture (image): The profile picture of the author. This will be cropped to a circle and should be square in nature.
 /// - date (string): The date the resume was created
 /// - accent-color (color): The accent color of the resume
 /// - colored-headers (boolean): Whether the headers should be colored or not
@@ -192,6 +193,7 @@
 /// -> none
 #let resume(
   author: (:),
+  profile-picture: image,
   date: datetime.today().display("[month repr:long] [day], [year]"),
   accent-color: default-accent-color,
   colored-headers: true,
@@ -399,11 +401,37 @@
     ]
   }
   
-  name
-  positions
-  address
-  contacts
+  if profile-picture != none {
+    grid(
+      columns: (100% - 4cm, 4cm),
+      rows: (100pt),
+      gutter: 10pt,
+      [
+        #name
+        #positions
+        #address
+        #contacts
+      ],
+      align(left + horizon)[
+        #block(
+          clip: true,
+          stroke: 0pt,
+          radius: 2cm,
+          width: 4cm,
+          height: 4cm,
+          profile-picture,
+        )
+      ],
+    )
+  } else {
+    name
+    positions
+    address
+    contacts
+  }
+
   body
+
 }
 
 /// The base item for resume entries.
