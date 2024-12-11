@@ -286,7 +286,7 @@
           #set text(
             size: 32pt,
             style: "normal",
-            font: ("Roboto"),
+            font: font,
           )
           #if language == "zh" or language == "ja" [
             #text(
