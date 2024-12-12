@@ -198,6 +198,7 @@
   show-footer: true,
   language: "en",
   font: ("Source Sans Pro", "Source Sans 3"),
+  header-font: ("Roboto"),
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -286,7 +287,7 @@
           #set text(
             size: 32pt,
             style: "normal",
-            font: ("Roboto"),
+            font: header-font,
           )
           #if language == "zh" or language == "ja" [
             #text(
