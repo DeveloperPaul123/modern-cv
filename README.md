@@ -54,6 +54,7 @@ Below is a basic example for a simple resume:
         "Software Architect"
       )
   ),
+  profile-picture: none,
   date: datetime.today().display()
 )
 
