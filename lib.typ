@@ -260,7 +260,7 @@
     } else {
       color-darkgray
     }
-    #text[#strong[#text(color)[#it.body.text]]]
+    #text[#strong[#text(color)[#it.body]]]
     #box(width: 1fr, line(length: 100%))
   ]
   
@@ -632,7 +632,7 @@
     )
     
     #align(left)[
-      #text[#strong[#text(accent-color)[#it.body.text]]]
+      #text[#strong[#text(accent-color)[#it.body]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]
