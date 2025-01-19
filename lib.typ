@@ -774,7 +774,7 @@
         #text(weight: "light")[#linguify(
             "sincerely",
             from: lang_data,
-          )#sym.comma] \
+          )#if language != "de" [#sym.comma]] \
         #text(weight: "bold")[#author.firstname #author.lastname] \ \
       ]
     ]
