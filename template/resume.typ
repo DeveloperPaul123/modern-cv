@@ -25,6 +25,7 @@
   language: "en",
   colored-headers: true,
   show-footer: false,
+  paper-size: "us-letter",
 )
 
 = Experience

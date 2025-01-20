@@ -24,6 +24,8 @@
   show-footer: false,
   // set this to `none` to show the default or remove it completely
   closing: [],
+  // see typst "page" documentation for more options
+  paper-size: "us-gov-legal"
 )
 
 #hiring-entity-info(entity-info: (

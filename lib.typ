@@ -201,6 +201,7 @@
   language: "en",
   font: ("Source Sans Pro", "Source Sans 3"),
   header-font: ("Roboto"),
+  paper-size: "a4",
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -226,7 +227,7 @@
   )
   
   set page(
-    paper: "a4",
+    paper: paper-size,
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
     footer: if show-footer [#__resume_footer(
         author,
@@ -569,6 +570,7 @@
   font: ("Source Sans Pro", "Source Sans 3"),
   show-footer: true,
   closing: none,
+  paper-size: "a4",
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -599,7 +601,7 @@
   )
   
   set page(
-    paper: "a4",
+    paper: paper-size,
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
     footer: if show-footer [#__coverletter_footer(
         author,
