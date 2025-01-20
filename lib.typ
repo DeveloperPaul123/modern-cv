@@ -824,7 +824,7 @@
   
   // TODO: Make this adaptable to content
   underline(evade: false, stroke: 0.5pt, offset: 0.3em)[
-    #text(weight: "bold", size: 12pt)[Job Application for #job-position]
+    #text(weight: "bold", size: 12pt)[#linguify("letter-position-pretext", from: lang_data) #job-position]
   ]
   pad(top: 1em, bottom: 1em)[
     #text(weight: "light", fill: color-gray)[

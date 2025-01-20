@@ -17,6 +17,7 @@
     ),
   ),
   profile-picture: image("./profile.png"),
+  // change this to match the language available in 'lang.toml'
   language: "en",
   font: "Times New Roman",
   // Remove the following line to show the footer
