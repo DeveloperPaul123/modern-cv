@@ -38,7 +38,7 @@ See `typst fonts --help` for more information on configuring fonts for `typst` t
 Below is a basic example for a simple resume:
 
 ```typst
-#import "@preview/modern-cv:0.7.0": *
+#import "@preview/modern-cv:0.8.0": *
 
 #show: resume.with(
   author: (
@@ -55,7 +55,8 @@ Below is a basic example for a simple resume:
       )
   ),
   profile-picture: none,
-  date: datetime.today().display()
+  date: datetime.today().display(),
+  page-size: "us-letter"
 )
 
 = Education
@@ -98,7 +99,7 @@ To build and test the project locally, you will need to install the `typst` CLI.
 With typst installed you can make changes to `lib.typ` and then `just install` or `just install-preview` to install the package locally. Change the import statements in the template files to point to the local package (if needed):
 
 ```typst
-#import "@local/modern-cv:0.6.0": *
+#import "@local/modern-cv:0.8.0": *
 ````
 
 If you use `just install-preview` you will only need to update the version number to match `typst.toml`.
