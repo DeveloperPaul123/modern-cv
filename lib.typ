@@ -15,6 +15,12 @@
 #let github-icon = box(
   fa-icon("github", fill: color-darknight),
 )
+#let gitlab-icon = box(
+  fa-icon("gitlab", fill: color-darknight),
+)
+#let bitbucket-icon = box(
+  fa-icon("bitbucket", fill: color-darknight),
+)
 #let twitter-icon = box(
   fa-icon("twitter", fill: color-darknight),
 )
@@ -369,6 +375,16 @@
             #separator
             #github-icon
             #box[#link("https://github.com/" + author.github)[#author.github]]
+          ]
+          #if ("gitlab" in author) [
+            #separator
+            #gitlab-icon
+            #box[#link("https://gitlab.com/" + author.gitlab)[#author.gitlab]]
+          ]
+          #if ("bitbucket" in author) [
+            #separator
+            #bitbucket-icon
+            #box[#link("https://bitbucket.org/" + author.bitbucket)[#author.bitbucket]]
           ]
           #if ("linkedin" in author) [
             #separator
