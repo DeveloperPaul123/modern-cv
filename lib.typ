@@ -1,5 +1,5 @@
 #import "@preview/fontawesome:0.5.0": *
-#import "@preview/linguify:0.4.1": *
+#import "@preview/linguify:0.4.2": *
 
 // const color
 #let color-darknight = rgb("#131A28")
