@@ -7,39 +7,51 @@ default:
     @just --list --unsorted
 
 # generate manual
+[doc('Generate package documentation')]
+[group('package')]
 doc:
     typst compile docs/manual.typ docs/manual.pdf
 
-# run test suite
+[doc('Run test suite. Requires tytanic.')]
+[group('dev')]
 test *args:
     typst-test run {{ args }}
 
-# update test cases
+[doc('Update test cases')]
+[group('dev')]
 update *args:
     typst-test update {{ args }}
 
-# package the library into the specified destination folder
+[doc('Package the library into the specified destination folder')]
+[group('package')]
 package target:
   ./scripts/package "{{target}}"
 
-# install the library with the "@local" prefix
+[doc('Install the library with the "@local" prefix')]
+[group('dev')]
 install: (package "@local")
 
-# install the library with the "@preview" prefix (for pre-release testing)
+[doc('Install the library with the "@preview" prefix (for pre-release testing)')]
+[group('dev')]
 install-preview: (package "@preview")
 
 [private]
 remove target:
   ./scripts/uninstall "{{target}}"
 
-# uninstalls the library from the "@local" prefix
+[doc('Uninstall the library from the "@local" prefix')]
+[group('dev')]
 uninstall: (remove "@local")
 
-# uninstalls the library from the "@preview" prefix (for pre-release testing)
+[doc('Uninstall the library from the "@preview" prefix (for pre-release testing)')]
+[group('dev')]
 uninstall-preview: (remove "@preview")
 
+[doc('Format the source code. Requires typstyle.')]
+[group('dev')]
 format:
     ./scripts/format
 
-# run ci suite
+[doc('Run ci suite')]
+[group('dev')]
 ci: test doc
