@@ -80,6 +80,8 @@
 #birth-icon
 #homepage-icon
 #website-icon
+#gitlab-icon
+#bitbucket-icon
 
 #square(size: 1em, fill: color-darkgray)
 #square(size: 1em, fill: color-darknight)
