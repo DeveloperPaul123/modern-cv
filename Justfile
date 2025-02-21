@@ -15,12 +15,12 @@ doc:
 [doc('Run test suite. Requires tytanic.')]
 [group('dev')]
 test *args:
-    typst-test run {{ args }}
+    tt run {{ args }}
 
 [doc('Update test cases')]
 [group('dev')]
 update *args:
-    typst-test update {{ args }}
+    tt update {{ args }}
 
 [doc('Package the library into the specified destination folder')]
 [group('package')]
