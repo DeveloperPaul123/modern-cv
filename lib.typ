@@ -70,22 +70,34 @@
   ]
 }
 
-#let __coverletter_footer(author, language, date, lang_data) = {
+#let __coverletter_footer(author, language, date, lang_data, disable-smallcaps) = {
   set text(
     fill: gray,
     size: 8pt,
   )
   __justify_align_3[
-    #smallcaps[#date]
+    #if not disable-smallcaps [#smallcaps(date)] else [#date]
   ][
-    #smallcaps[
-      #if language == "zh" or language == "ja" [
-        #author.firstname#author.lastname
-      ] else [
-        #author.firstname#sym.space#author.lastname
-      ]
-      #sym.dot.c
-      #linguify("cover-letter", from: lang_data)
+    #if not disable-smallcaps [
+      #smallcaps(
+        {
+          let name = if language == "zh" or language == "ja" {
+            str(author.firstname) + str(author.lastname)
+          } else {
+            str(author.firstname) + " " + str(author.lastname)
+          }
+          name + " · " + linguify("cover-letter", from: lang_data)
+        }
+      )
+    ] else [
+      {
+        let name = if language == "zh" or language == "ja" {
+          str(author.firstname) + str(author.lastname)
+        } else {
+          str(author.firstname) + " " + str(author.lastname)
+        }
+        name + " · " + linguify("cover-letter", from: lang_data)
+      }
     ]
   ][
     #context {
@@ -94,22 +106,34 @@
   ]
 }
 
-#let __resume_footer(author, language, lang_data, date) = {
+#let __resume_footer(author, language, lang_data, date, disable-smallcaps) = {
   set text(
     fill: gray,
     size: 8pt,
   )
   __justify_align_3[
-    #smallcaps[#date]
+    #if not disable-smallcaps [#smallcaps(date)] else [#date]
   ][
-    #smallcaps[
-      #if language == "zh" or language == "ja" [
-        #author.firstname#author.lastname
-      ] else [
-        #author.firstname#sym.space#author.lastname
-      ]
-      #sym.dot.c
-      #linguify("resume", from: lang_data)
+    #if not disable-smallcaps [
+      #smallcaps(
+        {
+          let name = if language == "zh" or language == "ja" {
+            str(author.firstname) + str(author.lastname)
+          } else {
+            str(author.firstname) + " " + str(author.lastname)
+          }
+          name + " · " + linguify("resume", from: lang_data)
+        }
+      )
+    ] else [
+      {
+        let name = if language == "zh" or language == "ja" {
+          str(author.firstname) + str(author.lastname)
+        } else {
+          str(author.firstname) + " " + str(author.lastname)
+        }
+        name + " · " + linguify("resume", from: lang_data)
+      }
     ]
   ][
     #context {
@@ -195,6 +219,7 @@
 /// - accent-color (color): The accent color of the resume
 /// - colored-headers (boolean): Whether the headers should be colored or not
 /// - language (string): The language of the resume, defaults to "en". See lang.toml for available languages
+/// - disable-smallcaps (boolean): Whether to disable small caps formatting throughout the template
 /// - body (content): The body of the resume
 /// -> none
 #let resume(
@@ -208,6 +233,7 @@
   font: ("Source Sans Pro", "Source Sans 3"),
   header-font: ("Roboto"),
   paper-size: "a4",
+  disable-smallcaps: false,
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -240,6 +266,7 @@
         language,
         lang_data,
         date,
+        disable-smallcaps,
       )] else [],
     footer-descent: 0pt,
   )
@@ -286,7 +313,11 @@
       size: 10pt,
       weight: "regular",
     )
-    smallcaps[#it.body]
+    if not disable-smallcaps [
+      #smallcaps(it.body)
+    ] else [
+      #it.body
+    ]
   }
   
   let name = {
@@ -319,7 +350,13 @@
       weight: "regular",
     )
     align(center)[
-      #smallcaps[
+      #if not disable-smallcaps [
+        #smallcaps(
+          author.positions.join(
+            text[#"  "#sym.dot.c#"  "],
+          )
+        )
+      ] else [
         #author.positions.join(
           text[#"  "#sym.dot.c#"  "],
         )
@@ -576,6 +613,7 @@
 /// - font (array): The font families of the cover letter
 /// - show-footer (boolean): Whether to show the footer or not
 /// - closing (content): The closing of the cover letter. This defaults to "Attached Curriculum Vitae". You can set this to `none` to show the default closing or remove it completely.
+/// - disable-smallcaps (boolean): Whether to disable small caps formatting throughout the template
 /// - body (content): The body of the cover letter
 #let coverletter(
   author: (:),
@@ -587,6 +625,7 @@
   show-footer: true,
   closing: none,
   paper-size: "a4",
+  disable-smallcaps: false,
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -624,6 +663,7 @@
         language,
         date,
         lang_data,
+        disable-smallcaps,
       )] else [],
     footer-descent: 0pt,
   )
@@ -686,7 +726,13 @@
       weight: "regular",
     )
     align(right)[
-      #smallcaps[
+      #if not disable-smallcaps [
+        #smallcaps(
+          author.positions.join(
+            text[#"  "#sym.dot.c#"  "],
+          )
+        )
+      ] else [
         #author.positions.join(
           text[#"  "#sym.dot.c#"  "],
         )
@@ -823,7 +869,11 @@
     
     #pad(top: 0.65em, bottom: 0.65em)[
       #text(weight: "regular", fill: color-gray, size: 9pt)[
-        #smallcaps[#entity-info.name] \
+        #if not disable-smallcaps [
+          #smallcaps(entity-info.name)
+        ] else [
+          #entity-info.name
+        ] \
         #entity-info.street-address \
         #entity-info.city \
       ]
