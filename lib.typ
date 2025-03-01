@@ -21,6 +21,7 @@
 #let birth-icon = box(fa-icon("cake", fill: color-darknight))
 #let homepage-icon = box(fa-icon("home", fill: color-darknight))
 #let website-icon = box(fa-icon("globe", fill: color-darknight))
+#let address-icon = box(fa-icon("location-crosshairs", fill: color-darknight))
 
 /// Helpers
 
@@ -297,6 +298,7 @@
     set text(size: 9pt, weight: "regular")
     align(center)[
       #if ("address" in author) [
+        #address-icon
         #author.address
       ]
     ]
@@ -634,7 +636,8 @@
     set text(size: 9pt, weight: "bold", fill: color-gray)
     align(right)[
       #if ("address" in author) [
-        #author.address
+        #address-icon
+        #box[#text(author.address)]
       ]
     ]
   }
