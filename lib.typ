@@ -38,6 +38,23 @@
 
 /// Helpers
 
+// Common helper functions
+#let __format_author_name(author, language) = {
+  if language == "zh" or language == "ja" {
+    str(author.firstname) + str(author.lastname)
+  } else {
+    str(author.firstname) + " " + str(author.lastname)
+  }
+}
+
+#let __apply_smallcaps(content, use-smallcaps) = {
+  if use-smallcaps {
+    smallcaps(content)
+  } else {
+    content
+  }
+}
+
 // layout utility
 #let __justify_align(left_body, right_body) = {
   block[
@@ -70,35 +87,21 @@
   ]
 }
 
-#let __coverletter_footer(author, language, date, lang_data, disable-smallcaps) = {
+#let __coverletter_footer(author, language, date, lang_data, use-smallcaps: true) = {
   set text(
     fill: gray,
     size: 8pt,
   )
   __justify_align_3[
-    #if not disable-smallcaps [#smallcaps(date)] else [#date]
+    #__apply_smallcaps(date, use-smallcaps)
   ][
-    #if not disable-smallcaps [
-      #smallcaps(
-        {
-          let name = if language == "zh" or language == "ja" {
-            str(author.firstname) + str(author.lastname)
-          } else {
-            str(author.firstname) + " " + str(author.lastname)
-          }
-          name + " · " + linguify("cover-letter", from: lang_data)
-        }
-      )
-    ] else [
+    #__apply_smallcaps(
       {
-        let name = if language == "zh" or language == "ja" {
-          str(author.firstname) + str(author.lastname)
-        } else {
-          str(author.firstname) + " " + str(author.lastname)
-        }
+        let name = __format_author_name(author, language)
         name + " · " + linguify("cover-letter", from: lang_data)
-      }
-    ]
+      },
+      use-smallcaps
+    )
   ][
     #context {
       counter(page).display()
@@ -106,35 +109,21 @@
   ]
 }
 
-#let __resume_footer(author, language, lang_data, date, disable-smallcaps) = {
+#let __resume_footer(author, language, lang_data, date, use-smallcaps: true) = {
   set text(
     fill: gray,
     size: 8pt,
   )
   __justify_align_3[
-    #if not disable-smallcaps [#smallcaps(date)] else [#date]
+    #__apply_smallcaps(date, use-smallcaps)
   ][
-    #if not disable-smallcaps [
-      #smallcaps(
-        {
-          let name = if language == "zh" or language == "ja" {
-            str(author.firstname) + str(author.lastname)
-          } else {
-            str(author.firstname) + " " + str(author.lastname)
-          }
-          name + " · " + linguify("resume", from: lang_data)
-        }
-      )
-    ] else [
+    #__apply_smallcaps(
       {
-        let name = if language == "zh" or language == "ja" {
-          str(author.firstname) + str(author.lastname)
-        } else {
-          str(author.firstname) + " " + str(author.lastname)
-        }
+        let name = __format_author_name(author, language)
         name + " · " + linguify("resume", from: lang_data)
-      }
-    ]
+      },
+      use-smallcaps
+    )
   ][
     #context {
       counter(page).display()
@@ -219,7 +208,7 @@
 /// - accent-color (color): The accent color of the resume
 /// - colored-headers (boolean): Whether the headers should be colored or not
 /// - language (string): The language of the resume, defaults to "en". See lang.toml for available languages
-/// - disable-smallcaps (boolean): Whether to disable small caps formatting throughout the template
+/// - use-smallcaps (boolean): Whether to use small caps formatting throughout the template
 /// - body (content): The body of the resume
 /// -> none
 #let resume(
@@ -233,7 +222,7 @@
   font: ("Source Sans Pro", "Source Sans 3"),
   header-font: ("Roboto"),
   paper-size: "a4",
-  disable-smallcaps: false,
+  use-smallcaps: true,
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -266,7 +255,7 @@
         language,
         lang_data,
         date,
-        disable-smallcaps,
+        use-smallcaps: use-smallcaps,
       )] else [],
     footer-descent: 0pt,
   )
@@ -313,11 +302,7 @@
       size: 10pt,
       weight: "regular",
     )
-    if not disable-smallcaps [
-      #smallcaps(it.body)
-    ] else [
-      #it.body
-    ]
+    __apply_smallcaps(it.body, use-smallcaps)
   }
   
   let name = {
@@ -350,17 +335,12 @@
       weight: "regular",
     )
     align(center)[
-      #if not disable-smallcaps [
-        #smallcaps(
-          author.positions.join(
-            text[#"  "#sym.dot.c#"  "],
-          )
-        )
-      ] else [
-        #author.positions.join(
+      #__apply_smallcaps(
+        author.positions.join(
           text[#"  "#sym.dot.c#"  "],
-        )
-      ]
+        ),
+        use-smallcaps
+      )
     ]
   }
   
@@ -613,7 +593,7 @@
 /// - font (array): The font families of the cover letter
 /// - show-footer (boolean): Whether to show the footer or not
 /// - closing (content): The closing of the cover letter. This defaults to "Attached Curriculum Vitae". You can set this to `none` to show the default closing or remove it completely.
-/// - disable-smallcaps (boolean): Whether to disable small caps formatting throughout the template
+/// - use-smallcaps (boolean): Whether to use small caps formatting throughout the template
 /// - body (content): The body of the cover letter
 #let coverletter(
   author: (:),
@@ -625,7 +605,7 @@
   show-footer: true,
   closing: none,
   paper-size: "a4",
-  disable-smallcaps: false,
+  use-smallcaps: true,
   body,
 ) = {
   if type(accent-color) == "string" {
@@ -663,7 +643,7 @@
         language,
         date,
         lang_data,
-        disable-smallcaps,
+        use-smallcaps: use-smallcaps,
       )] else [],
     footer-descent: 0pt,
   )
@@ -726,17 +706,12 @@
       weight: "regular",
     )
     align(right)[
-      #if not disable-smallcaps [
-        #smallcaps(
-          author.positions.join(
-            text[#"  "#sym.dot.c#"  "],
-          )
-        )
-      ] else [
-        #author.positions.join(
+      #__apply_smallcaps(
+        author.positions.join(
           text[#"  "#sym.dot.c#"  "],
-        )
-      ]
+        ),
+        use-smallcaps
+      )
     ]
   }
   
@@ -858,6 +833,7 @@
 #let hiring-entity-info(
   entity-info: (:),
   date: datetime.today().display("[month repr:long] [day], [year]"),
+  use-smallcaps: true,
 ) = {
   set par(leading: 1em)
   pad(top: 1.5em, bottom: 1.5em)[
@@ -869,11 +845,7 @@
     
     #pad(top: 0.65em, bottom: 0.65em)[
       #text(weight: "regular", fill: color-gray, size: 9pt)[
-        #if not disable-smallcaps [
-          #smallcaps(entity-info.name)
-        ] else [
-          #entity-info.name
-        ] \
+        #__apply_smallcaps(entity-info.name, use-smallcaps) \
         #entity-info.street-address \
         #entity-info.city \
       ]
