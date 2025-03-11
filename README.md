@@ -56,7 +56,7 @@ Below is a basic example for a simple resume:
   ),
   profile-picture: none,
   date: datetime.today().display(),
-  page-size: "us-letter"
+  paper-size: "us-letter"
 )
 
 = Education
