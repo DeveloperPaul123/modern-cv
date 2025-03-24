@@ -225,7 +225,7 @@
   use-smallcaps: true,
   body,
 ) = {
-  if type(accent-color) == "string" {
+  if type(accent-color) == str {
     accent-color = rgb(accent-color)
   }
   
@@ -507,7 +507,7 @@
   location-color: default-location-color,
 ) = {
   let title-content
-  if type(title-link) == "string" {
+  if type(title-link) == str {
     title-content = link(title-link)[#title]
   } else {
     title-content = title
@@ -608,7 +608,7 @@
   use-smallcaps: true,
   body,
 ) = {
-  if type(accent-color) == "string" {
+  if type(accent-color) == str {
     accent-color = rgb(accent-color)
   }
   
