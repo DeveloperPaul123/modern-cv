@@ -37,12 +37,10 @@ jobs:
         with:
           crate: just
 
-      - name: Install typst-test from github
+      - name: Install tytanic from github
         uses: baptiste0928/cargo-install@v3
         with:
-          crate: typst-test
-          git: https://github.com/tingerrr/typst-test.git
-          tag: ci-semi-stable
+          crate: tytanic
 
       - name: Setup typst
         uses: typst-community/setup-typst@v3
