@@ -15,12 +15,12 @@ doc:
 [doc('Run test suite. Requires tytanic.')]
 [group('dev')]
 test *args:
-    tt run {{ args }}
+    tt run {{ args }} --use-system-fonts
 
-[doc('Update test cases')]
+[doc('Update test cases. Requires tytanic.')]
 [group('dev')]
 update *args:
-    tt update {{ args }}
+    tt update {{ args }} --use-system-fonts
 
 [doc('Package the library into the specified destination folder')]
 [group('package')]
