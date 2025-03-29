@@ -1,7 +1,7 @@
 #import "@local/modern-cv:0.8.0": *
 
 // setup the document like we do for the resume
-#let font = ("Source Sans Pro", "Source Sans 3")
+#let font = ("Source Sans 3")
 #set text(
   font: font,
   size: 11pt,
@@ -80,6 +80,8 @@
 #birth-icon
 #homepage-icon
 #website-icon
+#gitlab-icon
+#bitbucket-icon
 
 #square(size: 1em, fill: color-darkgray)
 #square(size: 1em, fill: color-darknight)
