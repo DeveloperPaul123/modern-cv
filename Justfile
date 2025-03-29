@@ -14,7 +14,7 @@ doc:
 
 [doc('Run test suite. Requires tytanic.')]
 [group('dev')]
-test *args:
+test *args: install
     tt run {{ args }} --use-system-fonts --no-fail-fast
 
 [doc('Update test cases. Requires tytanic.')]
