@@ -53,6 +53,7 @@ jobs:
             sudo apt-get install fonts-roboto
             ./scripts/install-fontawesome
             ./scripts/install-source-sans
+            typst fonts
 
       - name: Install locally
         run: just install
