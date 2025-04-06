@@ -590,6 +590,7 @@
 /// - accent-color (color): The accent color of the cover letter
 /// - language (string): The language of the cover letter, defaults to "en". See lang.toml for available languages
 /// - font (array): The font families of the cover letter
+/// - header-font (array): The font families of the cover letter header
 /// - show-footer (boolean): Whether to show the footer or not
 /// - closing (content): The closing of the cover letter. This defaults to "Attached Curriculum Vitae". You can set this to `none` to show the default closing or remove it completely.
 /// - use-smallcaps (boolean): Whether to use small caps formatting throughout the template
@@ -601,6 +602,7 @@
   accent-color: default-accent-color,
   language: "en",
   font: ("Source Sans Pro", "Source Sans 3"),
+  header-font: ("Roboto"),
   show-footer: true,
   closing: none,
   paper-size: "a4",
@@ -685,7 +687,7 @@
           #set text(
             size: 32pt,
             style: "normal",
-            font: ("Roboto"),
+            font: header-font,
           )
           #if language == "zh" or language == "ja" [
             #text(
