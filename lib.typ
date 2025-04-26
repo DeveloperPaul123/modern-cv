@@ -323,6 +323,13 @@
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
           ]
+          #if ("pronouns" in author) {
+            text(
+              color-gray,
+              size: 16pt,
+              style: "normal"
+            )[(#author.pronouns)]
+          }
         ]
       ]
     ]
@@ -698,7 +705,14 @@
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
           ]
-          
+          #if ("pronouns" in author) {
+            text(
+              color-gray,
+              size: 16pt,
+              style: "normal"
+            )[(#author.pronouns)]
+          }
+
         ]
       ]
     ]

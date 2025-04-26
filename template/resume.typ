@@ -4,6 +4,7 @@
   author: (
     firstname: "John",
     lastname: "Smith",
+    pronouns: "he/him",
     email: "js@example.com",
     homepage: "https://example.com",
     phone: "(+1) 111-111-1111",
