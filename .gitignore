@@ -1,3 +1,4 @@
 *.pdf
 tests/*/diff
 tests/*/out
+.direnv/
