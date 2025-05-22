@@ -1,13 +1,8 @@
 #import "@local/modern-cv:0.8.0": *
 
 // setup the document like we do for the resume
-#let font = ("Source Sans 3")
-#set text(
-  font: font,
-  size: 11pt,
-  fill: color-darkgray,
-  fallback: true,
-)
+#let font = "Source Sans 3"
+#set text(font: font, size: 11pt, fill: color-darkgray, fallback: true)
 
 #set page(
   paper: "a4",
@@ -19,21 +14,12 @@
 // set paragraph spacing
 #set par(spacing: 0.75em, justify: true)
 
-#set heading(
-  numbering: none,
-  outlined: false,
-)
+#set heading(numbering: none, outlined: false)
 
 #show heading.where(level: 1): it => [
 
-  #set block(
-    above: 1em,
-    below: 1em,
-  )
-  #set text(
-    size: 16pt,
-    weight: "regular",
-  )
+  #set block(above: 1em, below: 1em)
+  #set text(size: 16pt, weight: "regular")
 
   #align(left)[
     #let color = if colored-headers {
@@ -48,20 +34,12 @@
 ]
 
 #show heading.where(level: 2): it => {
-  set text(
-    color-darkgray,
-    size: 12pt,
-    style: "normal",
-    weight: "bold",
-  )
+  set text(color-darkgray, size: 12pt, style: "normal", weight: "bold")
   it.body
 }
 
 #show heading.where(level: 3): it => {
-  set text(
-    size: 10pt,
-    weight: "regular",
-  )
+  set text(size: 10pt, weight: "regular")
   smallcaps[#it.body]
 }
 

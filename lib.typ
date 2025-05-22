@@ -9,27 +9,13 @@
 #let default-location-color = rgb("#333333")
 
 // const icons
-#let linkedin-icon = box(
-  fa-icon("linkedin", fill: color-darknight),
-)
-#let github-icon = box(
-  fa-icon("github", fill: color-darknight),
-)
-#let gitlab-icon = box(
-  fa-icon("gitlab", fill: color-darknight),
-)
-#let bitbucket-icon = box(
-  fa-icon("bitbucket", fill: color-darknight),
-)
-#let twitter-icon = box(
-  fa-icon("twitter", fill: color-darknight),
-)
-#let google-scholar-icon = box(
-  fa-icon("google-scholar", fill: color-darknight),
-)
-#let orcid-icon = box(
-  fa-icon("orcid", fill: color-darknight),
-)
+#let linkedin-icon = box(fa-icon("linkedin", fill: color-darknight))
+#let github-icon = box(fa-icon("github", fill: color-darknight))
+#let gitlab-icon = box(fa-icon("gitlab", fill: color-darknight))
+#let bitbucket-icon = box(fa-icon("bitbucket", fill: color-darknight))
+#let twitter-icon = box(fa-icon("twitter", fill: color-darknight))
+#let google-scholar-icon = box(fa-icon("google-scholar", fill: color-darknight))
+#let orcid-icon = box(fa-icon("orcid", fill: color-darknight))
 #let phone-icon = box(fa-icon("square-phone", fill: color-darknight))
 #let email-icon = box(fa-icon("envelope", fill: color-darknight))
 #let birth-icon = box(fa-icon("cake", fill: color-darknight))
@@ -87,11 +73,14 @@
   ]
 }
 
-#let __coverletter_footer(author, language, date, lang_data, use-smallcaps: true) = {
-  set text(
-    fill: gray,
-    size: 8pt,
-  )
+#let __coverletter_footer(
+  author,
+  language,
+  date,
+  lang_data,
+  use-smallcaps: true,
+) = {
+  set text(fill: gray, size: 8pt)
   __justify_align_3[
     #__apply_smallcaps(date, use-smallcaps)
   ][
@@ -100,7 +89,7 @@
         let name = __format_author_name(author, language)
         name + " · " + linguify("cover-letter", from: lang_data)
       },
-      use-smallcaps
+      use-smallcaps,
     )
   ][
     #context {
@@ -110,10 +99,7 @@
 }
 
 #let __resume_footer(author, language, lang_data, date, use-smallcaps: true) = {
-  set text(
-    fill: gray,
-    size: 8pt,
-  )
+  set text(fill: gray, size: 8pt)
   __justify_align_3[
     #__apply_smallcaps(date, use-smallcaps)
   ][
@@ -122,7 +108,7 @@
         let name = __format_author_name(author, language)
         name + " · " + linguify("resume", from: lang_data)
       },
-      use-smallcaps
+      use-smallcaps,
     )
   ][
     #context {
@@ -138,7 +124,7 @@
 /// -> none
 #let github-link(github-path) = {
   set box(height: 11pt)
-  
+
   align(right + horizon)[
     #fa-icon("github", fill: color-darkgray) #link(
       "https://github.com/" + github-path,
@@ -150,20 +136,14 @@
 /// Right section for the justified headers
 /// - body (content): The body of the right header
 #let secondary-right-header(body) = {
-  set text(
-    size: 11pt,
-    weight: "medium",
-  )
+  set text(size: 11pt, weight: "medium")
   body
 }
 
 /// Right section of a tertiaty headers.
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
-  set text(
-    weight: "light",
-    size: 9pt,
-  )
+  set text(weight: "light", size: 9pt)
   body
 }
 
@@ -171,10 +151,7 @@
 /// - primary (content): The primary section of the header
 /// - secondary (content): The secondary section of the header
 #let justified-header(primary, secondary) = {
-  set block(
-    above: 0.7em,
-    below: 0.7em,
-  )
+  set block(above: 0.7em, below: 0.7em)
   pad[
     #__justify_align[
       == #primary
@@ -220,7 +197,7 @@
   show-footer: true,
   language: "en",
   font: ("Source Sans Pro", "Source Sans 3"),
-  header-font: ("Roboto"),
+  header-font: "Roboto",
   paper-size: "a4",
   use-smallcaps: true,
   body,
@@ -228,9 +205,9 @@
   if type(accent-color) == str {
     accent-color = rgb(accent-color)
   }
-  
+
   let lang_data = toml("lang.toml")
-  
+
   show: body => context {
     set document(
       author: author.firstname + " " + author.lastname,
@@ -238,7 +215,7 @@
     )
     body
   }
-  
+
   set text(
     font: font,
     lang: language,
@@ -246,7 +223,7 @@
     fill: color-darkgray,
     fallback: true,
   )
-  
+
   set page(
     paper: paper-size,
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
@@ -259,23 +236,14 @@
       )] else [],
     footer-descent: 0pt,
   )
-  
+
   // set paragraph spacing
-  set par(
-    spacing: 0.75em,
-    justify: true,
-  )
-  
-  set heading(
-    numbering: none,
-    outlined: false,
-  )
-  
+  set par(spacing: 0.75em, justify: true)
+
+  set heading(numbering: none, outlined: false)
+
   show heading.where(level: 1): it => [
-    #set text(
-      size: 16pt,
-      weight: "regular",
-    )
+    #set text(size: 16pt, weight: "regular")
     #set align(left)
     #set block(above: 1em)
     #let color = if colored-headers {
@@ -286,39 +254,26 @@
     #text[#strong[#text(color)[#it.body]]]
     #box(width: 1fr, line(length: 100%))
   ]
-  
+
   show heading.where(level: 2): it => {
-    set text(
-      color-darkgray,
-      size: 12pt,
-      style: "normal",
-      weight: "bold",
-    )
+    set text(color-darkgray, size: 12pt, style: "normal", weight: "bold")
     it.body
   }
-  
+
   show heading.where(level: 3): it => {
-    set text(
-      size: 10pt,
-      weight: "regular",
-    )
+    set text(size: 10pt, weight: "regular")
     __apply_smallcaps(it.body, use-smallcaps)
   }
-  
+
   let name = {
     align(center)[
       #pad(bottom: 5pt)[
         #block[
-          #set text(
-            size: 32pt,
-            style: "normal",
-            font: header-font,
-          )
+          #set text(size: 32pt, style: "normal", font: header-font)
           #if language == "zh" or language == "ja" [
-            #text(
-              accent-color,
-              weight: "thin",
-            )[#author.firstname]#text(weight: "bold")[#author.lastname]
+            #text(accent-color, weight: "thin")[#author.firstname]#text(
+              weight: "bold",
+            )[#author.lastname]
           ] else [
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
@@ -327,46 +282,33 @@
       ]
     ]
   }
-  
+
   let positions = {
-    set text(
-      accent-color,
-      size: 9pt,
-      weight: "regular",
-    )
+    set text(accent-color, size: 9pt, weight: "regular")
     align(center)[
       #__apply_smallcaps(
-        author.positions.join(
-          text[#"  "#sym.dot.c#"  "],
-        ),
-        use-smallcaps
+        author.positions.join(text[#"  "#sym.dot.c#"  "]),
+        use-smallcaps,
       )
     ]
   }
-  
+
   let address = {
-    set text(
-      size: 9pt,
-      weight: "regular",
-    )
+    set text(size: 9pt, weight: "regular")
     align(center)[
       #if ("address" in author) [
         #author.address
       ]
     ]
   }
-  
+
   let contacts = {
     set box(height: 9pt)
-    
+
     let separator = box(width: 5pt)
-    
+
     align(center)[
-      #set text(
-        size: 9pt,
-        weight: "regular",
-        style: "normal",
-      )
+      #set text(size: 9pt, weight: "regular", style: "normal")
       #block[
         #align(horizon)[
           #if ("birth" in author) [
@@ -401,25 +343,33 @@
           #if ("bitbucket" in author) [
             #separator
             #bitbucket-icon
-            #box[#link("https://bitbucket.org/" + author.bitbucket)[#author.bitbucket]]
+            #box[#link(
+                "https://bitbucket.org/" + author.bitbucket,
+              )[#author.bitbucket]]
           ]
           #if ("linkedin" in author) [
             #separator
             #linkedin-icon
             #box[
-              #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
+              #link(
+                "https://www.linkedin.com/in/" + author.linkedin,
+              )[#author.firstname #author.lastname]
             ]
           ]
           #if ("twitter" in author) [
             #separator
             #twitter-icon
-            #box[#link("https://twitter.com/" + author.twitter)[\@#author.twitter]]
+            #box[#link(
+                "https://twitter.com/" + author.twitter,
+              )[\@#author.twitter]]
           ]
           #if ("scholar" in author) [
             #let fullname = str(author.firstname + " " + author.lastname)
             #separator
             #google-scholar-icon
-            #box[#link("https://scholar.google.com/citations?user=" + author.scholar)[#fullname]]
+            #box[#link(
+                "https://scholar.google.com/citations?user=" + author.scholar,
+              )[#fullname]]
           ]
           #if ("orcid" in author) [
             #separator
@@ -435,11 +385,11 @@
       ]
     ]
   }
-  
+
   if profile-picture != none {
     grid(
       columns: (100% - 4cm, 4cm),
-      rows: (100pt),
+      rows: 100pt,
       gutter: 10pt,
       [
         #name
@@ -464,7 +414,7 @@
     address
     contacts
   }
-  
+
   body
 }
 
@@ -472,16 +422,8 @@
 /// This formats the item for the resume entries. Typically your body would be a bullet list of items. Could be your responsibilities at a company or your academic achievements in an educational background section.
 /// - body (content): The body of the resume entry
 #let resume-item(body) = {
-  set text(
-    size: 10pt,
-    style: "normal",
-    weight: "light",
-    fill: color-darknight,
-  )
-  set block(
-    above: 0.75em,
-    below: 1.25em,
-  )
+  set text(size: 10pt, style: "normal", weight: "light", fill: color-darknight)
+  set block(above: 0.75em, below: 1.25em)
   set par(leading: 0.65em)
   block(above: 0.5em)[
     #body
@@ -525,11 +467,7 @@
 /// *Example:*
 /// #example(`resume.resume-gpa("3.5", "4.0")`)
 #let resume-gpa(numerator, denominator) = {
-  set text(
-    size: 12pt,
-    style: "italic",
-    weight: "light",
-  )
+  set text(size: 12pt, style: "italic", weight: "light")
   text[Cumulative GPA: #box[#strong[#numerator] / #denominator]]
 }
 
@@ -548,7 +486,7 @@
 #let resume-skill-item(category, items) = {
   set block(below: 0.65em)
   set pad(top: 2pt)
-  
+
   pad[
     #grid(
       columns: (20fr, 80fr),
@@ -558,11 +496,7 @@
         == #category
       ],
       align(left)[
-        #set text(
-          size: 11pt,
-          style: "normal",
-          weight: "light",
-        )
+        #set text(size: 11pt, style: "normal", weight: "light")
         #items.join(", ")
       ],
     )
@@ -575,10 +509,11 @@
 
 #let default-closing(lang_data) = {
   align(bottom)[
-    #text(weight: "light", style: "italic")[ #linguify(
-        "attached",
+    #text(weight: "light", style: "italic")[
+      #linguify("attached", from: lang_data)#sym.colon #linguify(
+        "curriculum-vitae",
         from: lang_data,
-      )#sym.colon #linguify("curriculum-vitae", from: lang_data)]
+      )]
   ]
 }
 
@@ -602,7 +537,7 @@
   accent-color: default-accent-color,
   language: "en",
   font: ("Source Sans Pro", "Source Sans 3"),
-  header-font: ("Roboto"),
+  header-font: "Roboto",
   show-footer: true,
   closing: none,
   paper-size: "a4",
@@ -612,26 +547,24 @@
   if type(accent-color) == str {
     accent-color = rgb(accent-color)
   }
-  
+
   // language data
   let lang_data = toml("lang.toml")
-  
+
   if closing == none {
     closing = default-closing(lang_data)
   }
-  
+
   show: body => context {
     set document(
       author: author.firstname + " " + author.lastname,
-      title: lflib._linguify(
-        "cover-letter",
-        lang: language,
-        from: lang_data,
-      ).ok,
+      title: lflib
+        ._linguify("cover-letter", lang: language, from: lang_data)
+        .ok,
     )
     body
   }
-  
+
   set text(
     font: font,
     lang: language,
@@ -639,7 +572,7 @@
     fill: color-darkgray,
     fallback: true,
   )
-  
+
   set page(
     paper: paper-size,
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
@@ -652,93 +585,66 @@
       )] else [],
     footer-descent: 0pt,
   )
-  
+
   // set paragraph spacing
-  set par(
-    spacing: 0.75em,
-    justify: true,
-  )
-  
-  set heading(
-    numbering: none,
-    outlined: false,
-  )
-  
+  set par(spacing: 0.75em, justify: true)
+
+  set heading(numbering: none, outlined: false)
+
   show heading: it => [
-    #set block(
-      above: 1em,
-      below: 1em,
-    )
-    #set text(
-      size: 16pt,
-      weight: "regular",
-    )
-    
+    #set block(above: 1em, below: 1em)
+    #set text(size: 16pt, weight: "regular")
+
     #align(left)[
       #text[#strong[#text(accent-color)[#it.body]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]
-  
+
   let name = {
     align(right)[
       #pad(bottom: 5pt)[
         #block[
-          #set text(
-            size: 32pt,
-            style: "normal",
-            font: header-font,
-          )
+          #set text(size: 32pt, style: "normal", font: header-font)
           #if language == "zh" or language == "ja" [
-            #text(
-              accent-color,
-              weight: "thin",
-            )[#author.firstname]#text(weight: "bold")[#author.lastname]
+            #text(accent-color, weight: "thin")[#author.firstname]#text(
+              weight: "bold",
+            )[#author.lastname]
           ] else [
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
           ]
-          
+
         ]
       ]
     ]
   }
-  
+
   let positions = {
-    set text(
-      accent-color,
-      size: 9pt,
-      weight: "regular",
-    )
+    set text(accent-color, size: 9pt, weight: "regular")
     align(right)[
       #__apply_smallcaps(
-        author.positions.join(
-          text[#"  "#sym.dot.c#"  "],
-        ),
-        use-smallcaps
+        author.positions.join(text[#"  "#sym.dot.c#"  "]),
+        use-smallcaps,
       )
     ]
   }
-  
+
   let address = {
-    set text(
-      size: 9pt,
-      weight: "bold",
-      fill: color-gray,
-    )
+    set text(size: 9pt, weight: "bold", fill: color-gray)
     align(right)[
       #if ("address" in author) [
         #author.address
       ]
     ]
   }
-  
+
   let contacts = {
     set box(height: 9pt)
-    
+
     let separator = [ #box(sym.bar.v) ]
     let author_list = ()
-    
+
     if ("phone" in author) {
       author_list.push[
         #phone-icon
@@ -761,7 +667,9 @@
       author_list.push[
         #linkedin-icon
         #box[
-          #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
+          #link(
+            "https://www.linkedin.com/in/" + author.linkedin,
+          )[#author.firstname #author.lastname]
         ]
       ]
     }
@@ -777,22 +685,18 @@
         #box[#link(author.website)[#author.website]]
       ]
     }
-    
-    
+
+
     align(right)[
-      #set text(
-        size: 8pt,
-        weight: "light",
-        style: "normal",
-      )
+      #set text(size: 8pt, weight: "light", style: "normal")
       #author_list.join(separator)
     ]
   }
-  
+
   let letter-heading = {
     grid(
       columns: (1fr, 2fr),
-      rows: (100pt),
+      rows: 100pt,
       align(left + horizon)[
         #block(
           clip: true,
@@ -811,19 +715,18 @@
       ],
     )
   }
-  
+
   let signature = {
     align(bottom)[
       #pad(bottom: 2em)[
-        #text(weight: "light")[#linguify(
-            "sincerely",
-            from: lang_data,
-          )#if language != "de" [#sym.comma]] \
+        #text(weight: "light")[#linguify("sincerely", from: lang_data)#if (
+            language != "de"
+          ) [#sym.comma]] \
         #text(weight: "bold")[#author.firstname #author.lastname] \ \
       ]
     ]
   }
-  
+
   // actual content
   letter-heading
   body
@@ -847,7 +750,7 @@
     ][
       #text(weight: "light", style: "italic", size: 9pt)[#date]
     ]
-    
+
     #pad(top: 0.65em, bottom: 0.65em)[
       #text(weight: "regular", fill: color-gray, size: 9pt)[
         #__apply_smallcaps(entity-info.name, use-smallcaps) \
@@ -864,7 +767,7 @@
 /// - dear (string): optional field for redefining the "dear" variable
 #let letter-heading(job-position: "", addressee: "", dear: "") = {
   let lang_data = toml("lang.toml")
-  
+
   // TODO: Make this adaptable to content
   underline(evade: false, stroke: 0.5pt, offset: 0.3em)[
     #text(weight: "bold", size: 12pt)[#linguify(

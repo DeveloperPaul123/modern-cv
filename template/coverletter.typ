@@ -26,7 +26,7 @@
   // set this to `none` to show the default or remove it completely
   closing: [],
   // see typst "page" documentation for more options
-  paper-size: "us-gov-legal"
+  paper-size: "us-gov-legal",
 )
 
 #hiring-entity-info(entity-info: (
@@ -36,10 +36,7 @@
   city: "MOUNTAIN VIEW, CA 94043",
 ))
 
-#letter-heading(
-  job-position: "Software Engineer",
-  addressee: "Sir or Madame",
-)
+#letter-heading(job-position: "Software Engineer", addressee: "Sir or Madame")
 
 = About Me
 #coverletter-content[
