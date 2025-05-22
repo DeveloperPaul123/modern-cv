@@ -201,6 +201,7 @@
   header-font: "Roboto",
   paper-size: "a4",
   use-smallcaps: true,
+  show-address-icon: false,
   body,
 ) = {
   if type(accent-color) == str {
@@ -298,8 +299,12 @@
     set text(size: 9pt, weight: "regular")
     align(center)[
       #if ("address" in author) [
-        #address-icon
-        #author.address
+        #if show-address-icon [
+          #address-icon
+          #box[#text(author.address)]
+        ] else [
+          #text(author.address)
+        ]
       ]
     ]
   }
@@ -544,6 +549,7 @@
   closing: none,
   paper-size: "a4",
   use-smallcaps: true,
+  show-address-icon: false,
   body,
 ) = {
   if type(accent-color) == str {
@@ -636,8 +642,12 @@
     set text(size: 9pt, weight: "bold", fill: color-gray)
     align(right)[
       #if ("address" in author) [
-        #address-icon
-        #box[#text(author.address)]
+        #if show-address-icon [
+          #address-icon
+          #box[#text(author.address)]
+        ] else [
+          #text(author.address)
+        ]
       ]
     ]
   }

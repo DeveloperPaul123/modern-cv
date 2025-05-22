@@ -23,6 +23,8 @@
   // Remove the following line to show the footer
   // Or set the value to `true`
   show-footer: false,
+  // this defaults to false
+  show-address-icon: true,
   // set this to `none` to show the default or remove it completely
   closing: [],
   // see typst "page" documentation for more options
