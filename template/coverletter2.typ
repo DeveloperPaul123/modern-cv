@@ -26,10 +26,7 @@
   city: "MOUNTAIN VIEW, CA 94043",
 ))
 
-#letter-heading(
-  job-position: "Software Engineer",
-  addressee: "Sir or Madame",
-)
+#letter-heading(job-position: "Software Engineer", addressee: "Sir or Madame")
 
 #coverletter-content[
   #lorem(100)
