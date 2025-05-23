@@ -25,6 +25,7 @@
   language: "en",
   colored-headers: true,
   show-footer: false,
+  show-address-icon: true,
   paper-size: "us-letter",
 )
 

@@ -21,6 +21,7 @@
 #let birth-icon = box(fa-icon("cake", fill: color-darknight))
 #let homepage-icon = box(fa-icon("home", fill: color-darknight))
 #let website-icon = box(fa-icon("globe", fill: color-darknight))
+#let address-icon = box(fa-icon("location-crosshairs", fill: color-darknight))
 
 /// Helpers
 
@@ -200,6 +201,7 @@
   header-font: "Roboto",
   paper-size: "a4",
   use-smallcaps: true,
+  show-address-icon: false,
   body,
 ) = {
   if type(accent-color) == str {
@@ -297,7 +299,12 @@
     set text(size: 9pt, weight: "regular")
     align(center)[
       #if ("address" in author) [
-        #author.address
+        #if show-address-icon [
+          #address-icon
+          #box[#text(author.address)]
+        ] else [
+          #text(author.address)
+        ]
       ]
     ]
   }
@@ -542,6 +549,7 @@
   closing: none,
   paper-size: "a4",
   use-smallcaps: true,
+  show-address-icon: false,
   body,
 ) = {
   if type(accent-color) == str {
@@ -634,7 +642,12 @@
     set text(size: 9pt, weight: "bold", fill: color-gray)
     align(right)[
       #if ("address" in author) [
-        #author.address
+        #if show-address-icon [
+          #address-icon
+          #box[#text(author.address)]
+        ] else [
+          #text(author.address)
+        ]
       ]
     ]
   }
