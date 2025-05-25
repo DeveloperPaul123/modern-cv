@@ -93,21 +93,27 @@
 
 = Skills
 
-#resume-skill-item("Languages", (
-  strong("C++"),
-  strong("Python"),
-  "Java",
-  "C#",
-  "JavaScript",
-  "TypeScript",
-))
+#resume-skill-item(
+  "Languages",
+  (
+    strong("C++"),
+    strong("Python"),
+    "Java",
+    "C#",
+    "JavaScript",
+    "TypeScript",
+  ),
+)
 #resume-skill-item("Spoken Languages", (strong("English"), "Spanish"))
-#resume-skill-item("Programs", (
-  strong("Excel"),
-  "Word",
-  "Powerpoint",
-  "Visual Studio",
-))
+#resume-skill-item(
+  "Programs",
+  (
+    strong("Excel"),
+    "Word",
+    "Powerpoint",
+    "Visual Studio",
+  ),
+)
 
 = Education
 

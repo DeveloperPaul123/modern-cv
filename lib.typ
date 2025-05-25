@@ -273,9 +273,7 @@
         #block[
           #set text(size: 32pt, style: "normal", font: header-font)
           #if language == "zh" or language == "ja" [
-            #text(accent-color, weight: "thin")[#author.firstname]#text(
-              weight: "bold",
-            )[#author.lastname]
+            #text(accent-color, weight: "thin")[#author.firstname]#text(weight: "bold")[#author.lastname]
           ] else [
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
@@ -350,33 +348,25 @@
           #if ("bitbucket" in author) [
             #separator
             #bitbucket-icon
-            #box[#link(
-                "https://bitbucket.org/" + author.bitbucket,
-              )[#author.bitbucket]]
+            #box[#link("https://bitbucket.org/" + author.bitbucket)[#author.bitbucket]]
           ]
           #if ("linkedin" in author) [
             #separator
             #linkedin-icon
             #box[
-              #link(
-                "https://www.linkedin.com/in/" + author.linkedin,
-              )[#author.firstname #author.lastname]
+              #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
             ]
           ]
           #if ("twitter" in author) [
             #separator
             #twitter-icon
-            #box[#link(
-                "https://twitter.com/" + author.twitter,
-              )[\@#author.twitter]]
+            #box[#link("https://twitter.com/" + author.twitter)[\@#author.twitter]]
           ]
           #if ("scholar" in author) [
             #let fullname = str(author.firstname + " " + author.lastname)
             #separator
             #google-scholar-icon
-            #box[#link(
-                "https://scholar.google.com/citations?user=" + author.scholar,
-              )[#fullname]]
+            #box[#link("https://scholar.google.com/citations?user=" + author.scholar)[#fullname]]
           ]
           #if ("orcid" in author) [
             #separator
@@ -566,9 +556,7 @@
   show: body => context {
     set document(
       author: author.firstname + " " + author.lastname,
-      title: lflib
-        ._linguify("cover-letter", lang: language, from: lang_data)
-        .ok,
+      title: lflib._linguify("cover-letter", lang: language, from: lang_data).ok,
     )
     body
   }
@@ -615,9 +603,7 @@
         #block[
           #set text(size: 32pt, style: "normal", font: header-font)
           #if language == "zh" or language == "ja" [
-            #text(accent-color, weight: "thin")[#author.firstname]#text(
-              weight: "bold",
-            )[#author.lastname]
+            #text(accent-color, weight: "thin")[#author.firstname]#text(weight: "bold")[#author.lastname]
           ] else [
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
@@ -680,9 +666,7 @@
       author_list.push[
         #linkedin-icon
         #box[
-          #link(
-            "https://www.linkedin.com/in/" + author.linkedin,
-          )[#author.firstname #author.lastname]
+          #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
         ]
       ]
     }
