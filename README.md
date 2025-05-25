@@ -1,4 +1,8 @@
-# Modern CV
+<h1 align="center">
+  <img src="assets/images/header.png" alt="Header">
+  <br><br>
+  Modern CV
+</h1>
 
 [![say thanks](https://img.shields.io/badge/Say%20Thanks-👍-1EAEDB.svg)](https://github.com/DeveloperPaul123/modern-cv/stargazers)
 [![Discord](https://img.shields.io/discord/652515194572111872?logo=Discord)](https://discord.gg/CX2ybByRnt)
@@ -6,6 +10,20 @@
 [![Tests](https://github.com/DeveloperPaul123/modern-cv/actions/workflows/tests.yml/badge.svg)](https://github.com/DeveloperPaul123/modern-cv/actions/workflows/tests.yml)  
 
 A port of the [Awesome-CV](https://github.com/posquit0/Awesome-CV) Latex resume template in [typst](https://github.com/typst/typst).
+
+## Features
+
+- Modern and clean design
+- Easy to use and customize (colors, profile picture, fonts, etc.)
+- Support for multiple sections (education, experience, skills, etc.)
+- Support for multiple languages
+
+## Preview
+
+| Resumes | Cover letters |
+| --- | --- |
+| ![Resume](assets/images/resume.png) | ![Cover Letter](assets/images/coverletter.png) |
+| ![Resume 2](assets/images/resume2.png) | ![Cover Letter 2](assets/images/coverletter2.png)|
 
 ## Requirements
 
@@ -84,13 +102,6 @@ typst compile resume.typ
 For more information on how to use and compile `typst` files, see the [official documentation](https://typst.app/docs).
 
 Documentation for this template is published with each commit. See the attached PDF on each Github Action run [here](https://github.com/DeveloperPaul123/modern-cv/actions).
-
-### Output Examples
-
-| Resumes | Cover letters |
-| --- | --- |
-| ![Resume](assets/images/resume.png) | ![Cover Letter](assets/images/coverletter.png) |
-| ![Resume 2](assets/images/resume2.png) | ![Cover Letter 2](assets/images/coverletter2.png)|
 
 ## Building and Testing Locally
 
