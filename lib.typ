@@ -486,9 +486,9 @@
 
   pad[
     #grid(
-      columns: (20fr, 80fr),
+      columns: (3fr, 8fr),
       gutter: 10pt,
-      align(right)[
+      align(left)[
         #set text(hyphenate: false)
         == #category
       ],
@@ -700,7 +700,7 @@
           stroke: 0pt,
           radius: 2cm,
           width: 4cm,
-          height: 4cm,
+          height: auto,
           profile-picture,
         )
       ],
