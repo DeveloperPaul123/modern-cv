@@ -477,6 +477,25 @@
   justified-header(certification, date)
 }
 
+/// Styling for resume skill categories.
+/// - category (string): The category
+#let resume-skill-category(category) = {
+  align(left)[
+    #set text(hyphenate: false)
+    == #category
+  ]
+}
+
+/// Styling for resume skill values/items
+/// - values (array): The skills to display
+#let resume-skill-values(values) = {
+  align(left)[
+    #set text(size: 11pt, style: "normal", weight: "light")
+    // This is a list so join by comma (,)
+    #values.join(", ")
+  ]
+}
+
 /// Show a list of skills in the resume under a given category.
 /// - category (string): The category of the skills
 /// - items (list): The list of skills. This can be a list of strings but you can also emphasize certain skills by using the `strong` function.
@@ -488,14 +507,28 @@
     #grid(
       columns: (3fr, 8fr),
       gutter: 10pt,
-      align(left)[
-        #set text(hyphenate: false)
-        == #category
-      ],
-      align(left)[
-        #set text(size: 11pt, style: "normal", weight: "light")
-        #items.join(", ")
-      ],
+      resume-skill-category(category), resume-skill-values(items),
+    )
+  ]
+}
+
+/// Show a grid of skill lists with each row corresponding to a category of skills, followed by the skills themselves. The dictionary given to this function should have the skill categories as the dictionary keys and the values should be an array of values for the corresponding key.
+/// - categories_with_values (dictionary): key value pairs of skill categories and it's corresponding values (skills)
+#let resume-skill-grid(categories_with_values: (:)) = {
+  set block(below: 1.25em)
+  set pad(top: 2pt)
+
+  pad[
+    #grid(
+      columns: (auto, auto),
+      gutter: 10pt,
+      ..categories_with_values
+        .pairs()
+        .map(((key, value)) => (
+          resume-skill-category(key),
+          resume-skill-values(value),
+        ))
+        .flatten()
     )
   ]
 }
