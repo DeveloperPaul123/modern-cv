@@ -55,8 +55,8 @@ jobs:
           ./scripts/install-source-sans
           typst fonts
 
-      - name: Install locally
-        run: just install
+      - name: Uninstall previous local install
+        run: just uninstall
 
       - name: Run test suite
         run: just test
