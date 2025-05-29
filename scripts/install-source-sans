@@ -8,4 +8,14 @@ mkdir -p ~/.fonts
 find ~/source-sans-fonts -type f -name "*.otf" -exec cp {} ~/.fonts \;
 rm ~/source-sans.zip
 rm -rf ~/source-sans-fonts
+
+wget -O ~/source-sans-pro.zip https://github.com/adobe-fonts/source-sans-pro/archive/2.020R-ro/1.075R-it.zip
+mkdir -p ~/source-sans-pro-fonts
+unzip ~/source-sans-pro.zip -d ~/source-sans-pro-fonts
+mkdir -p ~/.fonts
+find ~/source-sans-pro-fonts -type f -name "*.otf" -exec cp {} ~/.fonts \;
+# clean up
+rm ~/source-sans-pro.zip
+rm -rf ~/source-sans-pro-fonts
+
 fc-cache -f -v
