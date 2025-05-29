@@ -59,7 +59,9 @@ jobs:
         run: just uninstall
 
       - name: Run test suite
-        run: tt run --font-path ~/.fonts --no-fail-fast
+        run: |
+          just install
+          tt run --font-path ~/.fonts --no-fail-fast
 
       - name: Archive diffs
         uses: actions/upload-artifact@v4
