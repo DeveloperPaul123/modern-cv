@@ -612,7 +612,7 @@
         lang_data,
         use-smallcaps: use-smallcaps,
       )] else [],
-    footer-descent: 0pt,
+    footer-descent: 2mm,
   )
 
   // set paragraph spacing
