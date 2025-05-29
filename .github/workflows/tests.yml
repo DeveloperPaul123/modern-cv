@@ -1,9 +1,9 @@
 name: Tests
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   tests:
@@ -37,29 +37,31 @@ jobs:
         with:
           crate: just
 
-      - name: Install tytanic from github
-        uses: baptiste0928/cargo-install@v3
+      - name: Install tytanic
+        uses: taiki-e/cache-cargo-install-action@v2
         with:
-          crate: tytanic
+          tool: tytanic@0.2.2
 
       - name: Setup typst
         uses: typst-community/setup-typst@v3
         with:
           typst-version: ${{ matrix.typst-version }}
-    
+
       - name: Install fonts
         run: |
-            sudo apt update
-            sudo apt-get install fonts-roboto
-            ./scripts/install-fontawesome
-            ./scripts/install-source-sans
-            typst fonts
+          sudo apt update
+          sudo apt-get install fonts-roboto
+          ./scripts/install-fontawesome
+          ./scripts/install-source-sans
+          typst fonts
 
-      - name: Install locally
-        run: just install
+      - name: Uninstall previous local install
+        run: just uninstall
 
       - name: Run test suite
-        run: just test
+        run: |
+          just install
+          tt run --font-path ~/.fonts --no-fail-fast
 
       - name: Archive diffs
         uses: actions/upload-artifact@v4
@@ -75,7 +77,7 @@ jobs:
       - name: Build docs
         if: ${{ matrix.doc }}
         run: just doc
-     
+
       - name: Upload docs
         uses: actions/upload-artifact@v4
         with:
