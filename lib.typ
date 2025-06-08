@@ -378,6 +378,19 @@
             #website-icon
             #box[#link(author.website)[#author.website]]
           ]
+          #if ("custom" in author and "text" in author.custom) [
+            #separator
+            #if ("icon" in author.custom) [
+              #box(fa-icon(author.custom.icon, fill: color-darknight))
+            ]
+            #box[
+              #if ("link" in author.custom) [
+                #link(author.custom.link)[#author.custom.text]
+              ] else [
+                #author.custom.text
+              ]
+            ]
+          ]
         ]
       ]
     ]
@@ -713,6 +726,25 @@
       author_list.push[
         #website-icon
         #box[#link(author.website)[#author.website]]
+      ]
+    }
+    if (
+      "custom" in author
+        and "text" in author.custom
+        and "show-in-contacts" in author.custom
+        and author.custom.show-in-contacts
+    ) {
+      author_list.push[
+        #if ("icon" in author.custom) [
+          #box(fa-icon(author.custom.icon, fill: color-darknight))
+        ]
+        #box[
+          #if ("link" in author.custom) [
+            #link(author.custom.link)[#author.custom.text]
+          ] else [
+            #author.custom.text
+          ]
+        ]
       ]
     }
 
