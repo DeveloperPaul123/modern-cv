@@ -22,6 +22,7 @@
 #let homepage-icon = box(fa-icon("home", fill: color-darknight))
 #let website-icon = box(fa-icon("globe", fill: color-darknight))
 #let address-icon = box(fa-icon("location-crosshairs", fill: color-darknight))
+#let telegram-icon = box(fa-icon("telegram", fill: color-darknight))
 
 /// Helpers
 
@@ -293,6 +294,12 @@
     ]
   }
 
+  let telegram = {
+    set text(size: 9pt, weight: "regular")
+    align(center)[
+    ]
+  }
+
   let address = {
     set text(size: 9pt, weight: "regular")
     align(center)[
@@ -377,6 +384,11 @@
             #separator
             #website-icon
             #box[#link(author.website)[#author.website]]
+          ]
+          #if ("telegram" in author) [
+            #separator
+            #telegram-icon
+            #box[#link("https://t.me/" + author.telegram.replace("@", ""))[#author.telegram]]
           ]
         ]
       ]
