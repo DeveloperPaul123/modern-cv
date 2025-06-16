@@ -1,4 +1,4 @@
-#import "@preview/modern-cv:0.8.0": *
+#import "@preview/modern-cv:0.8.1": *
 
 #show: resume.with(
   author: (
@@ -12,6 +12,7 @@
     scholar: "",
     orcid: "0000-0000-0000-000X",
     birth: "January 1, 1990",
+    telegram: "@Paul123",
     linkedin: "Example",
     address: "111 Example St. Example City, EX 11111",
     positions: (

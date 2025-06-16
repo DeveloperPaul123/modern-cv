@@ -60,6 +60,7 @@
 #website-icon
 #gitlab-icon
 #bitbucket-icon
+#telegram-icon
 
 #square(size: 1em, fill: color-darkgray)
 #square(size: 1em, fill: color-darknight)

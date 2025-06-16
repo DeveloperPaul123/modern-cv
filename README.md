@@ -105,6 +105,27 @@ Documentation for this template is published with each commit. See the attached 
 
 ## Building and Testing Locally
 
+<details>
+
+<summary>MacOS</summary>
+
+For `MacOS` you need to download bash from `homebrew`, as it uses the `readarray` method which is not present in the `MacOS` version of `bash`
+3.2 +
+
+```shell
+  brew install bash bash-completion tt 
+```
+
+</details>
+
+<details>
+
+<summary>Linux</summary>
+
+TODO
+
+</details>
+
 To build and test the project locally, you will need to install the `typst` CLI. You can find instructions on how to do this [here](https://github.com/typst/typst#installation).
 
 With typst installed you can make changes to `lib.typ` and then `just install` or `just install-preview` to install the package locally. Change the import statements in the template files to point to the local package (if needed):
