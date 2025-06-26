@@ -19,6 +19,13 @@
       "Software Architect",
       "Developer",
     ),
+    custom: (
+      (
+        text: "Youtube Channel",
+        icon: "youtube",
+        link: "https://example.com",
+      ),
+    ),
   ),
   profile-picture: image("profile.png"),
   date: datetime.today().display(),
@@ -139,7 +146,7 @@
 //       strong("Excel"),
 //       "Word",
 //       "Powerpoint",
-//       "Visual Studio", 
+//       "Visual Studio",
 //       "git",
 //       "Zed"
 //     ),

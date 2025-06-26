@@ -378,16 +378,20 @@
             #website-icon
             #box[#link(author.website)[#author.website]]
           ]
-          #if ("custom" in author and "text" in author.custom) [
-            #separator
-            #if ("icon" in author.custom) [
-              #box(fa-icon(author.custom.icon, fill: color-darknight))
-            ]
-            #box[
-              #if ("link" in author.custom) [
-                #link(author.custom.link)[#author.custom.text]
-              ] else [
-                #author.custom.text
+          #if ("custom" in author and type(author.custom) == array) [
+            #for item in author.custom [
+              #if ("text" in item) [
+                #separator
+                #if ("icon" in item) [
+                  #box(fa-icon(item.icon, fill: color-darknight))
+                ]
+                #box[
+                  #if ("link" in item) [
+                    #link(item.link)[#item.text]
+                  ] else [
+                    #item.text
+                  ]
+                ]
               ]
             ]
           ]
@@ -562,7 +566,7 @@
 
 /// Cover letter template that is inspired by the Awesome CV Latex template by posquit0. This template can loosely be considered a port of the original Latex template.
 /// This coverletter template is designed to be used with the resume template.
-/// - author (content): Structure that takes in all the author's information. The following fields are required: firstname, lastname, positions. The following fields are used if available: email, phone, github, linkedin, orcid, address, website.
+/// - author (content): Structure that takes in all the author's information. The following fields are required: firstname, lastname, positions. The following fields are used if available: email, phone, github, linkedin, orcid, address, website, custom. The `custom` field is an array of additional entries with the following fields: text (string, required), icon (string, optional Font Awesome icon name), link (string, optional).
 /// - profile-picture (image): The profile picture of the author. This will be cropped to a circle and should be square in nature.
 /// - date (datetime): The date the cover letter was created. This will default to the current date.
 /// - accent-color (color): The accent color of the cover letter
@@ -728,24 +732,24 @@
         #box[#link(author.website)[#author.website]]
       ]
     }
-    if (
-      "custom" in author
-        and "text" in author.custom
-        and "show-in-contacts" in author.custom
-        and author.custom.show-in-contacts
-    ) {
-      author_list.push[
-        #if ("icon" in author.custom) [
-          #box(fa-icon(author.custom.icon, fill: color-darknight))
-        ]
-        #box[
-          #if ("link" in author.custom) [
-            #link(author.custom.link)[#author.custom.text]
-          ] else [
-            #author.custom.text
+
+    if ("custom" in author and type(author.custom) == array) {
+      for item in author.custom {
+        if ("text" in item) {
+          author_list.push[
+            #if ("icon" in item) [
+              #box(fa-icon(item.icon, fill: color-darknight))
+            ]
+            #box[
+              #if ("link" in item) [
+                #link(item.link)[#item.text]
+              ] else [
+                #item.text
+              ]
+            ]
           ]
-        ]
-      ]
+        }
+      }
     }
 
 
