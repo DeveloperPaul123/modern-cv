@@ -14,6 +14,13 @@
       "Software Engineer",
       "Full Stack Developer",
     ),
+    custom: (
+      (
+        text: "Youtube Channel",
+        icon: "youtube",
+        link: "http://example.com",
+      ),
+    ),
   ),
   profile-picture: none,
   language: "sp",
