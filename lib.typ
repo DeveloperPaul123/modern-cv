@@ -697,7 +697,7 @@
     if ("phone" in author) {
       author_list.push[
         #phone-icon
-        #box[#text(author.phone)]
+        #box[#link("tel:" + author.phone)[#author.phone]]
       ]
     }
     if ("email" in author) {
