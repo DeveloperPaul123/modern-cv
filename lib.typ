@@ -323,7 +323,7 @@
           ]
           #if ("phone" in author) [
             #phone-icon
-            #box[#text(author.phone)]
+            #box[#link("tel:" + author.phone)[#author.phone]]
             #separator
           ]
           #if ("email" in author) [
