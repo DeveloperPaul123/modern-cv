@@ -401,27 +401,37 @@
   }
 
   if profile-picture != none {
-    grid(
-      columns: (100% - 4cm, 4cm),
-      rows: 100pt,
-      gutter: 10pt,
-      [
-        #name
-        #positions
-        #address
-        #contacts
-      ],
-      align(left + horizon)[
-        #block(
-          clip: true,
-          stroke: 0pt,
-          radius: 2cm,
-          width: 4cm,
-          height: 4cm,
-          profile-picture,
+    context {
+      let title-info = [
+                        #name
+                        #positions
+                        #address
+                        #contacts
+                    ]
+
+      let t = measure(title-info)
+      let gutter_size = 10pt
+      let h_size = t.height + gutter_size
+
+      align(center)[
+        #grid(
+          columns: (t.width, auto),
+          rows: (h_size),
+          gutter: gutter_size,
+          title-info,
+          align(left + horizon)[
+            #block(
+              clip: true,
+              stroke: 0pt,
+              radius: 100%,
+              width: h_size,
+              height: h_size,
+              profile-picture,
+            )
+          ],
         )
-      ],
-    )
+      ]
+    }
   } else {
     name
     positions
