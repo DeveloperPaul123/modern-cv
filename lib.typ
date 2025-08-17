@@ -217,7 +217,7 @@
 
   let desc = if description == none {
     lflib._linguify("resume", lang: language, from: lang_data).ok + " " + author.firstname + " " + author.lastname
-  }else {
+  } else {
     description
   }
 
