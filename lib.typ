@@ -180,13 +180,16 @@
 ///
 /// The original template: https://github.com/posquit0/Awesome-CV
 ///
-/// - author (content): Structure that takes in all the author's information
+/// - author (dictionary): Structure that takes in all the author's information
 /// - profile-picture (image): The profile picture of the author. This will be cropped to a circle and should be square in nature.
 /// - date (string): The date the resume was created
 /// - accent-color (color): The accent color of the resume
 /// - colored-headers (boolean): Whether the headers should be colored or not
 /// - language (string): The language of the resume, defaults to "en". See lang.toml for available languages
 /// - use-smallcaps (boolean): Whether to use small caps formatting throughout the template
+/// - show-address-icon (boolean): Whether to show the address icon
+/// - description (str | none): The PDF description
+/// - keywords (array | str): The PDF keywords
 /// - body (content): The body of the resume
 /// -> none
 #let resume(
@@ -202,6 +205,8 @@
   paper-size: "a4",
   use-smallcaps: true,
   show-address-icon: false,
+  description: none,
+  keywords: (),
   body,
 ) = {
   if type(accent-color) == str {
@@ -210,10 +215,18 @@
 
   let lang_data = toml("lang.toml")
 
+  let desc = if description == none {
+    lflib._linguify("resume", lang: language, from: lang_data).ok + " " + author.firstname + " " + author.lastname
+  }else {
+    description
+  }
+
   show: body => context {
     set document(
       author: author.firstname + " " + author.lastname,
       title: lflib._linguify("resume", lang: language, from: lang_data).ok,
+      description: desc,
+      keywords: keywords,
     )
     body
   }
