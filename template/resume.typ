@@ -27,6 +27,8 @@
       ),
     ),
   ),
+  keywords: ("Engineer", "Architect"),
+  description: "John complete resume",
   profile-picture: image("profile.png"),
   date: datetime.today().display(),
   language: "en",
