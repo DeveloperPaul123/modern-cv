@@ -579,7 +579,7 @@
 
 /// Cover letter template that is inspired by the Awesome CV Latex template by posquit0. This template can loosely be considered a port of the original Latex template.
 /// This coverletter template is designed to be used with the resume template.
-/// - author (dictionnary): Structure that takes in all the author's information. The following fields are required: firstname, lastname, positions. The following fields are used if available: email, phone, github, linkedin, orcid, address, website, custom. The `custom` field is an array of additional entries with the following fields: text (string, required), icon (string, optional Font Awesome icon name), link (string, optional).
+/// - author (dictionary): Structure that takes in all the author's information. The following fields are required: firstname, lastname, positions. The following fields are used if available: email, phone, github, linkedin, orcid, address, website, custom. The `custom` field is an array of additional entries with the following fields: text (string, required), icon (string, optional Font Awesome icon name), link (string, optional).
 /// - profile-picture (image): The profile picture of the author. This will be cropped to a circle and should be square in nature.
 /// - date (datetime): The date the cover letter was created. This will default to the current date.
 /// - accent-color (color): The accent color of the cover letter
