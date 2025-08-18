@@ -579,7 +579,7 @@
 
 /// Cover letter template that is inspired by the Awesome CV Latex template by posquit0. This template can loosely be considered a port of the original Latex template.
 /// This coverletter template is designed to be used with the resume template.
-/// - author (content): Structure that takes in all the author's information. The following fields are required: firstname, lastname, positions. The following fields are used if available: email, phone, github, linkedin, orcid, address, website, custom. The `custom` field is an array of additional entries with the following fields: text (string, required), icon (string, optional Font Awesome icon name), link (string, optional).
+/// - author (dictionnary): Structure that takes in all the author's information. The following fields are required: firstname, lastname, positions. The following fields are used if available: email, phone, github, linkedin, orcid, address, website, custom. The `custom` field is an array of additional entries with the following fields: text (string, required), icon (string, optional Font Awesome icon name), link (string, optional).
 /// - profile-picture (image): The profile picture of the author. This will be cropped to a circle and should be square in nature.
 /// - date (datetime): The date the cover letter was created. This will default to the current date.
 /// - accent-color (color): The accent color of the cover letter
@@ -589,6 +589,9 @@
 /// - show-footer (boolean): Whether to show the footer or not
 /// - closing (content): The closing of the cover letter. This defaults to "Attached Curriculum Vitae". You can set this to `none` to show the default closing or remove it completely.
 /// - use-smallcaps (boolean): Whether to use small caps formatting throughout the template
+/// - show-address-icon (boolean): Whether to show the address icon
+/// - description (str | none): The PDF description
+/// - keywords (array | str): The PDF keywords
 /// - body (content): The body of the cover letter
 #let coverletter(
   author: (:),
@@ -603,6 +606,8 @@
   paper-size: "a4",
   use-smallcaps: true,
   show-address-icon: false,
+  description: none,
+  keywords: (),
   body,
 ) = {
   if type(accent-color) == str {
@@ -616,10 +621,18 @@
     closing = default-closing(lang_data)
   }
 
+  let desc = if description == none {
+    lflib._linguify("cover-letter", lang: language, from: lang_data).ok + " " + author.firstname + " " + author.lastname
+  } else {
+    description
+  }
+
   show: body => context {
     set document(
       author: author.firstname + " " + author.lastname,
       title: lflib._linguify("cover-letter", lang: language, from: lang_data).ok,
+      description: desc,
+      keywords: keywords,
     )
     body
   }
