@@ -28,7 +28,7 @@
 // Common helper functions
 #let __format_author_name(author, language) = {
   if language == "zh" or language == "ja" {
-    str(author.firstname) + str(author.lastname)
+    str(author.lastname) + str(author.firstname)
   } else {
     str(author.firstname) + " " + str(author.lastname)
   }
@@ -286,7 +286,7 @@
         #block[
           #set text(size: 32pt, style: "normal", font: header-font)
           #if language == "zh" or language == "ja" [
-            #text(accent-color, weight: "thin")[#author.firstname]#text(weight: "bold")[#author.lastname]
+            #text(accent-color, weight: "bold")[#author.lastname]#text(weight: "thin")[#author.firstname]
           ] else [
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
@@ -679,7 +679,7 @@
         #block[
           #set text(size: 32pt, style: "normal", font: header-font)
           #if language == "zh" or language == "ja" [
-            #text(accent-color, weight: "thin")[#author.firstname]#text(weight: "bold")[#author.lastname]
+            #text(accent-color, weight: "bold")[#author.lastname]#text(weight: "bold")[#author.firstname]
           ] else [
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
