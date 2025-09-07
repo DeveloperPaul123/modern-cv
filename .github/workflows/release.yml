@@ -50,6 +50,15 @@ jobs:
         run: |
           just doc
           just package out
+      - name: Upload manual
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: docs/manual.pdf
+          asset_name: "${PKG_NAME}-${PKG_VERSION}-manual.pdf"
+          asset_content_type: application/pdf
 
       - name: Checkout package registry
         uses: actions/checkout@v4
