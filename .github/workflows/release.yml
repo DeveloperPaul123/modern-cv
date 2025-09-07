@@ -53,6 +53,8 @@ jobs:
 
       - name: Upload manual
         run: gh release upload ${{ github.event.release.tag_name }} docs/manual.pdf
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Checkout package registry
         uses: actions/checkout@v4
