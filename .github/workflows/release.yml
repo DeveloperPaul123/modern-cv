@@ -64,8 +64,8 @@ jobs:
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
           asset_path: docs/manual.pdf
-          asset_name: "${PKG_NAME}-${PKG_VERSION}-manual.pdf"
-          asset_content_type: application/pdf
+          asset_name: manual.pdf
+          asset_content_type: application/octet-stream
 
       - name: Checkout package registry
         uses: actions/checkout@v4
