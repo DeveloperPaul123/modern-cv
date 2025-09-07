@@ -30,7 +30,7 @@
   // see typst "page" documentation for more options
   paper-size: "us-gov-legal",
   description: "Cover letter of John",
-  keywords: ("Software"),
+  keywords: "Software",
 )
 
 #hiring-entity-info(

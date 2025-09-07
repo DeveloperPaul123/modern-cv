@@ -25,7 +25,7 @@
   profile-picture: none,
   language: "sp",
   description: "Cover letter of John",
-  keywords: ("Software"),
+  keywords: "Software",
 )
 
 #hiring-entity-info(
