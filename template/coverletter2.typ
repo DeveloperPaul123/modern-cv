@@ -1,4 +1,4 @@
-#import "@preview/modern-cv:0.8.0": *
+#import "@preview/modern-cv:0.9.0": *
 
 #show: coverletter.with(
   author: (
@@ -25,7 +25,7 @@
   profile-picture: none,
   language: "sp",
   description: "Cover letter of John",
-  keywords: ("Software"),
+  keywords: "Software",
 )
 
 #hiring-entity-info(

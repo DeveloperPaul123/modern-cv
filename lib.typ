@@ -216,7 +216,13 @@
   let lang_data = toml("lang.toml")
 
   let desc = if description == none {
-    lflib._linguify("resume", lang: language, from: lang_data).ok + " " + author.firstname + " " + author.lastname
+    (
+      lflib._linguify("resume", lang: language, from: lang_data).ok
+        + " "
+        + author.firstname
+        + " "
+        + author.lastname
+    )
   } else {
     description
   }
@@ -243,12 +249,12 @@
     paper: paper-size,
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
     footer: if show-footer [#__resume_footer(
-        author,
-        language,
-        lang_data,
-        date,
-        use-smallcaps: use-smallcaps,
-      )] else [],
+      author,
+      language,
+      lang_data,
+      date,
+      use-smallcaps: use-smallcaps,
+    )] else [],
     footer-descent: 0pt,
   )
 
@@ -286,7 +292,9 @@
         #block[
           #set text(size: 32pt, style: "normal", font: header-font)
           #if language == "zh" or language == "ja" [
-            #text(accent-color, weight: "bold")[#author.lastname]#text(weight: "thin")[#author.firstname]
+            #text(accent-color, weight: "bold")[#author.lastname]#text(
+              weight: "thin",
+            )[#author.firstname]
           ] else [
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
@@ -361,25 +369,33 @@
           #if ("bitbucket" in author) [
             #separator
             #bitbucket-icon
-            #box[#link("https://bitbucket.org/" + author.bitbucket)[#author.bitbucket]]
+            #box[#link(
+              "https://bitbucket.org/" + author.bitbucket,
+            )[#author.bitbucket]]
           ]
           #if ("linkedin" in author) [
             #separator
             #linkedin-icon
             #box[
-              #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
+              #link(
+                "https://www.linkedin.com/in/" + author.linkedin,
+              )[#author.firstname #author.lastname]
             ]
           ]
           #if ("twitter" in author) [
             #separator
             #twitter-icon
-            #box[#link("https://twitter.com/" + author.twitter)[\@#author.twitter]]
+            #box[#link(
+              "https://twitter.com/" + author.twitter,
+            )[\@#author.twitter]]
           ]
           #if ("scholar" in author) [
             #let fullname = str(author.firstname + " " + author.lastname)
             #separator
             #google-scholar-icon
-            #box[#link("https://scholar.google.com/citations?user=" + author.scholar)[#fullname]]
+            #box[#link(
+              "https://scholar.google.com/citations?user=" + author.scholar,
+            )[#fullname]]
           ]
           #if ("orcid" in author) [
             #separator
@@ -622,7 +638,13 @@
   }
 
   let desc = if description == none {
-    lflib._linguify("cover-letter", lang: language, from: lang_data).ok + " " + author.firstname + " " + author.lastname
+    (
+      lflib._linguify("cover-letter", lang: language, from: lang_data).ok
+        + " "
+        + author.firstname
+        + " "
+        + author.lastname
+    )
   } else {
     description
   }
@@ -630,7 +652,9 @@
   show: body => context {
     set document(
       author: author.firstname + " " + author.lastname,
-      title: lflib._linguify("cover-letter", lang: language, from: lang_data).ok,
+      title: lflib
+        ._linguify("cover-letter", lang: language, from: lang_data)
+        .ok,
       description: desc,
       keywords: keywords,
     )
@@ -649,12 +673,12 @@
     paper: paper-size,
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
     footer: if show-footer [#__coverletter_footer(
-        author,
-        language,
-        date,
-        lang_data,
-        use-smallcaps: use-smallcaps,
-      )] else [],
+      author,
+      language,
+      date,
+      lang_data,
+      use-smallcaps: use-smallcaps,
+    )] else [],
     footer-descent: 2mm,
   )
 
@@ -679,7 +703,9 @@
         #block[
           #set text(size: 32pt, style: "normal", font: header-font)
           #if language == "zh" or language == "ja" [
-            #text(accent-color, weight: "bold")[#author.lastname]#text(weight: "bold")[#author.firstname]
+            #text(accent-color, weight: "bold")[#author.lastname]#text(
+              weight: "bold",
+            )[#author.firstname]
           ] else [
             #text(accent-color, weight: "thin")[#author.firstname]
             #text(weight: "bold")[#author.lastname]
@@ -742,7 +768,9 @@
       author_list.push[
         #linkedin-icon
         #box[
-          #link("https://www.linkedin.com/in/" + author.linkedin)[#author.firstname #author.lastname]
+          #link(
+            "https://www.linkedin.com/in/" + author.linkedin,
+          )[#author.firstname #author.lastname]
         ]
       ]
     }

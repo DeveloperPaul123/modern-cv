@@ -1,7 +1,7 @@
 name: Package and push to registry repo
 on:
   push:
-    tags: [ '*' ]
+    tags: ["*"]
 
 env:
   # the repository to which to push the release version
@@ -31,9 +31,9 @@ jobs:
           crate: just
 
       - name: Setup typst
-        uses: typst-community/setup-typst@v3
+        uses: typst-community/setup-typst@v4
         with:
-          typst-version: latest
+          typst-version: ^0.13.0
 
       - name: Determine and check package metadata
         run: |
