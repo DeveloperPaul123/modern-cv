@@ -1,7 +1,7 @@
 name: Package and push to registry repo
 on:
-  push:
-    tags: ["*"]
+  release:
+    types: [published]
 
 env:
   # the repository to which to push the release version
@@ -51,21 +51,8 @@ jobs:
           just doc
           just package out
 
-      - name: Get release
-        id: get_release
-        uses: bruceadams/get-release@v1.3.2
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-
       - name: Upload manual
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: docs/manual.pdf
-          asset_name: manual.pdf
-          asset_content_type: application/octet-stream
+        run: gh release upload ${{ github.event.release.tag_name }} docs/manual.pdf
 
       - name: Checkout package registry
         uses: actions/checkout@v4
