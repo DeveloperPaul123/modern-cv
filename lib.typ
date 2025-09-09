@@ -1,5 +1,9 @@
-#import "@preview/fontawesome:0.5.0": *
+#import "@preview/fontawesome:0.6.0": *
 #import "@preview/linguify:0.4.2": *
+
+// TODO(PT): Move to Fontawesome 7
+// for now, specify Fontawesome 6
+#fa-version("6")
 
 // const color
 #let color-darknight = rgb("#131A28")
