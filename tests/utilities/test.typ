@@ -1,5 +1,7 @@
 #import "@local/modern-cv:0.9.0": *
 
+#fa-version("6")
+
 // setup the document like we do for the resume
 #let font = "Source Sans 3"
 #set text(font: font, size: 11pt, fill: color-darkgray, fallback: true)
