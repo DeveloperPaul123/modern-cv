@@ -15,6 +15,7 @@
       "Software Engineer",
       "Full Stack Developer",
     ),
+    signature: image("./signature.png", format: "png", width: 150pt)
   ),
   profile-picture: image("./profile.png"),
   // change this to match the language available in 'lang.toml'
