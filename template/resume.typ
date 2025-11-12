@@ -33,9 +33,11 @@
   date: datetime.today().display(),
   language: "en",
   colored-headers: true,
-  show-footer: false,
+  show-footer: true,
   show-address-icon: true,
   paper-size: "us-letter",
+  // Update this to a custom path to use a custom lang.toml file.
+  // lang-dict: read("../lang.toml", encoding: none)
 )
 
 = Experience

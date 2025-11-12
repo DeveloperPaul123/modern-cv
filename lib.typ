@@ -211,13 +211,14 @@
   show-address-icon: false,
   description: none,
   keywords: (),
+  lang-dict: "lang.toml",
   body,
 ) = {
   if type(accent-color) == str {
     accent-color = rgb(accent-color)
   }
 
-  let lang_data = toml("lang.toml")
+  let lang_data = toml(lang-dict)
 
   let desc = if description == none {
     (
@@ -629,6 +630,7 @@
   description: none,
   keywords: (),
   signature: image,
+  lang-dict: "lang.toml",
   body,
 ) = {
   if type(accent-color) == str {
@@ -636,7 +638,7 @@
   }
 
   // language data
-  let lang_data = toml("lang.toml")
+  let lang_data = toml(lang-dict)
 
   if closing == none {
     closing = default-closing(lang_data)
