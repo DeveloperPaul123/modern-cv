@@ -17,15 +17,30 @@ A port of the [Awesome-CV](https://github.com/posquit0/Awesome-CV) Latex resume 
 - Easy to use and customize (colors, profile picture, fonts, etc.)
 - Support for multiple sections (education, experience, skills, etc.)
 - Support for multiple languages
+- Customizable translations
 
 ## Preview
 
-| Resumes | Cover letters |
-| --- | --- |
-| ![Resume](assets/images/resume.png) | ![Cover Letter](assets/images/coverletter.png) |
-| ![Resume 2](assets/images/resume2.png) | ![Cover Letter 2](assets/images/coverletter2.png)|
+| Resumes                                | Cover letters                                     |
+| -------------------------------------- | ------------------------------------------------- |
+| ![Resume](assets/images/resume.png)    | ![Cover Letter](assets/images/coverletter.png)    |
+| ![Resume 2](assets/images/resume2.png) | ![Cover Letter 2](assets/images/coverletter2.png) |
 
-## Requirements
+## Using a Custom Language File
+
+With `modern-cv` `0.10.0` onwards, it is possible to supply your own language dictionary to use with the template. Below is a breakdown of the keys that your toml file must include:
+
+| Key                       | Description |
+| :------------------------ | :---------- |
+| `resume`                  |             |
+| `dear`                    |             |
+| `cover-letter`            |             |
+| `attached`                |             |
+| `curriculum-vitae`        |             |
+| `sincerely`               |             |
+| `letter-position-pretext` |             |
+
+## Developer Requirements
 
 ### Tools
 
@@ -128,4 +143,4 @@ The project is licensed under the MIT license. See [LICENSE](LICENSE) for more d
 ## Author
 
 | [<img src="https://avatars0.githubusercontent.com/u/6591180?s=460&v=4" width="100"><br><sub>@DeveloperPaul123</sub>](https://github.com/DeveloperPaul123) |
-|:----:|
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------: |
