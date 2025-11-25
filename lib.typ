@@ -438,10 +438,10 @@
       }
     }
 
-    align(center)[
+    align(center+horizon)[
       #set text(size: 9pt, weight: "regular", style: "normal")
       #block[
-        #align(horizon)[
+        #align(bottom)[
           #items.join(h(10pt))
         ]
       ]
