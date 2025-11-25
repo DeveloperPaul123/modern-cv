@@ -27,6 +27,9 @@
 #let website-icon = box(fa-icon("globe", fill: color-darknight))
 #let address-icon = box(fa-icon("location-crosshairs", fill: color-darknight))
 
+// const variables
+#let contact-item-inset = (left: 2pt)
+
 /// Helpers
 
 // Common helper functions
@@ -221,11 +224,7 @@
 
   let desc = if description == none {
     (
-      lflib._linguify("resume", lang: language, from: lang_data).ok
-        + " "
-        + author.firstname
-        + " "
-        + author.lastname
+      lflib._linguify("resume", lang: language, from: lang_data).ok + " " + author.firstname + " " + author.lastname
     )
   } else {
     description
@@ -331,12 +330,31 @@
       ]
     ]
   }
+  
+  // Helper for contact items in the header
+  let contact-item(item, link-prefix: "") = {
+    box[
+      #if ("icon" in item) {
+        box(fa-icon(item.icon, fill: color-darknight))
+      }
+      // Then modify the selection to use the constant:
+      #box(inset: contact-item-inset)[
+        #if ("link" in item) {
+          link(item.link.prefix + link-prefix + item.link.suffix)[#item.text]
+        } else {
+          item.text
+        }
+      ]
+    ]
+  }
+
 
   let contacts = {
     set box(height: 9pt)
     let items = ()
-    
+
     if "birth" in author {
+      items.push(contact-item((icon: "cake", text: author.birth)))
       items.push(box[
         #birth-icon
         #box[#text(author.birth)]
@@ -672,9 +690,7 @@
   show: body => context {
     set document(
       author: author.firstname + " " + author.lastname,
-      title: lflib
-        ._linguify("cover-letter", lang: language, from: lang_data)
-        .ok,
+      title: lflib._linguify("cover-letter", lang: language, from: lang_data).ok,
       description: desc,
       keywords: keywords,
     )
