@@ -334,100 +334,115 @@
 
   let contacts = {
     set box(height: 9pt)
+    let items = ()
+    
+    if "birth" in author {
+      items.push(box[
+        #birth-icon
+        #box[#text(author.birth)]
+      ])
+    }
+    if "phone" in author {
+      items.push(box[
+        #phone-icon
+        #box[#link("tel:" + author.phone)[#author.phone]]
+      ])
+    }
+    if "email" in author {
+      items.push(box[
+        #email-icon
+        #box[#link("mailto:" + author.email)[#author.email]]
+      ])
+    }
+    if "homepage" in author {
+      items.push(box[
+        #homepage-icon
+        #box[#link(author.homepage)[#author.homepage]]
+      ])
+    }
+    if "github" in author {
+      items.push(box[
+        #github-icon
+        #box[#link("https://github.com/" + author.github)[#author.github]]
+      ])
+    }
+    if "gitlab" in author {
+      items.push(box[
+        #gitlab-icon
+        #box[#link("https://gitlab.com/" + author.gitlab)[#author.gitlab]]
+      ])
+    }
+    if "bitbucket" in author {
+      items.push(box[
+        #bitbucket-icon
+        #box[#link(
+          "https://bitbucket.org/" + author.bitbucket,
+        )[#author.bitbucket]]
+      ])
+    }
+    if "linkedin" in author {
+      items.push(box[
+        #linkedin-icon
+        #box[
+          #link(
+            "https://www.linkedin.com/in/" + author.linkedin,
+          )[#author.firstname #author.lastname]
+        ]
+      ])
+    }
+    if "twitter" in author {
+      items.push(box[
+        #twitter-icon
+        #box[#link(
+          "https://twitter.com/" + author.twitter,
+        )[\@#author.twitter]]
+      ])
+    }
+    if "scholar" in author {
+      let fullname = str(author.firstname + " " + author.lastname)
+      items.push(box[
+        #google-scholar-icon
+        #box[#link(
+          "https://scholar.google.com/citations?user=" + author.scholar,
+        )[#fullname]]
+      ])
+    }
+    if "orcid" in author {
+      items.push(box[
+        #orcid-icon
+        #box[#link("https://orcid.org/" + author.orcid)[#author.orcid]]
+      ])
+    }
+    if "website" in author {
+      items.push(box[
+        #website-icon
+        #box[#link(author.website)[#author.website]]
+      ])
+    }
+    if "custom" in author and type(author.custom) == array {
+      for item in author.custom {
+        if "text" in item {
+          items.push(box[
+            #if ("icon" in item) {
+              box(fa-icon(item.icon, fill: color-darknight))
+            }
+            #box[
+              #if ("link" in item) {
+                link(item.link)[#item.text]
+              } else {
+                item.text
+              }
+            ]
+          ])
+        }
+      }
+    }
 
-    let separator = box(width: 5pt)
-
-    align(center)[
+    align(center+horizon)[
       #set text(size: 9pt, weight: "regular", style: "normal")
       #block[
-        #align(horizon)[
-          #if ("birth" in author) [
-            #birth-icon
-            #box[#text(author.birth)]
-            #separator
-          ]
-          #if ("phone" in author) [
-            #phone-icon
-            #box[#link("tel:" + author.phone)[#author.phone]]
-            #separator
-          ]
-          #if ("email" in author) [
-            #email-icon
-            #box[#link("mailto:" + author.email)[#author.email]]
-          ]
-          #if ("homepage" in author) [
-            #separator
-            #homepage-icon
-            #box[#link(author.homepage)[#author.homepage]]
-          ]
-          #if ("github" in author) [
-            #separator
-            #github-icon
-            #box[#link("https://github.com/" + author.github)[#author.github]]
-          ]
-          #if ("gitlab" in author) [
-            #separator
-            #gitlab-icon
-            #box[#link("https://gitlab.com/" + author.gitlab)[#author.gitlab]]
-          ]
-          #if ("bitbucket" in author) [
-            #separator
-            #bitbucket-icon
-            #box[#link(
-              "https://bitbucket.org/" + author.bitbucket,
-            )[#author.bitbucket]]
-          ]
-          #if ("linkedin" in author) [
-            #separator
-            #linkedin-icon
-            #box[
-              #link(
-                "https://www.linkedin.com/in/" + author.linkedin,
-              )[#author.firstname #author.lastname]
-            ]
-          ]
-          #if ("twitter" in author) [
-            #separator
-            #twitter-icon
-            #box[#link(
-              "https://twitter.com/" + author.twitter,
-            )[\@#author.twitter]]
-          ]
-          #if ("scholar" in author) [
-            #let fullname = str(author.firstname + " " + author.lastname)
-            #separator
-            #google-scholar-icon
-            #box[#link(
-              "https://scholar.google.com/citations?user=" + author.scholar,
-            )[#fullname]]
-          ]
-          #if ("orcid" in author) [
-            #separator
-            #orcid-icon
-            #box[#link("https://orcid.org/" + author.orcid)[#author.orcid]]
-          ]
-          #if ("website" in author) [
-            #separator
-            #website-icon
-            #box[#link(author.website)[#author.website]]
-          ]
-          #if ("custom" in author and type(author.custom) == array) [
-            #for item in author.custom [
-              #if ("text" in item) [
-                #separator
-                #if ("icon" in item) [
-                  #box(fa-icon(item.icon, fill: color-darknight))
-                ]
-                #box[
-                  #if ("link" in item) [
-                    #link(item.link)[#item.text]
-                  ] else [
-                    #item.text
-                  ]
-                ]
-              ]
-            ]
-          ]
+        #align(bottom)[
+          #items.join(h(10pt))
         ]
       ]
     ]
