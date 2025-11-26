@@ -8,6 +8,8 @@
     homepage: "https://example.com",
     phone: "(+1) 111-111-1111",
     github: "DeveloperPaul123",
+    gitlab: "DeveloperPaul123",
+    bitbucket: "DeveloperPaul123",
     twitter: "typstapp",
     scholar: "",
     orcid: "0000-0000-0000-000X",
@@ -36,6 +38,7 @@
   show-footer: false,
   show-address-icon: true,
   paper-size: "us-letter",
+  contact-items-separator: box[#h(2pt)#text("|")#h(2pt)],
 )
 
 = Experience
