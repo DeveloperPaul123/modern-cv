@@ -131,9 +131,10 @@
 /// - github-path (string): The path to the Github project (e.g. "DeveloperPaul123/awesome-resume")
 /// -> none
 #let github-link(github-path) = {
-  set box(height: 10pt)
-  align(horizon)[
-    #box(height: 10pt, inset: 4pt)[#github-icon] #link(
+  set box(height: 11pt)
+
+  align(right + horizon)[
+    #fa-icon("github", fill: color-darkgray) #h(2pt) #link(
       "https://github.com/" + github-path,
       github-path,
     )
