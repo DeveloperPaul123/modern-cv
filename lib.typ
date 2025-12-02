@@ -338,6 +338,7 @@
   // - link-prefix (string): The prefix to use for the link (e.g. "mailto:")
   let contact-item(item, link-prefix: "") = {
     box[
+      #set align(bottom)
       #if ("icon" in item) {
         [#item.icon]
       }
