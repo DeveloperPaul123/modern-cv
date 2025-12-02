@@ -10,11 +10,11 @@ jobs:
     strategy:
       matrix:
         # add any other Typst versions that your package should support
-        typst-version: ["0.12", "0.13"]
+        typst-version: ["0.12", "0.13", "0.14"]
         # the docs don't need to build with all versions supported by the package;
         # the latest one is enough
         include:
-          - typst-version: "0.13"
+          - typst-version: "0.14"
             doc: 1
     runs-on: ubuntu-22.04
     steps:
@@ -40,10 +40,10 @@ jobs:
       - name: Install tytanic
         uses: taiki-e/cache-cargo-install-action@v2
         with:
-          tool: tytanic@0.2.2
+          tool: tytanic@0.3.1
 
       - name: Setup typst
-        uses: typst-community/setup-typst@v3
+        uses: typst-community/setup-typst@v4
         with:
           typst-version: ${{ matrix.typst-version }}
 
