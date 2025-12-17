@@ -18,6 +18,8 @@
 #let gitlab-icon = box(fa-icon("gitlab", fill: color-darknight))
 #let bitbucket-icon = box(fa-icon("bitbucket", fill: color-darknight))
 #let twitter-icon = box(fa-icon("twitter", fill: color-darknight))
+#let bluesky-icon = box(fa-icon("bluesky", fill: color-darknight))
+#let mastodon-icon = box(fa-icon("mastodon", fill: color-darknight))
 #let google-scholar-icon = box(fa-icon("google-scholar", fill: color-darknight))
 #let orcid-icon = box(fa-icon("orcid", fill: color-darknight))
 #let phone-icon = box(fa-icon("square-phone", fill: color-darknight))
@@ -430,6 +432,22 @@
           (text: "@" + author.twitter, icon: twitter-icon, link: author.twitter),
           link-prefix: "https://twitter.com/",
         ),
+      )
+    }
+    if "bluesky" in author {
+      items.push(
+        contact-item(
+          (text: "@" + author.bluesky, icon: bluesky-icon, link: author.bluesky),
+          link-prefix: "https://bsky.app/profile/",
+        )
+      )
+    }
+    if "mastodon" in author {
+      items.push(
+        contact-item(
+          (text: "@" + author.mastodon, icon: mastodon-icon, link: author.mastodon),
+          link-prefix: "https://mastodon.social/@"
+        )
       )
     }
     if "scholar" in author {

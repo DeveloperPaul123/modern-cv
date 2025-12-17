@@ -11,6 +11,8 @@
     gitlab: "DeveloperPaul123",
     bitbucket: "DeveloperPaul123",
     twitter: "typstapp",
+    bluesky: "ptsou.bsky.social",
+    mastodon: "devpaul",
     scholar: "",
     orcid: "0000-0000-0000-000X",
     birth: "January 1, 1990",
