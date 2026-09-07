@@ -1,0 +1,5 @@
+#let darknight = rgb("#131A28")
+#let darkgray = rgb("#333333")
+#let gray = rgb("#5d5d5d")
+#let default-accent = rgb("#262F99")
+#let default-location = rgb("#333333")

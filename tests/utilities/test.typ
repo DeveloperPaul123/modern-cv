@@ -2,7 +2,7 @@
 
 // setup the document like we do for the resume
 #let font = "Source Sans 3"
-#set text(font: font, size: 11pt, fill: color-darkgray, fallback: true)
+#set text(font: font, size: 11pt, fill: colors.darkgray, fallback: true)
 
 #set page(
   paper: "a4",
@@ -25,7 +25,7 @@
     #let color = if colored-headers {
       accent-color
     } else {
-      color-darkgray
+      colors.darkgray
     }
     #text[#strong[#text(color)[#it.body.text]]]
     #box(width: 1fr, line(length: 100%))
@@ -34,7 +34,7 @@
 ]
 
 #show heading.where(level: 2): it => {
-  set text(color-darkgray, size: 12pt, style: "normal", weight: "bold")
+  set text(colors.darkgray, size: 12pt, style: "normal", weight: "bold")
   it.body
 }
 
@@ -48,21 +48,21 @@
 #secondary-justified-header("Created by", "ptsouchlos")
 
 #github-link("ptsouchlos/modern-cv")
-#linkedin-icon
-#github-icon
-#twitter-icon
-#google-scholar-icon
-#orcid-icon
-#phone-icon
-#email-icon
-#birth-icon
-#homepage-icon
-#website-icon
-#gitlab-icon
-#bitbucket-icon
+#icons.linkedin
+#icons.github
+#icons.twitter
+#icons.google-scholar
+#icons.orcid
+#icons.phone
+#icons.email
+#icons.birth
+#icons.homepage
+#icons.website
+#icons.gitlab
+#icons.bitbucket
 
-#square(size: 1em, fill: color-darkgray)
-#square(size: 1em, fill: color-darknight)
-#square(size: 1em, fill: color-gray)
-#square(size: 1em, fill: default-accent-color)
-#square(size: 1em, fill: default-location-color)
+#square(size: 1em, fill: colors.darkgray)
+#square(size: 1em, fill: colors.darknight)
+#square(size: 1em, fill: colors.gray)
+#square(size: 1em, fill: colors.default-accent)
+#square(size: 1em, fill: colors.default-location)

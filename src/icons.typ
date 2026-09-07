@@ -1,0 +1,21 @@
+#import "@preview/fontawesome:0.6.2": fa-icon
+#import "colors.typ"
+
+#let linkedin = box(fa-icon("linkedin", fill: colors.darknight))
+#let telegram = box(fa-icon("telegram", fill: colors.darknight))
+#let github = box(fa-icon("github", fill: colors.darknight))
+#let gitlab = box(fa-icon("gitlab", fill: colors.darknight))
+#let forgejo = box(fa-icon("forgejo", fill: colors.darknight))
+#let bitbucket = box(fa-icon("bitbucket", fill: colors.darknight))
+#let codeberg = box(fa-icon("codeberg", fill: colors.darknight))
+#let twitter = box(fa-icon("twitter", fill: colors.darknight))
+#let bluesky = box(fa-icon("bluesky", fill: colors.darknight))
+#let mastodon = box(fa-icon("mastodon", fill: colors.darknight))
+#let google-scholar = box(fa-icon("google-scholar", fill: colors.darknight))
+#let orcid = box(fa-icon("orcid", fill: colors.darknight))
+#let phone = box(fa-icon("square-phone", fill: colors.darknight))
+#let email = box(fa-icon("envelope", fill: colors.darknight))
+#let birth = box(fa-icon("cake", fill: colors.darknight))
+#let homepage = box(fa-icon("home", fill: colors.darknight))
+#let website = box(fa-icon("globe", fill: colors.darknight))
+#let address = box(fa-icon("location-crosshairs", fill: colors.darknight))

@@ -112,7 +112,7 @@ Documentation for this template is published with each commit. See the attached 
 
 To build and test the project locally, you will need to install the `typst` CLI. You can find instructions on how to do this [here](https://github.com/typst/typst#installation).
 
-With typst installed you can make changes to `lib.typ` and then `just install` or `just install-preview` to install the package locally. Change the import statements in the template files to point to the local package (if needed):
+With typst installed you can make changes to `src/lib.typ` and then `just install` or `just install-preview` to install the package locally. Change the import statements in the template files to point to the local package (if needed):
 
 ```typst
 #import "@local/modern-cv:0.10.0": *
